@@ -12,15 +12,17 @@ It can be viewed at the following link:
 
 ## Rationale
 
-A modular structure was chosen because it separates logic into distinct parts and prevents them from being mixed. At the same time, it doesn't overly complicate the structure for a small project like this, as something like FSD (Feature-Sliced Design) would.
+A modular structure was chosen because it separates logic into distinct units and prevents them from being mixed. At the same time, it doesn't overly complicate the structure for a small project like this, unlike FSD (Feature-Sliced Design) might.
 
-- The `models` directory stores complete page sections with their own logic that do not overlap with other modules.
-- The `components` folder contains parts of those models that also include their own logic.
-- The `ui` directory holds small, purely presentational components with no logic.
-- The `services` folder includes basic Axios configuration and reusable API requests.
-- The `shared` directory stores hooks, constants, and other utility functions used across the project.
+- The `features` folder stores complete parts of a page, each with its own logic that does not overlap with other modules.
+- The `components` folder is divided into:
+  - `modules` — logic-heavy components that are part of features,
+  - `ui` — small, purely presentational components without logic,
+  - `layout` — layout templates and structural elements.
+- The `api` directory holds basic Axios configuration and API requests organized by category.
+- The `shared` folder contains reusable hooks, constants, and helpers 
+- Depending on the decision to use context or Redux, the project will include either a `context` or `redux` folder to manage shared state across components.
 
-Depending on the decision to keep or replace `createContext` providers with Redux, the project will include either a `providers` or `redux` folder. This folder will manage shared state for components.
 
 ## Future Consequences
 
@@ -33,6 +35,7 @@ Depending on the decision to keep or replace `createContext` providers with Redu
 **Negative consequences:**
 
 - The `providers/redux` folder, which will store all global state, may become cluttered due to the accumulation of many states.
+- the folder `api` may become cluttered if there are more requests
 
 ## Status `proposed`
 
