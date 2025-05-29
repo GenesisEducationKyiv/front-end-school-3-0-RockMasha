@@ -3,7 +3,6 @@ import "reset-css";
 import "modern-normalize";
 import colors from "../constans/colors";
 
-
 export const GlobalStyles = createGlobalStyle`
     body {
         background-color: ${colors.purple100};
