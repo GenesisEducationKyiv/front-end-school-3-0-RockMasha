@@ -41,4 +41,4 @@ The FSD approach is reflected in the layered structure: features, shared, UI, pa
 
 ## Consequences After Execution
 
-The decision on the introduction has not yet been made.
+Some time was spent on changing the architecture, which came with certain difficulties due to a lack of experience. However, navigating the project has become easier, components and modules are now less dependent on each other, which simplifies refactoring. Adding new modules and features is now safer and faster.
