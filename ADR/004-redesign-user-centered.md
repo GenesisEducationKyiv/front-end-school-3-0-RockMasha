@@ -1,4 +1,4 @@
-# ADR 002: Redesign to a More User-Centered Interface
+# ADR 004: Redesign to a More User-Centered Interface
 
 ## Context
 
