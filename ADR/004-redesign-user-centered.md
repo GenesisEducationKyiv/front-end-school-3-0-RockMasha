@@ -1,4 +1,4 @@
-# ADR N: Redesign to a More User-Centered Interface
+# ADR 002: Redesign to a More User-Centered Interface
 
 ## Context
 

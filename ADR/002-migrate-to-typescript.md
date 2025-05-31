@@ -1,4 +1,4 @@
-# ADR N: Replace JS with TS
+# ADR 002: migrate to TypeScript
 
 ## Context
 

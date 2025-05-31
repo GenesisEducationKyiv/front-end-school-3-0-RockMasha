@@ -1,4 +1,4 @@
-# ADR N: Transition to Modular Architecture
+# ADR 001: transition to a new architecture that will separate logic
 
 ## Context
 
@@ -6,13 +6,13 @@ The current architecture (if it can even be called that) has many implicit conne
 
 ## Decision
 
-Decided to adopt a modular architecture with slightly modified parts.  
-It can be viewed at the following link:  
+It was decided to use a hybrid of modular architecture with FSD approaches.
 [Modular Architecture – Figma Board](https://www.figma.com/board/6AzSNO2163kj5YYHm2w5sw/Player_update?node-id=0-1&t=VyVJ4I1cBvWoGu1E-1)
 
 ## Rationale
 
-A modular structure was chosen because it separates logic into distinct units and prevents them from being mixed. At the same time, it doesn't overly complicate the structure for a small project like this, unlike FSD (Feature-Sliced Design) might.
+The combination of modular structure with FSD was chosen because it separates logic into distinct blocks and prevents them from being mixed. FSD alone provides good separation of concerns, but it’s not as convenient for a small project. Therefore, the hybrid approach is the optimal solution. The modular part is represented by the division into business domain areas (such as modules, redux/context, api).
+The FSD approach is reflected in the layered structure: features, shared, UI, page.
 
 - The `features` folder stores complete parts of a page, each with its own logic that does not overlap with other modules.
 - The `components` folder is divided into:
@@ -37,7 +37,7 @@ A modular structure was chosen because it separates logic into distinct units an
 - The `providers/redux` folder, which will store all global state, may become cluttered due to the accumulation of many states.
 - the folder `api` may become cluttered if there are more requests
 
-## Status `proposed`
+## Status `Accepted`
 
 ## Consequences After Execution
 

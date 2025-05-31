@@ -1,4 +1,4 @@
-# ADR N: Using a Global Redux Store Instead of Contexts
+# ADR 003: Using a Global Redux Store Instead of Contexts
 
 ## Context
 
