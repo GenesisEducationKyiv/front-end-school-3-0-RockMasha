@@ -1,10 +1,10 @@
-import { err, Result } from 'neverthrow'
+import { err } from 'neverthrow'
 import { isAxiosError } from 'axios'
-import type { AppError } from '@/types'
+import type { RequestResponse } from '@/types'
 import getErrorMessage from './getErrorMessage'
 import { unexpectedErrorMessage } from '../consts/unexpectedErrorMessage'
 
-export function handleError<T>(error: unknown): Result<T, AppError> {
+export function handleError<T>(error: unknown): RequestResponse<T> {
   if (isAxiosError(error)) {
     return err(getErrorMessage(error))
   }

@@ -9,7 +9,7 @@ import type { TrackFormValues } from '../types/TrackFormValues'
 function useFormTrackModal() {
   const { trackId, trackSlug } = useCardIdentifierValueProviderContext()
   const [values, setValues] = useState<TrackFormValues>()
-  const [currentGenres, setCurrentGenres] = useState<Genre[]>()
+  const [currentGenres, setCurrentGenres] = useState<Genre[]>([])
 
   const isRedactTrack = !!(trackId && trackSlug)
 
@@ -27,20 +27,19 @@ function useFormTrackModal() {
   }, [])
 
   const {
-    genresList,
     isNotHiddenGenresSelect,
     addGenre,
     removeGenre,
     getFirstValueOfGenresSelect,
-  } = useGenres(currentGenres)
+  } = useGenres(currentGenres, setCurrentGenres)
 
   const { initialValues, handleSubmit, refuseRedact } = useValues(
     values,
-    genresList
+    currentGenres
   )
 
   return {
-    genresList,
+    currentGenres,
     isNotHiddenGenresSelect,
     addGenre,
     removeGenre,

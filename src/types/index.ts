@@ -3,6 +3,7 @@ export type { NullableAbortController } from './api/NullableAbortController'
 export type { AppError, ApiErrorData, CustomAxiosError } from './api/Error'
 export type { TrackListData } from './api/responses/TrackListData'
 export type { RequestResponse } from './api/responses/RequestResponse'
+export type { AsyncRequestResponse } from './api/responses/AsyncRequestResponse'
 
 // track
 export type { Id } from './models/track/Id'
@@ -29,6 +30,7 @@ export type { ModalWidth } from './models/ModalWidth'
 export type { SetState } from './models/SetState'
 export type { ChildrenProps } from './models/ChildrenProps'
 export type { SetCurrentPage } from './models/SetCurrentPage'
+export type { StartLoadingFn } from './models/StartLoadingFn'
 
 // guard
 export { checkContextConnection } from './guards/checkContextConnection'

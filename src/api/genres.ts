@@ -1,10 +1,10 @@
-import type { AppError, Genre } from '@/types'
+import type { Genre, AsyncRequestResponse } from '@/types'
 import { api } from './axiosInstance'
 import type { AxiosResponse } from 'axios'
 import { handleError } from '@/shared/helpers/handleError'
-import { ok, Result } from 'neverthrow'
+import { ok } from 'neverthrow'
 
-async function getGenres(): Promise<Result<Genre[], AppError>> {
+async function getGenres(): AsyncRequestResponse<Genre[]> {
   try {
     const answer: AxiosResponse<Genre[]> = await api.get('/api/genres')
     return ok(answer.data)

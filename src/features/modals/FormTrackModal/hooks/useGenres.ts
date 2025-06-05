@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
-import { useCardIdentifierValueProviderContext } from '../../../../context/CardIdentifierProvider'
+import { useState } from 'react'
 import { genres } from '../../../../api/genres'
-import { isGenre, type Genre } from '@/types'
+import { isGenre, type Genre, type SetState } from '@/types'
 import type { TrackFormValues } from '../types/TrackFormValues'
 
-function useGenres(currentGenres: Genre[] | undefined) {
-  const [genresList, setGenresList] = useState<Genre[]>([])
+function useGenres(
+  currentGenres: Genre[],
+  setCurrentGenres: SetState<Genre[]>
+) {
   const [isNotHiddenGenresSelect, setIsNotHiddenGenresSelect] =
     useState<boolean>(false)
-  const { trackId, trackSlug } = useCardIdentifierValueProviderContext()
 
   const addGenre = (values: TrackFormValues) => {
-    setGenresList((prev) => {
+    setCurrentGenres((prev) => {
       const newList = [...prev]
       if (!isGenre(values.genres)) return prev
       newList.push(values.genres)
@@ -23,23 +23,16 @@ function useGenres(currentGenres: Genre[] | undefined) {
   const removeGenre = (event: React.MouseEvent<HTMLDivElement>) => {
     const el = event.currentTarget
     const genre = el.dataset.genre
-    setGenresList((prev) => prev.filter((item) => item !== genre))
+    setCurrentGenres((prev) => prev.filter((item) => item !== genre))
   }
 
   const getFirstValueOfGenresSelect = () => {
-    const firstItem = genres.find((item) => !genresList.includes(item))
+    const firstItem = genres.find((item) => !currentGenres.includes(item))
     setIsNotHiddenGenresSelect(true)
     return firstItem
   }
 
-  useEffect(() => {
-    if (trackId && trackSlug && currentGenres) {
-      setGenresList(currentGenres)
-    }
-  }, [currentGenres])
-
   return {
-    genresList,
     isNotHiddenGenresSelect,
     addGenre,
     removeGenre,

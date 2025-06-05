@@ -1,10 +1,14 @@
 import { createContext, useContext } from 'react'
 import useLoading from '../shared/hooks/useLoading'
-import { checkContextConnection, type ChildrenProps } from '@/types'
+import {
+  checkContextConnection,
+  type ChildrenProps,
+  type StartLoadingFn,
+} from '@/types'
 
 interface LoaderContext {
   loading: boolean
-  startLoading: <T>(callbackFn: () => Promise<T>) => Promise<T | undefined>
+  startLoading: StartLoadingFn
 }
 
 const LoaderProviderContext = createContext<LoaderContext | null>(null)
@@ -15,7 +19,7 @@ export function useLoaderProviderContext() {
 }
 
 function LoaderProvider({ children }: ChildrenProps) {
-  const [loading, startLoading] = useLoading(true)
+  const [loading, startLoading] = useLoading()
 
   return (
     <LoaderProviderContext.Provider value={{ loading, startLoading }}>

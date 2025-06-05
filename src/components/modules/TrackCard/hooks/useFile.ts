@@ -34,13 +34,6 @@ function useFile({
     }
   }, [isPlaying, setCurrentPlay])
 
-  useEffect(() => {
-    setAudio()
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0
-    }
-  }, [audioFile])
-
   const setAudio = async () => {
     if (!audioFile) return null
     const answer = await getFile(audioFile)
@@ -52,6 +45,17 @@ function useFile({
     const fileSrc = getTrackSrc(response)
     setFile(fileSrc)
   }
+
+  useEffect(() => {
+    if (!audioFile) return
+    setAudio()
+  }, [audioFile])
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
+    }
+  }, [audioFile])
 
   return { file }
 }

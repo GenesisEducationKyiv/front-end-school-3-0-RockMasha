@@ -9,7 +9,10 @@ import type { TrackFormValues } from '../types/TrackFormValues'
 import type { Genre } from '@/types'
 import type { FormikHelpers } from 'formik'
 
-function useValues(values: TrackFormValues | undefined, genresList: Genre[]) {
+function useValues(
+  values: TrackFormValues | undefined,
+  currentGenres: Genre[]
+) {
   const { trackId, trackSlug, clearTrackId, clearTrackSlug } =
     useCardIdentifierValueProviderContext()
   const { setFormTrackModal } = useModalFuncContext()
@@ -27,7 +30,7 @@ function useValues(values: TrackFormValues | undefined, genresList: Genre[]) {
     startLoading(async () => {
       try {
         closeModal()
-        const data = { ...values, genres: genresList }
+        const data = { ...values, genres: currentGenres }
         if (trackId) {
           await redactTrack(data, trackId)
         } else {

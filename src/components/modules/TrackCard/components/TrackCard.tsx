@@ -42,25 +42,14 @@ function TrackCard({ data, setCurrentPlay, currentPlay }: Props) {
     <Card data-testid={'track-item-' + id}>
       <audio ref={audioRef} src={file || undefined} />
       <Controls data-testid={'audio-player-' + id}>
-        {!isPlaying ? (
-          <PlayPauseButton
-            data-testid={'play-button-' + id}
-            onClick={audioFile ? handleTogglePlayPause : () => {}}
-            style={{ cursor: playPointer }}
-            disabled={!audioFile}
-          >
-            <PlaySvg />
-          </PlayPauseButton>
-        ) : (
-          <PlayPauseButton
-            data-testid={'pause-button-' + id}
-            onClick={audioFile ? handleTogglePlayPause : () => {}}
-            style={{ cursor: playPointer }}
-            disabled={!audioFile}
-          >
-            <PauseSvg />
-          </PlayPauseButton>
-        )}
+        <PlayPauseButton
+          data-testid={`${isPlaying ? 'pause' : 'play'}-button-${id}`}
+          onClick={audioFile ? handleTogglePlayPause : undefined}
+          style={{ cursor: playPointer }}
+          disabled={!audioFile}
+        >
+          {isPlaying ? <PauseSvg /> : <PlaySvg />}
+        </PlayPauseButton>
       </Controls>
       <TrackImg src={coverImage || './src/assets/images/default_track.png'} />
       <TrackInfo>

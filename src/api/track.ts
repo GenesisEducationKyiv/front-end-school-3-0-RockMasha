@@ -2,7 +2,7 @@ import type {
   Filter,
   Id,
   NullableAbortController,
-  RequestResponse,
+  AsyncRequestResponse,
   Slug,
   Track,
   TrackData,
@@ -17,7 +17,7 @@ let TracksController: NullableAbortController = null
 export async function getTracks(
   params: Filter = {},
   page: number = 1
-): RequestResponse<TrackListData> {
+): AsyncRequestResponse<TrackListData> {
   try {
     if (TracksController) {
       TracksController.abort()
@@ -34,7 +34,7 @@ export async function getTracks(
   }
 }
 
-export async function postTrack(data: TrackData): RequestResponse<Track> {
+export async function postTrack(data: TrackData): AsyncRequestResponse<Track> {
   try {
     const answer: AxiosResponse<Track> = await api.post(`/api/tracks`, data, {
       headers: {
@@ -47,7 +47,7 @@ export async function postTrack(data: TrackData): RequestResponse<Track> {
   }
 }
 
-export async function getTrackBySlug(slug: Slug): RequestResponse<Track> {
+export async function getTrackBySlug(slug: Slug): AsyncRequestResponse<Track> {
   try {
     const answer: AxiosResponse<Track> = await api.get(`/api/tracks/${slug}`)
     return ok(answer.data)
@@ -59,7 +59,7 @@ export async function getTrackBySlug(slug: Slug): RequestResponse<Track> {
 export async function redactTrack(
   data: TrackData,
   id: Id
-): RequestResponse<Track> {
+): AsyncRequestResponse<Track> {
   try {
     const answer: AxiosResponse<Track> = await api.put(
       `/api/tracks/${id}`,
@@ -71,7 +71,7 @@ export async function redactTrack(
   }
 }
 
-export async function deleteTrack(id: Id): RequestResponse<''> {
+export async function deleteTrack(id: Id): AsyncRequestResponse<''> {
   try {
     const answer: AxiosResponse<''> = await api.delete(`/api/tracks/${id}`)
     return ok(answer.data)

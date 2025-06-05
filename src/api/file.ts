@@ -1,10 +1,10 @@
-import type { FileData, Id, RequestResponse } from '@/types'
+import type { FileData, Id, AsyncRequestResponse } from '@/types'
 import { api } from './axiosInstance'
 import { type AxiosResponse } from 'axios'
 import { ok } from 'neverthrow'
 import { handleError } from '@/shared/helpers/handleError'
 
-export async function getFile(name: string): RequestResponse<ArrayBuffer> {
+export async function getFile(name: string): AsyncRequestResponse<ArrayBuffer> {
   try {
     const answer: AxiosResponse<ArrayBuffer> = await api.get(
       `/api/files/${name}`,
@@ -21,7 +21,7 @@ export async function getFile(name: string): RequestResponse<ArrayBuffer> {
 export async function postFile(
   data: FileData,
   id: Id
-): RequestResponse<FileData> {
+): AsyncRequestResponse<FileData> {
   try {
     const answer: AxiosResponse<FileData> = await api.post(
       `/api/tracks/${id}/upload`,
@@ -38,7 +38,7 @@ export async function postFile(
   }
 }
 
-export async function deleteFile(id: Id): RequestResponse<FileData> {
+export async function deleteFile(id: Id): AsyncRequestResponse<FileData> {
   try {
     const answer: AxiosResponse<FileData> = await api.delete(
       `/api/tracks/${id}/file`

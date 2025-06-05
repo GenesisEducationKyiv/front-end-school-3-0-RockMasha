@@ -29,7 +29,7 @@ import { toFormikValidationSchema } from 'zod-formik-adapter'
 
 function FormTrackModal() {
   const {
-    genresList,
+    currentGenres,
     isNotHiddenGenresSelect,
     addGenre,
     removeGenre,
@@ -106,7 +106,7 @@ function FormTrackModal() {
             <SelectLabel>
               Genres
               <GenresTegList>
-                {genresList.map((text) => (
+                {currentGenres.map((text) => (
                   <GenresTegItem key={text}>
                     <GenresTegText>{'#' + text + ' '}</GenresTegText>
                     <WrapperDeleteSVG
@@ -128,7 +128,7 @@ function FormTrackModal() {
                   >
                     {genres.map((item) => {
                       return (
-                        !genresList.includes(item) && (
+                        !currentGenres.includes(item) && (
                           <option key={item} value={item}>
                             {item}
                           </option>
@@ -146,7 +146,7 @@ function FormTrackModal() {
                   />
                 </TrackSelectBox>
               )}
-              {!(genresList.length >= 4) && (
+              {!(currentGenres.length >= 4) && (
                 <WrapperSVG
                   onClick={() => {
                     const firstItem = getFirstValueOfGenresSelect()

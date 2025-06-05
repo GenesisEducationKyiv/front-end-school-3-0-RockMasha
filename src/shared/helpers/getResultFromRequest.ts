@@ -1,8 +1,7 @@
-import type { AppError } from '@/types'
-import type { Result } from 'neverthrow'
+import type { RequestResponse } from '@/types'
 import { showError } from './tosts/showError'
 
-export function getResultFromRequest<T>(data: Result<T, AppError>) {
+export function getResultFromRequest<T>(data: RequestResponse<T>) {
   return data.match(
     (result) => result,
     (error) => {
