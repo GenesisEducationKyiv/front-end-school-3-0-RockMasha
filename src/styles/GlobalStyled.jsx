@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import "reset-css";
-import "modern-normalize";
-import { globalCSSVars } from "./colors";
+import { createGlobalStyle } from 'styled-components'
+import 'reset-css'
+import 'modern-normalize'
+import { globalCSSVars } from './colors'
 
 export const GlobalStyles = createGlobalStyle`
     ${globalCSSVars}
@@ -39,16 +39,5 @@ export const GlobalStyles = createGlobalStyle`
     button, a {
         cursor: pointer;
     }
-
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(30%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
 }
-}
-`;
+`
