@@ -13,7 +13,7 @@ export const colors = {
   purple400: `#5e3165`,
   purple500: `#9332a4`,
   purple600: `#ae1bc8`,
-};
+}
 
 export const globalCSSVars = `
   :root {
@@ -21,9 +21,9 @@ export const globalCSSVars = `
       .map(
         ([key, value]) =>
           `--color-${key
-            .replace(/([A-Z]|\d+)/g, "-$1")
+            .replace(/([A-Z]|\d+)/g, '-$1')
             .toLowerCase()}: ${value};`
       )
-      .join("\n    ")}
+      .join('\n    ')}
   }
-`;
+`

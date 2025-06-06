@@ -9,6 +9,6 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src", "vite-env.d.ts"],
+  "include": ["src", "vite-env.d.ts", "declarations.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
