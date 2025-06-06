@@ -10,6 +10,9 @@ import { DeleteTrackModal } from '../features/modals/DeleteTrackModal'
 import { FormTrackModal } from '../features/modals/FormTrackModal'
 import { UploadFileModal } from '../features/modals/UploadFileModal'
 import { GlobalStyles } from '../styles/GlobalStyled.jsx'
+import { openPage } from '@/shared/helpers/tosts/openPage.js'
+
+openPage()
 
 function Page() {
   const { hidden } = useFiltersHiddenContext()

@@ -1,18 +1,18 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
 import useHidden from '../shared/hooks/useHidden'
 import {
   checkContextConnection,
   type ChildrenProps,
   type Filter,
-  type SetState,
   type UpdateFiltersPayload,
 } from '@/types'
+import useFilter from '@/shared/hooks/useFilters'
 
 type UpdateFiltersFunc = (payload: UpdateFiltersPayload) => void
 
 type ChangeContext = {
   updateFilters: UpdateFiltersFunc
-  setFilters: SetState<Filter>
+  clearFilters: () => void
 }
 
 type HiddenContext = {
@@ -38,28 +38,12 @@ export function useFiltersHiddenContext() {
 }
 
 function FiltersProvider({ children }: ChildrenProps) {
-  const [filters, setFilters] = useState<Filter>({
-    sort: 'title',
-    order: 'asc',
-    search: '',
-    genre: '',
-    artist: '',
-  })
-
-  const updateFilters: UpdateFiltersFunc = ({ name, value }) => {
-    setFilters((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      }
-    })
-  }
-
+  const { filters, updateFilters, clearFilters } = useFilter()
   const hiddenValue = useHidden()
 
   return (
     <FiltersValueContext.Provider value={filters}>
-      <FiltersChangeContext value={{ updateFilters, setFilters }}>
+      <FiltersChangeContext value={{ updateFilters, clearFilters }}>
         <FiltersHiddenContext.Provider value={hiddenValue}>
           {children}
         </FiltersHiddenContext.Provider>

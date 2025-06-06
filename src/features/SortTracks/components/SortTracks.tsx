@@ -11,7 +11,7 @@ import {
   SortForm,
   SortSelect,
 } from './SortTracks.styled'
-import { useCallback, type ChangeEvent } from 'react'
+import { type ChangeEvent } from 'react'
 import { initialValues } from '../consts/initialValues'
 import { sortOpinion } from '../consts/sortOpinion'
 import { orderOpinion } from '../consts/orderOpinion'
@@ -26,7 +26,7 @@ import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
 type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
 function SortTracks() {
-  const { updateFilters, setFilters } = useFiltersChangeContext()
+  const { updateFilters, clearFilters } = useFiltersChangeContext()
   const { search, genre, artist, sort, order } = useFiltersValueContext()
 
   const handelChange = (event: FilterEvent) => {
@@ -36,10 +36,6 @@ function SortTracks() {
       updateFilters(payload)
     }
   }
-
-  const resetForm = useCallback(() => {
-    setFilters(initialValues)
-  }, [setFilters])
 
   return (
     <>
@@ -121,7 +117,7 @@ function SortTracks() {
                     </SortSelect>
                   </Label>
                 </OrderWrapper>
-                <ResetBtn type="button" onClick={resetForm}>
+                <ResetBtn type="button" onClick={clearFilters}>
                   <DeleteSvg />
                 </ResetBtn>
               </SortForm>

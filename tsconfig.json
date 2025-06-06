@@ -5,7 +5,9 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "allowJs": true
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["src", "vite-env.d.ts"],
   "exclude": ["node_modules", "dist"]
