@@ -19,6 +19,7 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      functional: 'functional',
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -28,6 +29,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'functional/prefer-readonly-type': 'error',
     },
   },
 ]
