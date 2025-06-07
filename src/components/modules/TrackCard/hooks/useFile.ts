@@ -35,7 +35,7 @@ function useFile({
   }, [isPlaying, setCurrentPlay])
 
   const setAudio = async () => {
-    if (!audioFile) return null
+    if (!audioFile) return
     const answer = await getFile(audioFile)
     if (!answer.isOk()) {
       showError(answer.error)

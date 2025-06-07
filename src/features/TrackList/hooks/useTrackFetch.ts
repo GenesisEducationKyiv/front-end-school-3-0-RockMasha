@@ -11,17 +11,18 @@ interface Props {
   setCurrentPage: SetCurrentPage
 }
 
+const defaultFetchData = { data: [], totalPages: 1 }
+
 function useTrackFetch({ currentPage, setCurrentPage }: Props) {
   const filters = useFiltersValueContext()
   const [totalPages, setTotalPages] = useState<number>(0)
   const [list, setList] = useState<Track[]>([])
   const [listLoading, startListLoading] = useLoading()
 
-  const requestTracks: () => Promise<RequestTracksData | undefined> =
+  const requestTracks: () => Promise<RequestTracksData> =
     useCallback(async () => {
       const result = await startListLoading(getResultResponse)
-      if (!result || result.isErr()) return
-      return result.value
+      return result.unwrapOr(defaultFetchData)
     }, [filters, currentPage, setCurrentPage, startListLoading])
 
   const getResultResponse = async () => {
@@ -36,8 +37,8 @@ function useTrackFetch({ currentPage, setCurrentPage }: Props) {
 
   const fetchTracks = useCallback(async () => {
     const answer = await requestTracks()
-    setList(answer ? answer.data : [])
-    setTotalPages(answer ? answer.totalPages : 0)
+    setList(answer.data)
+    setTotalPages(answer.totalPages)
   }, [requestTracks, setList, setTotalPages])
 
   return { fetchTracks, list, listLoading, totalPages }

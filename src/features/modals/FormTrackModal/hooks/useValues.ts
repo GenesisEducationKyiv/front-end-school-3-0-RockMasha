@@ -27,23 +27,19 @@ function useValues(
     values: TrackFormValues,
     { resetForm }: FormikHelpers<TrackFormValues>
   ) => {
-    startLoading(async () => {
-      try {
-        closeModal()
-        const data = { ...values, genres: currentGenres }
-        if (trackId) {
-          await redactTrack(data, trackId)
-        } else {
-          await postTrack(data)
-        }
+    await startLoading(async () => {
+      closeModal()
+      const data = { ...values, genres: currentGenres }
+      const result = trackId
+        ? await redactTrack(data, trackId)
+        : await postTrack(data)
+      if (result && result.isOk()) {
         showSuccess()
-      } catch (error) {
-        throw error
-      } finally {
-        resetForm()
-        clearTrackId()
-        clearTrackSlug()
       }
+      resetForm()
+      clearTrackId()
+      clearTrackSlug()
+      return result
     })
   }
 
