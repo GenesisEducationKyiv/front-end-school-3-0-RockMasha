@@ -22,6 +22,7 @@ function useTrackFetch({ currentPage, setCurrentPage }: Props) {
   const requestTracks: () => Promise<RequestTracksData> =
     useCallback(async () => {
       const result = await startListLoading(getResultResponse)
+      if (!result) return defaultFetchData
       return result.unwrapOr(defaultFetchData)
     }, [filters, currentPage, setCurrentPage, startListLoading])
 

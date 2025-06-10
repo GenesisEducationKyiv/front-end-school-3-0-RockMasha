@@ -32,10 +32,7 @@ function useFilter() {
   const params = useMemo(() => {
     return Object.fromEntries(searchParams)
   }, [searchParams])
-  const { sort, order, search, genre, artist } = useMemo(
-    () => params,
-    [searchParams]
-  )
+  const { sort, order, search, genre, artist } = params
 
   const filters: Filter = useMemo(
     () => ({

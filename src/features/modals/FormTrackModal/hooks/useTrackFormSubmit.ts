@@ -53,7 +53,7 @@ function useValues(
     if (trackId && trackSlug && values) {
       setInitialValues(values)
     }
-  }, [values])
+  }, [trackId, trackSlug, values])
 
   return { initialValues, handleSubmit, refuseRedact }
 }
