@@ -11,7 +11,7 @@ import {
   SortForm,
   SortSelect,
 } from './SortTracks.styled'
-import { useCallback, type ChangeEvent } from 'react'
+import { type ChangeEvent } from 'react'
 import { initialValues } from '../consts/initialValues'
 import { sortOpinion } from '../consts/sortOpinion'
 import { orderOpinion } from '../consts/orderOpinion'
@@ -26,20 +26,16 @@ import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
 type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
 function SortTracks() {
-  const { updateFilters, setFilters } = useFiltersChangeContext()
+  const { updateFilters, clearFilters } = useFiltersChangeContext()
   const { search, genre, artist, sort, order } = useFiltersValueContext()
 
-  const handelChange = (event: FilterEvent) => {
+  const handleChange = (event: FilterEvent) => {
     const { name, value } = event.target
     const payload = { name, value }
     if (isValidFilterPayload(payload)) {
       updateFilters(payload)
     }
   }
-
-  const resetForm = useCallback(() => {
-    setFilters(initialValues)
-  }, [setFilters])
 
   return (
     <>
@@ -52,7 +48,7 @@ function SortTracks() {
                   Search
                   <SortField
                     data-testid="search-input"
-                    onChange={handelChange}
+                    onChange={handleChange}
                     name="search"
                     value={search}
                     placeholder="As It Was..."
@@ -64,7 +60,7 @@ function SortTracks() {
                     data-testid="filter-genre"
                     component="select"
                     name="genre"
-                    onChange={handelChange}
+                    onChange={handleChange}
                     value={genre}
                   >
                     <option key="none" value={''}>
@@ -82,7 +78,7 @@ function SortTracks() {
                   <SortField
                     data-testid="filter-artist"
                     name="artist"
-                    onChange={handelChange}
+                    onChange={handleChange}
                     value={artist}
                     placeholder="Harry Styles..."
                   />
@@ -94,7 +90,7 @@ function SortTracks() {
                       data-testid="sort-select"
                       name="sort"
                       component="select"
-                      onChange={handelChange}
+                      onChange={handleChange}
                       value={sort}
                     >
                       {sortOpinion.map((item) => (
@@ -110,7 +106,7 @@ function SortTracks() {
                       data-testid="sort-select"
                       name="order"
                       component="select"
-                      onChange={handelChange}
+                      onChange={handleChange}
                       value={order}
                     >
                       {orderOpinion.map((item) => (
@@ -121,7 +117,7 @@ function SortTracks() {
                     </SortSelect>
                   </Label>
                 </OrderWrapper>
-                <ResetBtn type="button" onClick={resetForm}>
+                <ResetBtn type="button" onClick={clearFilters}>
                   <DeleteSvg />
                 </ResetBtn>
               </SortForm>

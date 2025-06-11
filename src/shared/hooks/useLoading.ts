@@ -1,28 +1,27 @@
 import { useCallback, useState } from 'react'
 import { showError } from '../helpers/tosts/showError'
-import type { AppError, RequestResponse, StartLoadingFn } from '@/types'
+import { isRequestResponse } from '@/types/guards/isRequestResponse'
+import type { StartLoadingFn } from '@/types'
 
-function isAppError(error: unknown): error is AppError {
-  return typeof error === 'object' && error !== null && 'message' in error
-}
+function useLoading<T>(): [boolean, StartLoadingFn]
 
-function useLoading(startValue = false): [boolean, StartLoadingFn] {
+function useLoading(startValue = false) {
   const [loading, setLoading] = useState<boolean>(startValue)
 
   const startLoading = useCallback(
-    async <T>(callbackFn: () => Promise<RequestResponse<T> | void>) => {
+    async <R>(callbackFn: () => Promise<R>): Promise<R | undefined> => {
       try {
         setLoading(true)
         const result = await callbackFn()
-        if (result?.isErr() && result.error.message !== 'canceled') {
-          showError(result.error)
+        if (isRequestResponse(result)) {
+          if (result.isErr() && result.error.message !== 'canceled') {
+            showError(result.error)
+          }
         }
         return result
-      } catch (error: unknown) {
-        if (isAppError(error) && error.message !== 'canceled') {
-          showError(error)
-        }
-        return undefined
+      } catch (error) {
+        showError()
+        return
       } finally {
         setLoading(false)
       }
@@ -30,7 +29,7 @@ function useLoading(startValue = false): [boolean, StartLoadingFn] {
     []
   )
 
-  return [loading, startLoading]
+  return [loading, startLoading] as const
 }
 
 export default useLoading

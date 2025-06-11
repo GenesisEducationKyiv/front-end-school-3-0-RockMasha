@@ -1,4 +1,4 @@
-import useValues from './useValues'
+import useTrackFormSubmit from './useTrackFormSubmit'
 import useGenres from './useGenres'
 import getFieldsValues from '../helpers/getFieldsValues'
 import { useCardIdentifierValueProviderContext } from '../../../../context/CardIdentifierProvider'
@@ -33,7 +33,7 @@ function useFormTrackModal() {
     getFirstValueOfGenresSelect,
   } = useGenres(currentGenres, setCurrentGenres)
 
-  const { initialValues, handleSubmit, refuseRedact } = useValues(
+  const { initialValues, handleSubmit, refuseRedact } = useTrackFormSubmit(
     values,
     currentGenres
   )
