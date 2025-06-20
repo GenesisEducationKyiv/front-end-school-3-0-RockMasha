@@ -27,7 +27,11 @@ interface Props {
   currentPlay: NullableAudioEl
 }
 
-function TrackCard({ data, setCurrentPlay, currentPlay }: Props) {
+const TrackCard: React.FC<Props> = ({
+  data,
+  setCurrentPlay,
+  currentPlay,
+}: Props) => {
   const result = trackSchema.safeParse(data)
   if (!result.success) return <NoValidCard />
 

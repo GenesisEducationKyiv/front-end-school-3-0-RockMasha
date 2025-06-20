@@ -110,6 +110,7 @@ function FormTrackModal() {
                   <GenresTegItem key={text}>
                     <GenresTegText>{'#' + text + ' '}</GenresTegText>
                     <WrapperDeleteSVG
+                      data-testid="remove-genre"
                       className="delete-wrap"
                       data-genre={text}
                       onClick={(event) => removeGenre(event)}
@@ -136,7 +137,10 @@ function FormTrackModal() {
                       )
                     })}
                   </TrackSelect>
-                  <WrapperSVG onClick={() => addGenre(values)}>
+                  <WrapperSVG
+                    data-testid="add-genre"
+                    onClick={() => addGenre(values)}
+                  >
                     <CheckSvg />
                   </WrapperSVG>
                   <ErrorEl
@@ -148,6 +152,7 @@ function FormTrackModal() {
               )}
               {!(currentGenres.length >= 4) && (
                 <WrapperSVG
+                  data-testid="open-genre-select"
                   onClick={() => {
                     const firstItem = getFirstValueOfGenresSelect()
                     setFieldValue('genres', firstItem)
