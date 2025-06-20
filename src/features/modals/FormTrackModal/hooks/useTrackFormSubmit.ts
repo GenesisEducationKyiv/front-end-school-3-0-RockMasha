@@ -29,6 +29,7 @@ function useValues(
   ) => {
     await startLoading(async () => {
       closeModal()
+      
       const data = { ...values, genres: currentGenres }
       const result = trackId
         ? await redactTrack(data, trackId)

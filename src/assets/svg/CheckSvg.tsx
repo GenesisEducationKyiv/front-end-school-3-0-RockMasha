@@ -1,4 +1,4 @@
-import { colors } from "../../styles/colors";
+import { colors } from '../../styles/colors'
 
 function CheckSvg() {
   return (
@@ -9,6 +9,7 @@ function CheckSvg() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 17.837 17.837"
       xmlSpace="preserve"
+      data-testid="check-svg"
     >
       <g>
         <path
@@ -17,7 +18,7 @@ function CheckSvg() {
         />
       </g>
     </svg>
-  );
+  )
 }
 
-export default CheckSvg;
+export default CheckSvg
