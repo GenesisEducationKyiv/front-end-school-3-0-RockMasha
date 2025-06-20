@@ -44,7 +44,7 @@ const TrackCard: React.FC<Props> = ({
 
   return (
     <Card data-testid={'track-item-' + id}>
-      <audio ref={audioRef} src={file || undefined} />
+      <audio ref={audioRef} src={file || undefined} data-testid="audio" />
       <Controls data-testid={'audio-player-' + id}>
         <PlayPauseButton
           data-testid={`${isPlaying ? 'pause' : 'play'}-button-${id}`}

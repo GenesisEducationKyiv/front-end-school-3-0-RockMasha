@@ -1,5 +1,4 @@
-import { defineConfig } from '@playwright/experimental-ct-react'
-import viteConfig from './vite.config'
+import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
   testDir: './src/tests',
@@ -15,28 +14,18 @@ export default defineConfig({
     timeout: 10000,
   },
   use: {
-    ctPort: 3100,
-    ctViteConfig: viteConfig,
+    baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
   },
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:3000/',
+    url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 180 * 1000,
   },
   projects: [
-    {
-      name: 'chromium',
-      use: { browserName: 'chromium' },
-    },
-    {
-      name: 'firefox',
-      use: { browserName: 'firefox' },
-    },
-    {
-      name: 'webkit',
-      use: { browserName: 'webkit' },
-    },
+    { name: 'chromium', use: { browserName: 'chromium' } },
+    { name: 'firefox', use: { browserName: 'firefox' } },
+    { name: 'webkit', use: { browserName: 'webkit' } },
   ],
 })
