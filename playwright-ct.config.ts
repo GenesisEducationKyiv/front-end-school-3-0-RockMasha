@@ -6,9 +6,12 @@ export default defineConfig({
   testMatch: /.*\.ct\.(ts|tsx)$/,
   snapshotDir: './src/tests/__snapshots__',
   timeout: 60 * 1000,
+  reporter: 'html',
+  expect: {
+    timeout: 10000,
+  },
   use: {
     ctViteConfig: ctViteConfig,
     ctPort: 3200,
-    headless: false,
   },
 })
