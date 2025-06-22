@@ -105,7 +105,7 @@ describe('SortTracks', () => {
     const genreSelect = await screen.findByTestId('filter-genre')
     const artistInput = screen.getByTestId('filter-artist')
     const [sortSelect, orderSelect] = getSortAndOrderSelects()
-    const resetBtn = screen.getByRole('button')
+    const resetBtn = screen.getByTestId('reset-btn')
     await userEvent.type(searchInput, 'As It Was')
     await userEvent.type(artistInput, 'Harry Styles')
     await userEvent.selectOptions(sortSelect, 'artist')

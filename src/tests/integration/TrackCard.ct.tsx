@@ -30,6 +30,10 @@ function getTrackData(overrides: Partial<Track> = {}): Track {
 
 const mockSetCurrentPlay: SetCurrentPlay = (audio) => {}
 
+function getByTestIdTemple(component: MountResult, testId: string) {
+  return component.locator(`[data-testid="${testId}"]`)
+}
+
 function getTestTrackCard(overrides: Partial<Track> = {}) {
   const data = getTrackData(overrides)
   return (
@@ -40,7 +44,6 @@ function getTestTrackCard(overrides: Partial<Track> = {}) {
           setCurrentPlay={mockSetCurrentPlay}
           currentPlay={null}
         />
-        {/* <TestModalSpy /> */}
       </ModalProvider>
     </CardIdentifierProvider>
   )
@@ -76,49 +79,37 @@ test.describe('TrackCard', () => {
 
   test('renders TrackCard with correct data', async ({ mount }) => {
     const component = await mount(getTestTrackCard())
-    await expect(
-      component.locator('[data-testid="track-item-1-title"]')
-    ).toHaveText('Test Track')
-    await expect(
-      component.locator('[data-testid="track-item-1-artist"]')
-    ).toHaveText('Artist: Test Artist')
+    const getByTestId = getByTestIdTemple.bind(null, component)
+    await expect(getByTestId('track-item-1-title')).toHaveText('Test Track')
+    await expect(getByTestId('track-item-1-artist')).toHaveText(
+      'Artist: Test Artist'
+    )
     await expect(component.locator('text=Album: Test Album')).toBeVisible()
     await expect(component.locator('text=#pop #rock')).toBeVisible()
-    await expect(
-      component.locator('[data-testid="upload-track-1"]')
-    ).toBeVisible()
-    await expect(
-      component.locator('[data-testid="edit-track-1"]')
-    ).toBeVisible()
-    await expect(
-      component.locator('[data-testid="delete-track-1"]')
-    ).toBeVisible()
+    await expect(getByTestId('upload-track-1')).toBeVisible()
+    await expect(getByTestId('edit-track-1')).toBeVisible()
+    await expect(getByTestId('delete-track-1')).toBeVisible()
   })
 
   test('button Play/Pause switching', async ({ mount }) => {
     const component = await mount(getTestTrackCard())
     await mockAudioPlay(component)
-    await expect(
-      component.locator('[data-testid="play-button-1"]')
-    ).toBeVisible()
-    await component.locator('[data-testid="play-button-1"]').click()
-    await expect(
-      component.locator('[data-testid="pause-button-1"]')
-    ).toBeVisible()
+    const getByTestId = getByTestIdTemple.bind(null, component)
+    await expect(getByTestId('play-button-1')).toBeVisible()
+    await getByTestId('play-button-1').click()
+    await expect(getByTestId('pause-button-1')).toBeVisible()
   })
 
   test('disable audio interaction if no audioFile', async ({ mount }) => {
     const component = await mount(getTestTrackCard({ audioFile: undefined }))
     await mockAudioPlay(component)
-    await expect(
-      component.locator('[data-testid="play-button-1"]')
-    ).toBeDisabled()
+    const playBtn = component.locator('[data-testid="play-button-1"]')
+    await expect(playBtn).toBeDisabled()
     await expect(component.locator('input[type="range"]')).toBeDisabled()
   })
 
   test('render NoValidCard if safeParse no success', async ({ mount }) => {
     const component = await mount(getTestTrackCard({ slug: '' }))
-    await mockAudioPlay(component)
     await expect(component).toHaveText('No Valid Track')
   })
 
@@ -126,9 +117,8 @@ test.describe('TrackCard', () => {
     const component = await mount(getTestTrackCard())
     await mockAudioPlay(component)
     mockDurationPlay(component, { currentTime: 25 })
-    const progress = await component
-      .locator('[data-testid="audio-progress-1"]')
-      .evaluate((el) => (el as HTMLDivElement).style.width)
+    const audioProgress = component.locator('[data-testid="audio-progress-1"]')
+    const progress = await audioProgress.evaluate((el) => el.style.width)
     expect(progress).toBe('25%')
   })
 

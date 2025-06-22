@@ -105,7 +105,7 @@ function FormTrackModal() {
             </TrackList>
             <SelectLabel>
               Genres
-              <GenresTegList>
+              <GenresTegList data-testid="form-genres-list">
                 {currentGenres.map((text) => (
                   <GenresTegItem key={text}>
                     <GenresTegText>{'#' + text + ' '}</GenresTegText>

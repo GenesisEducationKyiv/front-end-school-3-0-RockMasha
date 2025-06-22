@@ -1,4 +1,9 @@
-import { test, expect } from '@playwright/test'
+import type { Genre } from '@/types'
+import { test, expect, type Page } from '@playwright/test'
+
+function getByTestIdTemple(page: Page, testId: string) {
+  return page.locator(`[data-testid="${testId}"]`)
+}
 
 const coverImgUrl =
   'https://res.cloudinary.com/dk3syrsg5/image/upload/c_scale,h_175,w_175/v1741982686/leafofhopeAdverts/dnxx7pkopjkmbqtwptrp.jpg'
@@ -9,36 +14,27 @@ test.describe('Create Track', () => {
   })
 
   test('should create a new track successfully', async ({ page }) => {
+    const getByTestId = getByTestIdTemple.bind(null, page)
     await page.click('[data-testid="create-track-button"]')
-    await expect(page.locator('[data-testid="track-form"]')).toBeVisible({
-      timeout: 5000,
-    })
-    await page.waitForTimeout(1000)
+    await expect(getByTestId('track-form')).toBeVisible()
     await page.fill('[data-testid="input-title"]', 'Test Track')
     await page.fill('[data-testid="input-artist"]', 'Test Artist')
     await page.fill('[data-testid="input-album"]', 'Test Album')
     await page.fill('[data-testid="input-cover-image"]', coverImgUrl)
-    await page.click('[data-testid="open-genre-select"]')
-    await expect(page.locator('[data-testid="genre-selector"]')).toBeVisible()
-    await page.selectOption('[data-testid="genre-selector"]', 'Rock')
-    await page.click('[data-testid="track-form"] [data-testid="add-genre"]')
-    await expect(page.locator('[data-testid="track-form"]')).toContainText(
-      '#Rock'
-    )
+    await addGenre(page, 'Rock')
     await page.click('[data-testid="submit-button"]')
-    await expect(page.locator('[data-testid="track-form"]')).toHaveCount(0, {
-      timeout: 10000,
-    })
-    await expect(page.locator('[data-testid="toast-container"]')).toBeVisible()
+    await expect(getByTestId('track-form')).not.toBeVisible()
+    await expect(getByTestId('toast-container')).toBeVisible()
   })
 
   test('should display validation errors for empty fields', async ({
     page,
   }) => {
+    const getByTestId = getByTestIdTemple.bind(null, page)
     await page.click('[data-testid="create-track-button"]')
     await page.click('[data-testid="submit-button"]')
-    await expect(page.locator('[data-testid="error-title"]')).toBeVisible()
-    await expect(page.locator('[data-testid="error-artist"]')).toBeVisible()
+    await expect(getByTestId('error-title')).toBeVisible()
+    await expect(getByTestId('error-artist')).toBeVisible()
   })
 
   test('should close modal on refuseRedact', async ({ page }) => {
@@ -48,31 +44,26 @@ test.describe('Create Track', () => {
   })
 
   test('should add and remove genres', async ({ page }) => {
+    const getByTestId = getByTestIdTemple.bind(null, page)
     await page.click('[data-testid="create-track-button"]')
-    await page.click(
-      '[data-testid="track-form"] [data-testid="open-genre-select"]'
-    )
-    await page.selectOption('[data-testid="genre-selector"]', 'Pop')
-    await page.click('[data-testid="track-form"] [data-testid="add-genre"]')
-    await expect(page.locator('[data-testid="track-form"]')).toContainText(
-      '#Pop'
-    )
-    await page.click(
-      '[data-testid="track-form"] [data-testid="open-genre-select"]'
-    )
-    await page.selectOption('[data-testid="genre-selector"]', 'Jazz')
-    await page.click('[data-testid="track-form"] [data-testid="add-genre"]')
-    await expect(page.locator('[data-testid="track-form"]')).toContainText(
-      '#Jazz'
-    )
-    await page.click(
+    await addGenre(page, 'Pop')
+    await addGenre(page, 'Jazz')
+    const removePopGenreSelector =
       '[data-testid="track-form"] .delete-wrap[data-genre="Pop"] [data-testid="remove-genre"]'
-    )
-    await expect(page.locator('[data-testid="track-form"]')).not.toContainText(
-      '#Pop'
-    )
-    await expect(page.locator('[data-testid="track-form"]')).toContainText(
-      '#Jazz'
-    )
+    await page.click(removePopGenreSelector)
+    const genresList = getByTestId('form-genres-list')
+    await expect(genresList).not.toContainText('#Pop')
+    await expect(genresList).toContainText('#Jazz')
   })
 })
+
+async function addGenre(page: Page, genre: Genre) {
+  await page.click(
+    '[data-testid="track-form"] [data-testid="open-genre-select"]'
+  )
+  await expect(page.locator('[data-testid="genre-selector"]')).toBeVisible()
+  await page.selectOption('[data-testid="genre-selector"]', genre)
+  await page.click('[data-testid="track-form"] [data-testid="add-genre"]')
+  const genresList = page.locator('[data-testid="form-genres-list"]')
+  await expect(genresList).toContainText(`#${genre}`)
+}
