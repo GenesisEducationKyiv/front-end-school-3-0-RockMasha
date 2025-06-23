@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 import userEvent from '@testing-library/user-event'
-import FiltersProvider from '@/context/FiltersProvider'
 import { SortTracks } from '@/features/SortTracks'
 import '@testing-library/jest-dom'
 import { isSelectElement } from '@/types'
@@ -9,11 +8,7 @@ import { MemoryRouter } from 'react-router-dom'
 
 const customRender = (ui: React.ReactElement, options = {}) =>
   render(ui, {
-    wrapper: ({ children }) => (
-      <MemoryRouter>
-        <FiltersProvider>{children}</FiltersProvider>
-      </MemoryRouter>
-    ),
+    wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>,
     ...options,
   })
 

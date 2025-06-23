@@ -6,11 +6,20 @@ import {
 import { type Track } from '@/types'
 import { TrackCard } from '@/components/modules/TrackCard'
 import type { SetCurrentPlay } from '@/components/modules/TrackCard/types/SetCurrentPlay'
-import CardIdentifierProvider from '@/context/CardIdentifierProvider'
-import ModalProvider from '@/context/ModalProvider'
+import { Provider } from 'react-redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { modalReducer } from '@/redux/slices/modal/modalSlice'
+import { cardIdentifierReducer } from '@/redux/slices/cardIdentifier/cardIdentifierSlice'
 
 const coverImgUrl =
   'https://res.cloudinary.com/dk3syrsg5/image/upload/c_scale,h_175,w_175/v1741982686/leafofhopeAdverts/dnxx7pkopjkmbqtwptrp.jpg'
+
+const store = configureStore({
+  reducer: {
+    modal: modalReducer,
+    cardIdentifier: cardIdentifierReducer,
+  },
+})
 
 function getTrackData(overrides: Partial<Track> = {}): Track {
   return {
@@ -30,23 +39,21 @@ function getTrackData(overrides: Partial<Track> = {}): Track {
 
 const mockSetCurrentPlay: SetCurrentPlay = (audio) => {}
 
-function getByTestIdTemple(component: MountResult, testId: string) {
-  return component.locator(`[data-testid="${testId}"]`)
-}
-
 function getTestTrackCard(overrides: Partial<Track> = {}) {
   const data = getTrackData(overrides)
   return (
-    <CardIdentifierProvider>
-      <ModalProvider>
-        <TrackCard
-          data={data}
-          setCurrentPlay={mockSetCurrentPlay}
-          currentPlay={null}
-        />
-      </ModalProvider>
-    </CardIdentifierProvider>
+    <Provider store={store}>
+      <TrackCard
+        data={data}
+        setCurrentPlay={mockSetCurrentPlay}
+        currentPlay={null}
+      />
+    </Provider>
   )
+}
+
+function getByTestIdTemple(component: MountResult, testId: string) {
+  return component.locator(`[data-testid="${testId}"]`)
 }
 
 test.describe('TrackCard', () => {
@@ -74,6 +81,9 @@ test.describe('TrackCard', () => {
         contentType: 'application/json',
         body: JSON.stringify(['pop', 'rock', 'jazz']),
       })
+    })
+    page.on('console', (msg) => {
+      console.log(`Browser console: ${msg.text()}`)
     })
   })
 
