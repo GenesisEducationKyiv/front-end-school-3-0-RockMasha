@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react'
-import { useFiltersValueContext } from '../../../context/FiltersProvider'
 import { getTracks } from '../../../api/track'
 import useLoading from '../../../shared/hooks/useLoading'
 import { err, ok } from 'neverthrow'
 import type { SetCurrentPage, Track } from '@/types'
 import type { RequestTracksData } from '../types/RequestTracksData'
+import useFilter from '@/shared/hooks/useFilters'
 
 interface Props {
   currentPage: number
@@ -14,7 +14,7 @@ interface Props {
 const defaultFetchData = { data: [], totalPages: 1 }
 
 function useTrackFetch({ currentPage, setCurrentPage }: Props) {
-  const filters = useFiltersValueContext()
+  const { filters } = useFilter()
   const [totalPages, setTotalPages] = useState<number>(0)
   const [list, setList] = useState<Track[]>([])
   const [listLoading, startListLoading] = useLoading()

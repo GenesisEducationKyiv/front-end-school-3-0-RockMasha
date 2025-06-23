@@ -1,6 +1,12 @@
 import type { Slug, Id } from '@/types'
-import { useCardIdentifierFuncProviderContext } from '../../../../context/CardIdentifierProvider'
-import { useModalFuncContext } from '../../../../context/ModalProvider'
+import { useDispatch } from 'react-redux'
+import {
+  actionOpenDeleteTrackModal,
+  actionOpenFormTrackModal,
+  actionOpenUploadFileModal,
+  actionSetCardId,
+  actionSetCardSlug,
+} from '@/redux'
 
 interface Arguments {
   slug: Slug
@@ -8,23 +14,21 @@ interface Arguments {
 }
 
 function useCardBtn({ slug, id }: Arguments) {
-  const { setFormTrackModal, setDeleteTrackModal, setUploadFileModal } =
-    useModalFuncContext()
-  const { setTrackSlug, setTrackId } = useCardIdentifierFuncProviderContext()
+  const dispatch = useDispatch()
 
   const openDeleteModal = () => {
-    setTrackId(id)
-    setDeleteTrackModal(true)
+    dispatch(actionSetCardId({ id }))
+    dispatch(actionOpenDeleteTrackModal())
   }
   const openRedactModal = () => {
-    setTrackSlug(slug)
-    setTrackId(id)
-    setFormTrackModal(true)
+    dispatch(actionSetCardSlug({ slug }))
+    dispatch(actionSetCardId({ id }))
+    dispatch(actionOpenFormTrackModal())
   }
   const openUploadModal = () => {
-    setTrackSlug(slug)
-    setTrackId(id)
-    setUploadFileModal(true)
+    dispatch(actionSetCardId({ id }))
+    dispatch(actionSetCardSlug({ slug }))
+    dispatch(actionOpenUploadFileModal())
   }
 
   return { openDeleteModal, openRedactModal, openUploadModal }

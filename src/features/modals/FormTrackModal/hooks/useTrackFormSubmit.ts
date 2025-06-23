@@ -1,26 +1,30 @@
 import { useEffect, useState } from 'react'
-import { useCardIdentifierValueProviderContext } from '../../../../context/CardIdentifierProvider'
-import { useLoaderProviderContext } from '../../../../context/LoaderProvider'
-import { useModalFuncContext } from '../../../../context/ModalProvider'
 import { showSuccess } from '../../../../shared/helpers/tosts/showSuccess'
 import { postTrack, redactTrack } from '../../../../api/track'
 import { startValues } from '../consts/startValues'
 import type { TrackFormValues } from '../types/TrackFormValues'
 import type { Genre } from '@/types'
 import type { FormikHelpers } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  actionClearCardId,
+  actionClearCardSlug,
+  actionCloseFormTrackModal,
+  selectorCardIdentifier,
+  useMainLoading,
+} from '@/redux'
 
 function useValues(
   values: TrackFormValues | undefined,
   currentGenres: Genre[]
 ) {
-  const { trackId, trackSlug, clearTrackId, clearTrackSlug } =
-    useCardIdentifierValueProviderContext()
-  const { setFormTrackModal } = useModalFuncContext()
-  const { startLoading } = useLoaderProviderContext()
+  const dispatch = useDispatch()
+  const { trackId, trackSlug } = useSelector(selectorCardIdentifier)
+  const startLoading = useMainLoading()
   const [initialValues, setInitialValues] = useState(startValues)
 
   const closeModal = () => {
-    setFormTrackModal(false)
+    dispatch(actionCloseFormTrackModal())
   }
 
   const handleSubmit = async (
@@ -29,7 +33,7 @@ function useValues(
   ) => {
     await startLoading(async () => {
       closeModal()
-      
+
       const data = { ...values, genres: currentGenres }
       const result = trackId
         ? await redactTrack(data, trackId)
@@ -38,16 +42,16 @@ function useValues(
         showSuccess()
       }
       resetForm()
-      clearTrackId()
-      clearTrackSlug()
+      dispatch(actionClearCardId())
+      dispatch(actionClearCardSlug())
       return result
     })
   }
 
   const refuseRedact = () => {
     closeModal()
-    clearTrackId()
-    clearTrackSlug()
+    dispatch(actionClearCardId())
+    dispatch(actionClearCardSlug())
   }
 
   useEffect(() => {

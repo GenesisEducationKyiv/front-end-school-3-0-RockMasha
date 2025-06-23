@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  actionCloseFilterPanel,
+  actionOpenFilterPanel,
+} from './filterPanelSlice'
+import { selectorFilterPanel } from './filterPanelSelectors'
 
-function useHidden() {
+function useFilterPanel() {
+  const dispatch = useDispatch()
   const [windowWidth, setWindowWidth] = useState<number>(
     () => window.innerWidth
-  )
-  const [hidden, setHidden] = useState<boolean>(() =>
-    isPhoneWidth(window.innerWidth)
   )
 
   const isChangeToPhone = useCallback(() => {
@@ -23,9 +27,9 @@ function useHidden() {
   useEffect(() => {
     const handleResize = () => {
       if (isChangeToPhone()) {
-        setHidden(true)
+        dispatch(actionCloseFilterPanel())
       } else if (isChangeToDesktop()) {
-        setHidden(false)
+        dispatch(actionOpenFilterPanel())
       }
       setWindowWidth(window.innerWidth)
     }
@@ -33,14 +37,18 @@ function useHidden() {
     return () => window.removeEventListener('resize', handleResize)
   }, [windowWidth, isChangeToPhone, isChangeToDesktop])
 
-  return {
-    hidden,
-    toggleHidden: () => setHidden((prev) => !prev),
+  const filterPanel = useSelector(selectorFilterPanel)
+  const togglePanel = () => {
+    filterPanel
+      ? dispatch(actionCloseFilterPanel())
+      : dispatch(actionCloseFilterPanel())
   }
+
+  return togglePanel
 }
 
 function isPhoneWidth(width: number) {
   return width < 768
 }
 
-export default useHidden
+export default useFilterPanel

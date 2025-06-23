@@ -1,10 +1,11 @@
-import { useLoaderProviderContext } from '../../../context/LoaderProvider'
 import useTrackFetch from './useTrackFetch'
 import useCurrentPage from './useCurrentPage'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { selectorLoading } from '@/redux'
 
 function useTrackList() {
-  const { loading } = useLoaderProviderContext()
+  const loading = useSelector(selectorLoading)
   const { currentPage, setCurrentPage } = useCurrentPage()
 
   const { fetchTracks, list, listLoading, totalPages } = useTrackFetch({
