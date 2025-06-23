@@ -10,7 +10,7 @@ function Modal({ children, width }: Props) {
   useLockPage()
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="modal">
       <ModalStyled width={width}>{children}</ModalStyled>
     </Wrapper>
   )

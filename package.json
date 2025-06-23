@@ -6,6 +6,11 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
+    "test": "npm run test:vitest && npm run test:playwright:all",
+    "test:vitest": "vitest",
+    "test:e2e": "playwright test --config=playwright.config.ts",
+    "test:ct": "playwright test --config=playwright-ct.config.ts",
+    "test:playwright:all": "npm run test:e2e && npm run test:ct",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -29,6 +34,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@playwright/experimental-ct-react": "^1.53.1",
+    "@playwright/test": "^1.53.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@tsconfig/vite-react": "^6.3.5",
     "@types/node": "^22.15.29",
     "@types/react": "^19.1.6",
@@ -38,8 +48,10 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "vitest": "^3.2.4"
   }
 }

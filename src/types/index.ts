@@ -36,6 +36,7 @@ export type { StartLoadingFn } from './models/StartLoadingFn'
 export { checkContextConnection } from './guards/checkContextConnection'
 export { includesLiteral } from './guards/includesLiteral'
 export { isGenre } from './guards/isGenre'
+export { isSelectElement } from './guards/isSelectElement'
 
 // schemas
 export { trackSchema } from './models/track/Track'

@@ -1,9 +1,9 @@
-import { colors } from "../../styles/colors";
-
+import { colors } from '../../styles/colors'
 
 const LetterSvg = ({ fill = colors.white }) => {
   return (
     <svg
+      data-testid="letter-svg"
       viewBox="0 0 32 32"
       enableBackground="new 0 0 32 32"
       xmlSpace="preserve"
@@ -147,7 +147,7 @@ const LetterSvg = ({ fill = colors.white }) => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export default LetterSvg;
+export default LetterSvg

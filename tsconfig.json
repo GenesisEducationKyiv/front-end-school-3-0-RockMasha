@@ -7,7 +7,10 @@
     },
     "allowJs": true,
     "strictNullChecks": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "erasableSyntaxOnly": false,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
   },
   "include": ["src", "vite-env.d.ts", "declarations.d.ts"],
   "exclude": ["node_modules", "dist"]
