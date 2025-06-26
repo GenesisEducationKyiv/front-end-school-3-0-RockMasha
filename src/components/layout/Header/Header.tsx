@@ -1,6 +1,5 @@
+import { openFormTrackModal, useToggleFilterPanel } from '@/redux'
 import BurgerSvg from '../../../assets/svg/BurgerSvg'
-import { useFiltersHiddenContext } from '../../../context/FiltersProvider'
-import { useModalFuncContext } from '../../../context/ModalProvider'
 import {
   BurgerSvgWrapper,
   Container,
@@ -9,23 +8,24 @@ import {
   HeaderEl,
   Title,
 } from './Header.styled'
+import { useDispatch } from 'react-redux'
 
 function Header() {
-  const { toggleHidden } = useFiltersHiddenContext()
-  const { setFormTrackModal } = useModalFuncContext()
+  const dispatch = useDispatch()
+  const togglePanel = useToggleFilterPanel()
 
   return (
     <HeaderEl>
       <Container>
         <FlexWrapper>
-          <BurgerSvgWrapper onClick={toggleHidden}>
+          <BurgerSvgWrapper onClick={togglePanel}>
             <BurgerSvg />
           </BurgerSvgWrapper>
           <Title data-testid="tracks-header">Player</Title>
         </FlexWrapper>
         <CreateBtn
           data-testid="create-track-button"
-          onClick={() => setFormTrackModal(true)}
+          onClick={() => dispatch(openFormTrackModal())}
         >
           Create Track
         </CreateBtn>

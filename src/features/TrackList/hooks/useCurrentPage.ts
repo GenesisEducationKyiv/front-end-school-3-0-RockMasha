@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useFiltersValueContext } from '../../../context/FiltersProvider'
+import useFilter from '@/shared/hooks/useFilters'
 
 function useCurrentPage() {
   const [currentPage, setCurrentPage] = useState<number>(0)
-  const filters = useFiltersValueContext()
+  const { filters } = useFilter()
 
   const resetCurrentPage = useCallback(() => {
     setCurrentPage(0)

@@ -1,27 +1,31 @@
 import { useEffect, useState, type ChangeEvent } from 'react'
-import { useCardIdentifierValueProviderContext } from '../../../../context/CardIdentifierProvider'
-import { useLoaderProviderContext } from '../../../../context/LoaderProvider'
-import { useModalFuncContext } from '../../../../context/ModalProvider'
 import { showSuccess } from '../../../../shared/helpers/tosts/showSuccess'
 import { deleteFile, postFile } from '../../../../api/file'
 import { getTrackBySlug } from '../../../../api/track'
 import type { FileData } from '@/types'
 import { getResultFromRequest } from '@/shared/helpers/getResultFromRequest'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  clearCardId,
+  clearCardSlug,
+  closeUploadFileModal,
+  selectCardIdentifier,
+  useMainLoading,
+} from '@/redux'
 
 function useUploadFileModal() {
-  const { trackId, trackSlug, clearTrackId, clearTrackSlug } =
-    useCardIdentifierValueProviderContext()
-  const { setUploadFileModal } = useModalFuncContext()
-  const { startLoading } = useLoaderProviderContext()
+  const dispatch = useDispatch()
+  const { trackId, trackSlug } = useSelector(selectCardIdentifier)
+  const startLoading = useMainLoading()
   const [isFile, setIsFile] = useState<boolean>(false)
   const [isBackFile, setIsBackFile] = useState<boolean>(false)
 
   const submitForm = async (values: FileData) => {
     startLoading(async () => {
-      setUploadFileModal(false)
+      dispatch(closeUploadFileModal())
       await postFile(values, trackId)
-      clearTrackId()
-      clearTrackSlug()
+      dispatch(clearCardId())
+      dispatch(clearCardSlug())
       showSuccess()
     })
   }
@@ -46,9 +50,9 @@ function useUploadFileModal() {
   }
 
   const closeModal = () => {
-    clearTrackId()
-    clearTrackSlug()
-    setUploadFileModal(false)
+    dispatch(clearCardId())
+    dispatch(clearCardSlug())
+    dispatch(closeUploadFileModal())
   }
 
   const getFile = async () => {

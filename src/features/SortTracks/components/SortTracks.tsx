@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik } from 'formik'
 import {
   ContentBox,
   ContentWrapper,
@@ -10,32 +10,29 @@ import {
   SortField,
   SortForm,
   SortSelect,
-} from './SortTracks.styled';
-import { type ChangeEvent } from 'react';
-import { initialValues } from '../consts/initialValues';
-import { sortOpinion } from '../consts/sortOpinion';
-import { orderOpinion } from '../consts/orderOpinion';
-import DeleteSvg from '../../../assets/svg/DeleteSvg';
-import { genres } from '../../../api/genres';
-import {
-  useFiltersChangeContext,
-  useFiltersValueContext,
-} from '../../../context/FiltersProvider';
-import { isValidFilterPayload } from '../helpers/isValidFilterPayload';
+} from './SortTracks.styled'
+import { type ChangeEvent } from 'react'
+import { initialValues } from '../consts/initialValues'
+import { sortOpinion } from '../consts/sortOpinion'
+import { orderOpinion } from '../consts/orderOpinion'
+import DeleteSvg from '../../../assets/svg/DeleteSvg'
+import { genres } from '../../../api/genres'
+import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
+import useFilter from '@/shared/hooks/useFilters'
 
-type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>;
+type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
 const SortTracks: React.FC = () => {
-  const { updateFilters, clearFilters } = useFiltersChangeContext();
-  const { search, genre, artist, sort, order } = useFiltersValueContext();
+  const { filters, updateFilters, clearFilters } = useFilter()
+  const { search, genre, artist, sort, order } = filters
 
   const handleChange = (event: FilterEvent) => {
-    const { name, value } = event.target;
-    const payload = { name, value };
+    const { name, value } = event.target
+    const payload = { name, value }
     if (isValidFilterPayload(payload)) {
-      updateFilters(payload);
+      updateFilters(payload)
     }
-  };
+  }
 
   return (
     <>
@@ -117,7 +114,11 @@ const SortTracks: React.FC = () => {
                     </SortSelect>
                   </Label>
                 </OrderWrapper>
-                <ResetBtn data-testid="reset-btn" type="button" onClick={clearFilters}>
+                <ResetBtn
+                  data-testid="reset-btn"
+                  type="button"
+                  onClick={clearFilters}
+                >
                   <DeleteSvg />
                 </ResetBtn>
               </SortForm>
@@ -127,7 +128,7 @@ const SortTracks: React.FC = () => {
         <OpacityBox />
       </SidePanel>
     </>
-  );
-};
+  )
+}
 
-export default SortTracks;
+export default SortTracks

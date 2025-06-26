@@ -49,7 +49,7 @@ test.describe('Create Track', () => {
     await addGenre(page, 'Pop')
     await addGenre(page, 'Jazz')
     const removePopGenreSelector =
-      '[data-testid="track-form"] .delete-wrap[data-genre="Pop"] [data-testid="remove-genre"]'
+      '[data-testid="track-form"] .delete-wrap[data-genre="Pop"][data-testid="remove-genre"]'
     await page.click(removePopGenreSelector)
     const genresList = getByTestId('form-genres-list')
     await expect(genresList).not.toContainText('#Pop')

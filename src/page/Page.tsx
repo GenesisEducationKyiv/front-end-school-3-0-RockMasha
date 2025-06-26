@@ -1,6 +1,3 @@
-import { useFiltersHiddenContext } from '../context/FiltersProvider'
-import { useLoaderProviderContext } from '../context/LoaderProvider'
-import { useModalValueContext } from '../context/ModalProvider'
 import MainLoader from '../components/UI/Loader/MainLoader.jsx'
 import Tost from '../components/modules/Tost/Tost.jsx'
 import Header from '../components/layout/Header/Header.jsx'
@@ -11,19 +8,21 @@ import { FormTrackModal } from '../features/modals/FormTrackModal'
 import { UploadFileModal } from '../features/modals/UploadFileModal'
 import { GlobalStyles } from '../styles/GlobalStyled.jsx'
 import { openPage } from '@/shared/helpers/tosts/openPage.js'
+import { useSelector } from 'react-redux'
+import { selectFilterPanel, selectLoading, selectModals } from '@/redux'
 
 openPage()
 
 function Page() {
-  const { hidden } = useFiltersHiddenContext()
-  const { loading } = useLoaderProviderContext()
+  const filterPanel = useSelector(selectFilterPanel)
+  const loading = useSelector(selectLoading)
   const { formTrackModal, deleteTrackModal, uploadFileModal } =
-    useModalValueContext()
+    useSelector(selectModals)
 
   return (
     <>
       <Header />
-      {!hidden && <SortTracks />}
+      {filterPanel && <SortTracks />}
       <TracksList />
       {formTrackModal && <FormTrackModal />}
       {deleteTrackModal && <DeleteTrackModal />}
