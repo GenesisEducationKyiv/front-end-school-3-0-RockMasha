@@ -6,26 +6,26 @@ import type { FileData } from '@/types'
 import { getResultFromRequest } from '@/shared/helpers/getResultFromRequest'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  actionClearCardId,
-  actionClearCardSlug,
-  actionCloseUploadFileModal,
-  selectorCardIdentifier,
+  clearCardId,
+  clearCardSlug,
+  closeUploadFileModal,
+  selectCardIdentifier,
   useMainLoading,
 } from '@/redux'
 
 function useUploadFileModal() {
   const dispatch = useDispatch()
-  const { trackId, trackSlug } = useSelector(selectorCardIdentifier)
+  const { trackId, trackSlug } = useSelector(selectCardIdentifier)
   const startLoading = useMainLoading()
   const [isFile, setIsFile] = useState<boolean>(false)
   const [isBackFile, setIsBackFile] = useState<boolean>(false)
 
   const submitForm = async (values: FileData) => {
     startLoading(async () => {
-      dispatch(actionCloseUploadFileModal())
+      dispatch(closeUploadFileModal())
       await postFile(values, trackId)
-      dispatch(actionClearCardId())
-      dispatch(actionClearCardSlug())
+      dispatch(clearCardId())
+      dispatch(clearCardSlug())
       showSuccess()
     })
   }
@@ -50,9 +50,9 @@ function useUploadFileModal() {
   }
 
   const closeModal = () => {
-    dispatch(actionClearCardId())
-    dispatch(actionClearCardSlug())
-    dispatch(actionCloseUploadFileModal())
+    dispatch(clearCardId())
+    dispatch(clearCardSlug())
+    dispatch(closeUploadFileModal())
   }
 
   const getFile = async () => {

@@ -9,15 +9,15 @@ import { UploadFileModal } from '../features/modals/UploadFileModal'
 import { GlobalStyles } from '../styles/GlobalStyled.jsx'
 import { openPage } from '@/shared/helpers/tosts/openPage.js'
 import { useSelector } from 'react-redux'
-import { selectorFilterPanel, selectorLoading, selectorModals } from '@/redux'
+import { selectFilterPanel, selectLoading, selectModals } from '@/redux'
 
 openPage()
 
 function Page() {
-  const filterPanel = useSelector(selectorFilterPanel)
-  const loading = useSelector(selectorLoading)
+  const filterPanel = useSelector(selectFilterPanel)
+  const loading = useSelector(selectLoading)
   const { formTrackModal, deleteTrackModal, uploadFileModal } =
-    useSelector(selectorModals)
+    useSelector(selectModals)
 
   return (
     <>

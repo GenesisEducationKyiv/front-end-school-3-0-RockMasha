@@ -1,5 +1,5 @@
 import type { RootState } from '@/redux/store'
 
-export const selectorCardIdentifier = (state: RootState) => state.cardIdentifier
+export const selectCardIdentifier = (state: RootState) => state.cardIdentifier
 
-export const selectorCardId = (state: RootState) => state.cardIdentifier.id
+export const selectCardId = (state: RootState) => state.cardIdentifier.id

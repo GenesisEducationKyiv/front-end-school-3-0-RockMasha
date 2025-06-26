@@ -7,10 +7,10 @@ import type { Genre } from '@/types'
 import type { FormikHelpers } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  actionClearCardId,
-  actionClearCardSlug,
-  actionCloseFormTrackModal,
-  selectorCardIdentifier,
+  clearCardId,
+  clearCardSlug,
+  closeFormTrackModal,
+  selectCardIdentifier,
   useMainLoading,
 } from '@/redux'
 
@@ -19,12 +19,12 @@ function useValues(
   currentGenres: Genre[]
 ) {
   const dispatch = useDispatch()
-  const { trackId, trackSlug } = useSelector(selectorCardIdentifier)
+  const { trackId, trackSlug } = useSelector(selectCardIdentifier)
   const startLoading = useMainLoading()
   const [initialValues, setInitialValues] = useState(startValues)
 
   const closeModal = () => {
-    dispatch(actionCloseFormTrackModal())
+    dispatch(closeFormTrackModal())
   }
 
   const handleSubmit = async (
@@ -42,16 +42,16 @@ function useValues(
         showSuccess()
       }
       resetForm()
-      dispatch(actionClearCardId())
-      dispatch(actionClearCardSlug())
+      dispatch(clearCardId())
+      dispatch(clearCardSlug())
       return result
     })
   }
 
   const refuseRedact = () => {
     closeModal()
-    dispatch(actionClearCardId())
-    dispatch(actionClearCardSlug())
+    dispatch(clearCardId())
+    dispatch(clearCardSlug())
   }
 
   useEffect(() => {

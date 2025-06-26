@@ -5,18 +5,14 @@ import { useEffect, useState } from 'react'
 import type { Genre } from '@/types'
 import type { TrackFormValues } from '../types/TrackFormValues'
 import { useSelector } from 'react-redux'
-import { selectorCardIdentifier } from '@/redux'
+import { selectCardIdentifier } from '@/redux'
 
 function useFormTrackModal() {
-  const { trackId, trackSlug } = useSelector(selectorCardIdentifier)
+  const { trackId, trackSlug } = useSelector(selectCardIdentifier)
   const [values, setValues] = useState<TrackFormValues>()
   const [currentGenres, setCurrentGenres] = useState<Genre[]>([])
 
   const isRedactTrack = !!(trackId && trackSlug)
-  console.log('trackId', trackId)
-  console.log('trackSlug', trackSlug)
-  console.log('isRedactTrack', isRedactTrack)
-
   const setFieldsValues = async () => {
     const data = await getFieldsValues(trackSlug)
     if (!data) return

@@ -1,11 +1,11 @@
 import type { Slug, Id } from '@/types'
 import { useDispatch } from 'react-redux'
 import {
-  actionOpenDeleteTrackModal,
-  actionOpenFormTrackModal,
-  actionOpenUploadFileModal,
-  actionSetCardId,
-  actionSetCardSlug,
+  openDeleteTrackModal,
+  openFormTrackModal,
+  openUploadFileModal,
+  setCardId,
+  setCardSlug,
 } from '@/redux'
 
 interface Arguments {
@@ -17,18 +17,18 @@ function useCardBtn({ slug, id }: Arguments) {
   const dispatch = useDispatch()
 
   const openDeleteModal = () => {
-    dispatch(actionSetCardId({ id }))
-    dispatch(actionOpenDeleteTrackModal())
+    dispatch(setCardId({ id }))
+    dispatch(openDeleteTrackModal())
   }
   const openRedactModal = () => {
-    dispatch(actionSetCardSlug({ slug }))
-    dispatch(actionSetCardId({ id }))
-    dispatch(actionOpenFormTrackModal())
+    dispatch(setCardSlug({ slug }))
+    dispatch(setCardId({ id }))
+    dispatch(openFormTrackModal())
   }
   const openUploadModal = () => {
-    dispatch(actionSetCardId({ id }))
-    dispatch(actionSetCardSlug({ slug }))
-    dispatch(actionOpenUploadFileModal())
+    dispatch(setCardId({ id }))
+    dispatch(setCardSlug({ slug }))
+    dispatch(openUploadFileModal())
   }
 
   return { openDeleteModal, openRedactModal, openUploadModal }

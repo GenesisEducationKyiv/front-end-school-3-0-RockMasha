@@ -2,10 +2,10 @@ import useTrackFetch from './useTrackFetch'
 import useCurrentPage from './useCurrentPage'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { selectorLoading } from '@/redux'
+import { selectLoading } from '@/redux'
 
 function useTrackList() {
-  const loading = useSelector(selectorLoading)
+  const loading = useSelector(selectLoading)
   const { currentPage, setCurrentPage } = useCurrentPage()
 
   const { fetchTracks, list, listLoading, totalPages } = useTrackFetch({

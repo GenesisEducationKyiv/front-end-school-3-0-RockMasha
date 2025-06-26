@@ -1,4 +1,4 @@
-import { actionOpenFormTrackModal, useFilterPanel } from '@/redux'
+import { openFormTrackModal, useToggleFilterPanel } from '@/redux'
 import BurgerSvg from '../../../assets/svg/BurgerSvg'
 import {
   BurgerSvgWrapper,
@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 
 function Header() {
   const dispatch = useDispatch()
-  const togglePanel = useFilterPanel()
+  const togglePanel = useToggleFilterPanel()
 
   return (
     <HeaderEl>
@@ -25,7 +25,7 @@ function Header() {
         </FlexWrapper>
         <CreateBtn
           data-testid="create-track-button"
-          onClick={() => dispatch(actionOpenFormTrackModal())}
+          onClick={() => dispatch(openFormTrackModal())}
         >
           Create Track
         </CreateBtn>

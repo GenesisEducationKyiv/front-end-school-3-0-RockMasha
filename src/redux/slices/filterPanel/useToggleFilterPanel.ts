@@ -4,9 +4,9 @@ import {
   actionCloseFilterPanel,
   actionOpenFilterPanel,
 } from './filterPanelSlice'
-import { selectorFilterPanel } from './filterPanelSelectors'
+import { selectFilterPanel } from './filterPanelSelectors'
 
-function useFilterPanel() {
+function useToggleFilterPanel() {
   const dispatch = useDispatch()
   const [windowWidth, setWindowWidth] = useState<number>(
     () => window.innerWidth
@@ -37,10 +37,10 @@ function useFilterPanel() {
     return () => window.removeEventListener('resize', handleResize)
   }, [windowWidth, isChangeToPhone, isChangeToDesktop])
 
-  const filterPanel = useSelector(selectorFilterPanel)
+  const filterPanel = useSelector(selectFilterPanel)
   const togglePanel = () => {
     filterPanel
-      ? dispatch(actionCloseFilterPanel())
+      ? dispatch(actionOpenFilterPanel())
       : dispatch(actionCloseFilterPanel())
   }
 
@@ -51,4 +51,4 @@ function isPhoneWidth(width: number) {
   return width < 768
 }
 
-export default useFilterPanel
+export default useToggleFilterPanel

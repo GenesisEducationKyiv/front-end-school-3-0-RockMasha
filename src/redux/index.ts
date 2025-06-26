@@ -1,33 +1,33 @@
 // selectors
 export {
-  selectorCardIdentifier,
-  selectorCardId,
+  selectCardIdentifier,
+  selectCardId,
 } from './slices/cardIdentifier/cardIdentifierSelectors'
-export { selectorFilterPanel } from './slices/filterPanel/filterPanelSelectors'
-export { selectorLoading } from './slices/loading/loadingSelectors'
+export { selectFilterPanel } from './slices/filterPanel/filterPanelSelectors'
+export { selectLoading } from './slices/loading/loadingSelectors'
 export {
-  selectorDeleteTrackModal,
-  selectorFormTrackModal,
-  selectorModals,
-  selectorUploadFileModal,
+  selectDeleteTrackModal,
+  selectFormTrackModal,
+  selectModals,
+  selectUploadFileModal,
 } from './slices/modal/modalSelectors'
 
 // actions
 export {
-  actionOpenFormTrackModal,
-  actionCloseFormTrackModal,
-  actionOpenDeleteTrackModal,
-  actionCloseDeleteTrackModal,
-  actionOpenUploadFileModal,
-  actionCloseUploadFileModal,
+  openFormTrackModal,
+  closeFormTrackModal,
+  openDeleteTrackModal,
+  closeDeleteTrackModal,
+  openUploadFileModal,
+  closeUploadFileModal,
 } from './slices/modal/modalSlice'
 export {
-  actionSetCardId,
-  actionClearCardId,
-  actionSetCardSlug,
-  actionClearCardSlug,
+  setCardId,
+  clearCardId,
+  setCardSlug,
+  clearCardSlug,
 } from './slices/cardIdentifier/cardIdentifierSlice'
 
 // hooks
 export { default as useMainLoading } from './slices/loading/useMainLoading'
-export { default as useFilterPanel } from './slices/filterPanel/useFilterPanel'
+export { default as useToggleFilterPanel } from './slices/filterPanel/useToggleFilterPanel'

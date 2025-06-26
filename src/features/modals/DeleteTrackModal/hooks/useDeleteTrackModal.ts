@@ -2,32 +2,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteTrack } from '../../../../api/track'
 import { showSuccess } from '../../../../shared/helpers/tosts/showSuccess'
 import {
-  actionClearCardId,
-  actionCloseDeleteTrackModal,
-  selectorCardId,
+  clearCardId,
+  closeDeleteTrackModal,
+  selectCardId,
   useMainLoading,
 } from '@/redux'
 
 function useDeleteTrackModal() {
   const dispatch = useDispatch()
-  const trackId = useSelector(selectorCardId)
+  const trackId = useSelector(selectCardId)
   const startLoading = useMainLoading()
 
   const closeModal = () => {
-    dispatch(actionCloseDeleteTrackModal())
+    dispatch(closeDeleteTrackModal())
   }
 
   const deleteItem = async () => {
     startLoading(async () => {
       closeModal()
       trackId && (await deleteTrack(trackId))
-      dispatch(actionClearCardId())
+      dispatch(clearCardId())
       showSuccess()
     })
   }
 
   const refuseDeleteItem = () => {
-    dispatch(actionClearCardId())
+    dispatch(clearCardId())
     closeModal()
   }
 

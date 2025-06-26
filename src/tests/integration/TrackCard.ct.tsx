@@ -82,9 +82,6 @@ test.describe('TrackCard', () => {
         body: JSON.stringify(['pop', 'rock', 'jazz']),
       })
     })
-    page.on('console', (msg) => {
-      console.log(`Browser console: ${msg.text()}`)
-    })
   })
 
   test('renders TrackCard with correct data', async ({ mount }) => {

@@ -32,12 +32,12 @@ const modalSlice = createSlice({
 })
 
 export const {
-  openFormTrackModal: actionOpenFormTrackModal,
-  closeFormTrackModal: actionCloseFormTrackModal,
-  openDeleteTrackModal: actionOpenDeleteTrackModal,
-  closeDeleteTrackModal: actionCloseDeleteTrackModal,
-  openUploadFileModal: actionOpenUploadFileModal,
-  closeUploadFileModal: actionCloseUploadFileModal,
+  openFormTrackModal: openFormTrackModal,
+  closeFormTrackModal: closeFormTrackModal,
+  openDeleteTrackModal: openDeleteTrackModal,
+  closeDeleteTrackModal: closeDeleteTrackModal,
+  openUploadFileModal: openUploadFileModal,
+  closeUploadFileModal: closeUploadFileModal,
 } = modalSlice.actions
 
 export const modalReducer = modalSlice.reducer

@@ -1,21 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit'
+import type { Id, Slug } from '@/types'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 const initialState = {
-  trackId: '',
-  trackSlug: '',
+  trackId: '' as Id,
+  trackSlug: '' as Slug,
 }
+
+type SetIdPayload = { id: typeof initialState.trackId }
+type SetSlugPayload = { slug: typeof initialState.trackSlug }
 
 const cardIdentifierSlice = createSlice({
   name: 'cardIdentifier',
   initialState,
   reducers: {
-    setId: (state, action) => {
+    setId: (state, action: PayloadAction<SetIdPayload>) => {
       state.trackId = action.payload.id
     },
     clearId: (state) => {
       state.trackId = ''
     },
-    setSlug: (state, action) => {
+    setSlug: (state, action: PayloadAction<SetSlugPayload>) => {
       state.trackSlug = action.payload.slug
     },
     clearSlug: (state) => {
@@ -25,10 +29,10 @@ const cardIdentifierSlice = createSlice({
 })
 
 export const {
-  setId: actionSetCardId,
-  clearId: actionClearCardId,
-  setSlug: actionSetCardSlug,
-  clearSlug: actionClearCardSlug,
+  setId: setCardId,
+  clearId: clearCardId,
+  setSlug: setCardSlug,
+  clearSlug: clearCardSlug,
 } = cardIdentifierSlice.actions
 
 export const cardIdentifierReducer = cardIdentifierSlice.reducer
