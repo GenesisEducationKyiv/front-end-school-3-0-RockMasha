@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import ListLoader from '../../../../components/UI/Loader/ListLoader'
 import { TrackCard } from '../../../../components/modules/TrackCard'
 import type { NullableAudioEl } from '@/types'
+import { ActiveTrack } from '@/components/modules/ActiveTrack'
 
 function TracksList() {
   const [currentPlay, setCurrentPlay] = useState<NullableAudioEl>(null)
@@ -30,6 +31,7 @@ function TracksList() {
           <Container
             style={list.length === 0 ? { justifyContent: 'center' } : {}}
           >
+            <ActiveTrack />
             {list.length > 0 ? (
               <List data-loading={listLoading ? 'true' : 'false'}>
                 {list.map((item) => (

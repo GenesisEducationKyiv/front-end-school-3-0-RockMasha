@@ -13,6 +13,8 @@ import type { AxiosResponse } from 'axios'
 import { ok } from 'neverthrow'
 import { handleError } from '@/shared/helpers/handleError'
 
+const ENDPOINT = '/api/tracks'
+
 let TracksController: NullableAbortController = null
 export async function getTracks(
   params: Filter = {},
@@ -23,7 +25,7 @@ export async function getTracks(
       TracksController.abort()
     }
     TracksController = new AbortController()
-    const answer: AxiosResponse<TrackListData> = await api.get('/api/tracks', {
+    const answer: AxiosResponse<TrackListData> = await api.get(ENDPOINT, {
       signal: TracksController.signal,
       params: { ...params, page },
     })
@@ -36,7 +38,7 @@ export async function getTracks(
 
 export async function postTrack(data: TrackData): AsyncRequestResponse<Track> {
   try {
-    const answer: AxiosResponse<Track> = await api.post(`/api/tracks`, data, {
+    const answer: AxiosResponse<Track> = await api.post(ENDPOINT, data, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -49,7 +51,7 @@ export async function postTrack(data: TrackData): AsyncRequestResponse<Track> {
 
 export async function getTrackBySlug(slug: Slug): AsyncRequestResponse<Track> {
   try {
-    const answer: AxiosResponse<Track> = await api.get(`/api/tracks/${slug}`)
+    const answer: AxiosResponse<Track> = await api.get(`${ENDPOINT}/${slug}`)
     return ok(answer.data)
   } catch (error) {
     return handleError(error)
@@ -62,7 +64,7 @@ export async function redactTrack(
 ): AsyncRequestResponse<Track> {
   try {
     const answer: AxiosResponse<Track> = await api.put(
-      `/api/tracks/${id}`,
+      `${ENDPOINT}/${id}`,
       data
     )
     return ok(answer.data)
@@ -73,7 +75,7 @@ export async function redactTrack(
 
 export async function deleteTrack(id: Id): AsyncRequestResponse<''> {
   try {
-    const answer: AxiosResponse<''> = await api.delete(`/api/tracks/${id}`)
+    const answer: AxiosResponse<''> = await api.delete(`${ENDPOINT}/${id}`)
     return ok(answer.data)
   } catch (error) {
     return handleError(error)
