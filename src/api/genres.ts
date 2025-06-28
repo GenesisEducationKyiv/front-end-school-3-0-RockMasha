@@ -4,9 +4,11 @@ import type { AxiosResponse } from 'axios'
 import { handleError } from '@/shared/helpers/handleError'
 import { ok } from 'neverthrow'
 
+const ENDPOINT = '/api/genres'
+
 async function getGenres(): AsyncRequestResponse<Genre[]> {
   try {
-    const answer: AxiosResponse<Genre[]> = await api.get('/api/genres')
+    const answer: AxiosResponse<Genre[]> = await api.get(ENDPOINT)
     return ok(answer.data)
   } catch (error) {
     return handleError(error)

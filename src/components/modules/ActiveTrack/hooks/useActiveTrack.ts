@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 function useActiveTrack() {
   const [activeTrack, setActiveTrack] = useState<Track | null>(null)
 
-  async function loadInitialTrack() {
+  const loadInitialTrack = async () => {
     const answer = await getActiveTrack()
     if (answer.isOk()) setActiveTrack(answer.value)
   }

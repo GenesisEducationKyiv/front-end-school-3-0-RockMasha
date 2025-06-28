@@ -4,10 +4,16 @@ import { type AxiosResponse } from 'axios'
 import { ok } from 'neverthrow'
 import { handleError } from '@/shared/helpers/handleError'
 
+export const ENDPOINTS = {
+  GET_FILE: (name: string) => `/api/files/${name}`,
+  POST_FILE: (id: string | number) => `/api/tracks/${id}/upload`,
+  DELETE_FILE: (id: string | number) => `/api/tracks/${id}/file`,
+}
+
 export async function getFile(name: string): AsyncRequestResponse<ArrayBuffer> {
   try {
     const answer: AxiosResponse<ArrayBuffer> = await api.get(
-      `/api/files/${name}`,
+      ENDPOINTS.GET_FILE(name),
       {
         responseType: 'arraybuffer',
       }
@@ -24,7 +30,7 @@ export async function postFile(
 ): AsyncRequestResponse<FileData> {
   try {
     const answer: AxiosResponse<FileData> = await api.post(
-      `/api/tracks/${id}/upload`,
+      ENDPOINTS.POST_FILE(id),
       data,
       {
         headers: {
@@ -41,7 +47,7 @@ export async function postFile(
 export async function deleteFile(id: Id): AsyncRequestResponse<FileData> {
   try {
     const answer: AxiosResponse<FileData> = await api.delete(
-      `/api/tracks/${id}/file`
+      ENDPOINTS.DELETE_FILE(id)
     )
     return ok(answer.data)
   } catch (error) {
