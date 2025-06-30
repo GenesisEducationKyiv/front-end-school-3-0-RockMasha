@@ -1,7 +1,7 @@
 import type { AppError, CustomAxiosError } from '@/types'
 import { defaultErrorMessage } from '../consts/defaultErrorMessage'
 
-function getErrorMessage(error: CustomAxiosError): AppError {
+export function getErrorMessage(error: CustomAxiosError): AppError {
   if (error.response?.data) {
     const errorData = error.response.data
     if (typeof errorData.error === 'string') {
@@ -22,5 +22,3 @@ function getErrorMessage(error: CustomAxiosError): AppError {
   }
   return { message: error.message || defaultErrorMessage }
 }
-
-export default getErrorMessage

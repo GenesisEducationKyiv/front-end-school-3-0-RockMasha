@@ -15,7 +15,7 @@ import PlaySvg from '../../../../assets/svg/PlaySvg'
 import PauseSvg from '../../../../assets/svg/PauseSvg'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import useTrackCard from '../hooks/useTrackCard'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import type { AudioRef } from '../types/AudioRef'
 import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
@@ -42,6 +42,10 @@ const TrackCard: React.FC<Props> = ({
 
   const playPointer = audioFile ? 'pointer' : 'not-allowed'
 
+  useEffect(() => {
+    handleTogglePlayPause()
+  }, [])
+
   return (
     <Card data-testid={'track-item-' + id}>
       <audio ref={audioRef} src={file || undefined} data-testid="audio" />
@@ -55,7 +59,10 @@ const TrackCard: React.FC<Props> = ({
           {isPlaying ? <PauseSvg /> : <PlaySvg />}
         </PlayPauseButton>
       </Controls>
-      <TrackImg src={coverImage || './src/assets/images/default_track.png'} />
+      <TrackImg
+        src={coverImage || './src/assets/images/default_track.png'}
+        loading="lazy"
+      />
       <TrackInfo>
         <TrackTitle data-testid={'track-item-' + id + '-title'}>
           {title}
