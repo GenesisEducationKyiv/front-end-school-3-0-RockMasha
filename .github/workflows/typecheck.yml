@@ -10,14 +10,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache npm
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
