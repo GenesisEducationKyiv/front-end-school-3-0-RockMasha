@@ -1,7 +1,7 @@
 import { HashLoader } from 'react-spinners'
 import { isPhone } from '../../../shared/helpers/isPhone.ts'
 import useLockPage from '../../../shared/hooks/useLockPage.ts'
-import { Wrapper } from '../Modal/Modal.styled.jsx'
+import { Wrapper } from './Loader.styled.tsx'
 import { colors } from '../../../styles/colors.js'
 
 function MainLoader() {

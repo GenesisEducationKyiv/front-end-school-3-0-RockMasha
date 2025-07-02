@@ -39,9 +39,11 @@ function useToggleFilterPanel() {
 
   const filterPanel = useSelector(selectFilterPanel)
   const togglePanel = () => {
-    filterPanel
-      ? dispatch(actionOpenFilterPanel())
-      : dispatch(actionCloseFilterPanel())
+    if (filterPanel) {
+      dispatch(actionOpenFilterPanel())
+    } else {
+      dispatch(actionCloseFilterPanel())
+    }
   }
 
   return togglePanel

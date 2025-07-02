@@ -5,9 +5,7 @@ import type { StartLoadingFn } from '@/types'
 import { useDispatch } from 'react-redux'
 import { actionEndLoading, actionStartLoading } from './loadingSlice'
 
-function useMainLoading<T>(): StartLoadingFn
-
-function useMainLoading() {
+function useMainLoading(): StartLoadingFn {
   const dispatch = useDispatch()
   const startLoading = useCallback(
     async <R>(callbackFn: () => Promise<R>): Promise<R | undefined> => {
@@ -20,7 +18,7 @@ function useMainLoading() {
           }
         }
         return result
-      } catch (error) {
+      } catch {
         showError()
         return
       } finally {

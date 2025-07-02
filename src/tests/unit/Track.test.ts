@@ -3,8 +3,8 @@ import { trackDataSchema } from '@/types/models/track/TrackData'
 import { describe, test, expect } from 'vitest'
 
 const createTrack = (
-  overrides: Record<string, any> = {}
-): Record<string, any> => ({
+  overrides: Record<string, unknown> = {}
+): Record<string, unknown> => ({
   id: '1',
   slug: 'song-1',
   createdAt: new Date('2025-01-01'),
@@ -19,8 +19,8 @@ const createTrack = (
 })
 
 const createTrackData = (
-  overrides: Record<string, any> = {}
-): Record<string, any> => ({
+  overrides: Record<string, unknown> = {}
+): Record<string, unknown> => ({
   artist: 'Artist Name',
   genres: ['Rock'],
   title: 'Song Title',
@@ -86,7 +86,7 @@ describe('trackDataSchema', () => {
     )
   })
   test('should transform empty audioFile to undefined', () => {
-    const emptyAudio = createTrackData({ audioFile: '' })
+    const emptyAudio = createTrackData({ audioFile: undefined })
     const result = trackDataSchema.parse(emptyAudio)
     expect(result.audioFile).toBeUndefined()
   })

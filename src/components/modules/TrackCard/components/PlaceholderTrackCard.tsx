@@ -13,6 +13,7 @@ import {
 import PlaySvg from '../../../../assets/svg/PlaySvg'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import type { Track } from '@/types'
+import defaultTrackImg from '@/assets/images/default_track.png'
 
 interface Props {
   data: Track
@@ -33,10 +34,7 @@ const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
           <PlaySvg />
         </PlayPauseButton>
       </Controls>
-      <TrackImg
-        src={coverImage || './src/assets/images/default_track.png'}
-        loading="lazy"
-      />
+      <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />
       <TrackInfo>
         <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
         <TrackDetails data-testid={`track-item-${id}-artist`}>

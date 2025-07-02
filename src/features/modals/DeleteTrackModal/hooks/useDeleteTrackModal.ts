@@ -19,7 +19,9 @@ function useDeleteTrackModal() {
 
   const deleteItem = async () => {
     startLoading(async () => {
-      trackId && (await deleteTrack(trackId))
+      if (trackId) {
+        await deleteTrack(trackId)
+      }
       closeModal()
       dispatch(clearCardId())
       showSuccess()
