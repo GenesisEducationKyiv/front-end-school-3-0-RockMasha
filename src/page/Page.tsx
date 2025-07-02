@@ -7,7 +7,7 @@ import { openPage } from '@/shared/helpers/tosts/openPage.ts'
 import { useSelector } from 'react-redux'
 import { selectFilterPanel, selectLoading, selectModals } from '@/redux'
 import { lazy, Suspense, useEffect } from 'react'
-import LazyLoading from '@/components/UI/Loader/LazyLoading.ts'
+import LazyLoading from '@/components/UI/Loader/LazyLoading'
 
 openPage()
 
