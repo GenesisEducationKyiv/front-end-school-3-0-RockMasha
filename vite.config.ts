@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig({
+  base: './',
   server: {
     port: 3000,
   },
@@ -19,7 +20,7 @@ export default defineConfig({
     react(),
     visualizer({
       filename: 'bundle-report.html',
-      open: true,
+      open: false,
       gzipSize: true,
       brotliSize: true,
     }),

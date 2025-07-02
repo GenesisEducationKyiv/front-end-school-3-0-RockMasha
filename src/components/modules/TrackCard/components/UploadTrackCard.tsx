@@ -39,7 +39,7 @@ const UploadTrackCard: React.FC<Props> = ({
           data={data}
           setCurrentPlay={setCurrentPlay}
           currentPlay={currentPlay}
-          IsPlayNow={true}
+          іsPlayNow={true}
         />
       </Suspense>
     )

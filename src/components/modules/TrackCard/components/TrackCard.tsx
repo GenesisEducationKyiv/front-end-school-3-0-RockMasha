@@ -20,19 +20,20 @@ import type { AudioRef } from '../types/AudioRef'
 import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
 import NoValidCard from './NoValidCard'
+import defaultTrackImg from '@/assets/images/default_track.png'
 
 interface Props {
   data: Track
   setCurrentPlay: SetCurrentPlay
   currentPlay: NullableAudioEl
-  IsPlayNow?: boolean
+  іsPlayNow?: boolean
 }
 
 const TrackCard: React.FC<Props> = ({
   data,
   setCurrentPlay,
   currentPlay,
-  IsPlayNow,
+  іsPlayNow,
 }: Props) => {
   const result = trackSchema.safeParse(data)
 
@@ -42,7 +43,7 @@ const TrackCard: React.FC<Props> = ({
     useTrackCard({ audioRef, audioFile, currentPlay, setCurrentPlay })
 
   useEffect(() => {
-    if (IsPlayNow) {
+    if (іsPlayNow) {
       handleTogglePlayPause()
     }
   }, [])
@@ -60,10 +61,7 @@ const TrackCard: React.FC<Props> = ({
           {isPlaying ? <PauseSvg /> : <PlaySvg />}
         </PlayPauseButton>
       </Controls>
-      <TrackImg
-        src={coverImage || './src/assets/images/default_track.png'}
-        loading="lazy"
-      />
+      <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />
       <TrackInfo>
         <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
         <TrackDetails data-testid={`track-item-${id}-artist`}>
