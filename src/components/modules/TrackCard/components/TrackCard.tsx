@@ -35,7 +35,6 @@ const TrackCard: React.FC<Props> = ({
   IsPlayNow,
 }: Props) => {
   const result = trackSchema.safeParse(data)
-  if (!result.success) return <NoValidCard />
 
   const { id, title, artist, album, genres, coverImage, audioFile, slug } = data
   const audioRef: AudioRef = useRef(null)
@@ -47,7 +46,8 @@ const TrackCard: React.FC<Props> = ({
       handleTogglePlayPause()
     }
   }, [])
-  
+
+  if (!result.success) return <NoValidCard />
   return (
     <Card data-testid={`track-item-${id}`}>
       <audio ref={audioRef} src={file || undefined} data-testid="audio" />

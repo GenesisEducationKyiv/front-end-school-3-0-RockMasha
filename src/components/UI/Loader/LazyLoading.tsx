@@ -1,8 +1,8 @@
 import { CircleLoader } from 'react-spinners'
 import useLockPage from '../../../shared/hooks/useLockPage.ts'
-import { Wrapper } from '../Modal/Modal.styled.jsx'
-import { colors } from '../../../styles/colors.js'
+import { colors } from '../../../styles/colors.ts'
 import { isPhone } from '@/shared/helpers/isPhone.ts'
+import { Wrapper } from './Loader.styled.tsx'
 
 function LazyLoading() {
   useLockPage()

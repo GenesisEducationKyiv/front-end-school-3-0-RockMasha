@@ -37,7 +37,9 @@ function getTrackData(overrides: Partial<Track> = {}): Track {
   }
 }
 
-const mockSetCurrentPlay: SetCurrentPlay = (audio) => {}
+const mockSetCurrentPlay: SetCurrentPlay = (audio) => {
+  void audio
+}
 
 function getTestTrackCard(overrides: Partial<Track> = {}) {
   const data = getTrackData(overrides)

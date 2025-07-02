@@ -3,9 +3,7 @@ import { showError } from '../helpers/tosts/showError'
 import { isRequestResponse } from '@/types/guards/isRequestResponse'
 import type { StartLoadingFn } from '@/types'
 
-function useLoading<T>(): [boolean, StartLoadingFn]
-
-function useLoading(startValue = false) {
+function useLoading(startValue = false): [boolean, StartLoadingFn] {
   const [loading, setLoading] = useState<boolean>(startValue)
 
   const startLoading = useCallback(
@@ -19,7 +17,7 @@ function useLoading(startValue = false) {
           }
         }
         return result
-      } catch (error) {
+      } catch {
         showError()
         return
       } finally {

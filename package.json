@@ -7,12 +7,13 @@
     "dev": "vite",
     "start": "vite",
     "test": "npm run test:vitest && npm run test:playwright:all",
-    "test:vitest": "vitest",
+    "test:unit": "npm run test:vitest && npm run test:ct",
     "test:e2e": "playwright test --config=playwright.config.ts",
+    "test:vitest": "vitest",
     "test:ct": "playwright test --config=playwright-ct.config.ts",
-    "test:playwright:all": "npm run test:e2e && npm run test:ct",
+    "type-check": "tsc --noEmit",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -46,16 +47,20 @@
     "@types/node": "^22.15.29",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.22.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.0.0",
+    "jiti": "^2.4.2",
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
+    "rollup-plugin-visualizer": "^6.0.3",
     "typescript": "^5.8.3",
     "vite": "^6.3.1",
-    "vitest": "^3.2.4",
-    "rollup-plugin-visualizer": "^6.0.3"
+    "vitest": "^3.2.4"
   }
 }

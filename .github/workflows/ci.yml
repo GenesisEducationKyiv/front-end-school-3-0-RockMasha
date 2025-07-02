@@ -1,0 +1,22 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+
+  typecheck:
+    uses: ./.github/workflows/typecheck.yml
+
+  test:
+    needs: [lint, typecheck]
+    uses: ./.github/workflows/unit-tests.yml
+
+  build:
+    needs: [lint, typecheck]
+    uses: ./.github/workflows/build.yml

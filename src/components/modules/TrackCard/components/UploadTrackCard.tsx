@@ -19,7 +19,6 @@ const UploadTrackCard: React.FC<Props> = ({
   currentPlay,
 }) => {
   const result = trackSchema.safeParse(data)
-  if (!result.success) return <NoValidCard />
 
   const [isClickedPlay, setIsClickedPlay] = useState(false)
 
@@ -27,6 +26,10 @@ const UploadTrackCard: React.FC<Props> = ({
     if (data.audioFile) {
       setIsClickedPlay(true)
     }
+  }
+
+  if (!result.success) {
+    return <NoValidCard />
   }
 
   if (isClickedPlay) {
@@ -41,7 +44,7 @@ const UploadTrackCard: React.FC<Props> = ({
       </Suspense>
     )
   }
-
+  
   return <PlaceholderTrackCard data={data} handleClick={handlePlayClick} />
 }
 
