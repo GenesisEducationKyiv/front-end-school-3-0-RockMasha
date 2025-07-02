@@ -7,5 +7,5 @@ function NoValidCard() {
     </Card>
   )
 }
-
+ 
 export default NoValidCard
