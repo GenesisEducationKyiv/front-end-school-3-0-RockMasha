@@ -25,8 +25,12 @@ export const PlayPauseButton = styled.button`
   background: transparent;
   border: 1px solid transparent;
   padding: 0;
+  cursor: pointer;
   &:focus {
     outline: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
 `
 

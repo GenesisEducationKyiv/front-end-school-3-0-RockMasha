@@ -7,5 +7,3 @@ export function checkContextConnection<T>(
   }
   return context
 }
-
-export default checkContextConnection

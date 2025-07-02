@@ -1,4 +1,4 @@
-import isPhone from '@/shared/helpers/isPhone'
+import { isPhone } from '@/shared/helpers/isPhone'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {

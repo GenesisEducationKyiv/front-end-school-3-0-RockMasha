@@ -30,7 +30,7 @@ function CardBtns({ slug, id }: Props) {
       </ActionItemHidden>
       <ActionItem>
         <ActionButtonUpload
-          data-testid={'upload-track-' + id}
+          data-testid={`upload-track-${id}`}
           onClick={openUploadModal}
         >
           <ArrowSvg />
@@ -38,7 +38,7 @@ function CardBtns({ slug, id }: Props) {
       </ActionItem>
       <ActionItem>
         <ActionButton
-          data-testid={'edit-track-' + id}
+          data-testid={`edit-track-${id}`}
           onClick={openRedactModal}
         >
           <RedactSvg />
@@ -46,7 +46,7 @@ function CardBtns({ slug, id }: Props) {
       </ActionItem>
       <ActionItem>
         <ActionButton
-          data-testid={'delete-track-' + id}
+          data-testid={`delete-track-${id}`}
           onClick={openDeleteModal}
         >
           <DeleteSvg />
