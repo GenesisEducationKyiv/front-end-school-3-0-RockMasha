@@ -25,12 +25,14 @@ interface Props {
   data: Track
   setCurrentPlay: SetCurrentPlay
   currentPlay: NullableAudioEl
+  IsPlayNow?: boolean
 }
 
 const TrackCard: React.FC<Props> = ({
   data,
   setCurrentPlay,
   currentPlay,
+  IsPlayNow,
 }: Props) => {
   const result = trackSchema.safeParse(data)
   if (!result.success) return <NoValidCard />
@@ -40,20 +42,19 @@ const TrackCard: React.FC<Props> = ({
   const { file, isPlaying, handleTogglePlayPause, progress, handleSeek } =
     useTrackCard({ audioRef, audioFile, currentPlay, setCurrentPlay })
 
-  const playPointer = audioFile ? 'pointer' : 'not-allowed'
-
   useEffect(() => {
-    handleTogglePlayPause()
+    if (IsPlayNow) {
+      handleTogglePlayPause()
+    }
   }, [])
-
+  
   return (
-    <Card data-testid={'track-item-' + id}>
+    <Card data-testid={`track-item-${id}`}>
       <audio ref={audioRef} src={file || undefined} data-testid="audio" />
-      <Controls data-testid={'audio-player-' + id}>
+      <Controls data-testid={`audio-player-${id}`}>
         <PlayPauseButton
           data-testid={`${isPlaying ? 'pause' : 'play'}-button-${id}`}
           onClick={audioFile ? handleTogglePlayPause : undefined}
-          style={{ cursor: playPointer }}
           disabled={!audioFile}
         >
           {isPlaying ? <PauseSvg /> : <PlaySvg />}
@@ -64,10 +65,8 @@ const TrackCard: React.FC<Props> = ({
         loading="lazy"
       />
       <TrackInfo>
-        <TrackTitle data-testid={'track-item-' + id + '-title'}>
-          {title}
-        </TrackTitle>
-        <TrackDetails data-testid={'track-item-' + id + '-artist'}>
+        <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
+        <TrackDetails data-testid={`track-item-${id}-artist`}>
           Artist: {artist}
         </TrackDetails>
         <TrackDetails>{album && `Album: ${album}`}</TrackDetails>
@@ -76,7 +75,7 @@ const TrackCard: React.FC<Props> = ({
       <ProgressContainer>
         <ProgressBar
           style={{ width: `${progress}%` }}
-          data-testid={'audio-progress-' + id}
+          data-testid={`audio-progress-${id}`}
         />
         <SeekBar
           type="range"

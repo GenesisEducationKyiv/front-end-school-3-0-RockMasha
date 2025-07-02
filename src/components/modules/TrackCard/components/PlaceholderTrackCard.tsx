@@ -21,15 +21,13 @@ interface Props {
 
 const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
   const { id, title, artist, album, genres, coverImage, slug, audioFile } = data
-  const playPointer = audioFile ? 'pointer' : 'not-allowed'
 
   return (
-    <Card data-testid={'track-item-' + id}>
-      <Controls data-testid={'audio-player-' + id}>
+    <Card data-testid={`track-item-${id}`}>
+      <Controls data-testid={`audio-player-${id}`}>
         <PlayPauseButton
           data-testid={`play-button-${id}`}
           onClick={audioFile && handleClick ? handleClick : undefined}
-          style={{ cursor: playPointer }}
           disabled={!audioFile}
         >
           <PlaySvg />
@@ -40,10 +38,8 @@ const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
         loading="lazy"
       />
       <TrackInfo>
-        <TrackTitle data-testid={'track-item-' + id + '-title'}>
-          {title}
-        </TrackTitle>
-        <TrackDetails data-testid={'track-item-' + id + '-artist'}>
+        <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
+        <TrackDetails data-testid={`track-item-${id}-artist`}>
           Artist: {artist}
         </TrackDetails>
         <TrackDetails>{album && `Album: ${album}`}</TrackDetails>
@@ -52,7 +48,7 @@ const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
       <ProgressContainer>
         <ProgressBar
           style={{ width: '0%' }}
-          data-testid={'audio-progress-' + id}
+          data-testid={`audio-progress-${id}`}
         />
       </ProgressContainer>
       <CardBtns id={id} slug={slug} />
