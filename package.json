@@ -7,7 +7,7 @@
     "dev": "vite",
     "start": "vite",
     "test": "npm run test:vitest && npm run test:playwright:all",
-    "test:unit": "npm run test:vitest && npm run test:ct",
+    "test:unit": "npm run test:ct && npm run test:vitest",
     "test:e2e": "playwright test --config=playwright.config.ts",
     "test:vitest": "vitest",
     "test:ct": "playwright test --config=playwright-ct.config.ts",
