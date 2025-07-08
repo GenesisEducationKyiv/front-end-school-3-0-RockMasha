@@ -20,3 +20,7 @@ jobs:
   build:
     needs: [lint, typecheck]
     uses: ./.github/workflows/build.yml
+
+  docker-build:
+    needs: [build, test]
+    uses: ./.github/workflows/docker-build.yml
