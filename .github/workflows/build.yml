@@ -8,15 +8,7 @@ jobs:
     uses: ./.github/workflows/setup-node.yml
     with:
       script: npm run build
-
-  save-artifacts:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-build
-          path: |
-            dist
-            logs
+      uploadArtifact: |
+        dist
+        logs
+      artifactName: frontend-build
