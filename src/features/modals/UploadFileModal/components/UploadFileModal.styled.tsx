@@ -25,6 +25,7 @@ export const WrapperCloseSvg = styled.div`
   right: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
   width: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
   height: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
 `
 
 export const UploadWrapper = styled.div`
@@ -40,6 +41,7 @@ export const WrapperUploadSvg = styled.label`
   width: calc(50px + (125 - 50) * (100vw - 320px) / (1440 - 320));
   height: calc(50px + (125 - 50) * (100vw - 320px) / (1440 - 320));
   padding: calc(10px + (30 - 10) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
   background-color: var(--color-white-grey);
   border-radius: 5px;
   transform: rotate(-90deg);

@@ -11,8 +11,6 @@ import {
   SeekBar,
   TrackImg,
 } from './TrackCard.styled'
-import PlaySvg from '../../../../assets/svg/PlaySvg'
-import PauseSvg from '../../../../assets/svg/PauseSvg'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import useTrackCard from '../hooks/useTrackCard'
 import { useEffect, useRef } from 'react'
@@ -21,6 +19,7 @@ import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
 import NoValidCard from './NoValidCard'
 import defaultTrackImg from '@/assets/images/default_track.png'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 interface Props {
   data: Track
@@ -58,7 +57,7 @@ const TrackCard: React.FC<Props> = ({
           onClick={audioFile ? handleTogglePlayPause : undefined}
           disabled={!audioFile}
         >
-          {isPlaying ? <PauseSvg /> : <PlaySvg />}
+          {isPlaying ? <IconSVG id="pause" /> : <IconSVG id="play" />}
         </PlayPauseButton>
       </Controls>
       <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />

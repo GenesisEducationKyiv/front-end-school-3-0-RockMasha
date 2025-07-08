@@ -1,4 +1,4 @@
-import StarCircle from '@/assets/svg/StarCircle'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 import useActiveTrack from '../hooks/useActiveTrack'
 import {
   ContentWrapper,
@@ -37,7 +37,7 @@ function ActiveTrack() {
         </TrackWrapper>
       </ContentWrapper>
       <SvgWrapper>
-        <StarCircle />
+        <IconSVG id="star-circle" />
       </SvgWrapper>
     </Wrapper>
   )

@@ -131,6 +131,7 @@ export const ResetBtn = styled.button`
   width: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   height: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   margin-top: 5px;
+  color: var(--color-white);
   background-color: var(--color-grey);
   border: 1px solid transparent;
   border-radius: 5px;

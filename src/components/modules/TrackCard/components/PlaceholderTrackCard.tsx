@@ -10,10 +10,10 @@ import {
   ProgressBar,
   TrackImg,
 } from './TrackCard.styled'
-import PlaySvg from '../../../../assets/svg/PlaySvg'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import type { Track } from '@/types'
 import defaultTrackImg from '@/assets/images/default_track.png'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 interface Props {
   data: Track
@@ -31,7 +31,7 @@ const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
           onClick={audioFile && handleClick ? handleClick : undefined}
           disabled={!audioFile}
         >
-          <PlaySvg />
+          <IconSVG id="play" />
         </PlayPauseButton>
       </Controls>
       <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />

@@ -1,4 +1,4 @@
-import LetterSvg from '../../../../assets/svg/LetterSvg'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 import Modal from '../../../../components/UI/Modal/Modal'
 import useDeleteTrackModal from '../hooks/useDeleteTrackModal'
 import {
@@ -17,7 +17,7 @@ function DeleteTrackModal() {
       <Box>
         <Message>Delete this Track?</Message>
         <SvgWrapper>
-          <LetterSvg />
+          <IconSVG id="letter" />
         </SvgWrapper>
         <BtnWrapper data-testid="confirm-dialog">
           <Btn

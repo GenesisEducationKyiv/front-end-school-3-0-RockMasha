@@ -1,6 +1,4 @@
 import type { Id, Slug } from '@/types'
-import DeleteSvg from '../../../../assets/svg/DeleteSvg'
-import RedactSvg from '../../../../assets/svg/RedactSvg'
 import useCardBtn from '../hooks/useCardBtn'
 import {
   ActionButton,
@@ -10,7 +8,7 @@ import {
   ActionItem,
   ActionItemHidden,
 } from './CardBtns.styled'
-import ArrowSvg from '@/assets/svg/ArrowSvg'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 interface Props {
   slug: Slug
@@ -33,7 +31,7 @@ function CardBtns({ slug, id }: Props) {
           data-testid={`upload-track-${id}`}
           onClick={openUploadModal}
         >
-          <ArrowSvg />
+          <IconSVG id="arrow" />
         </ActionButtonUpload>
       </ActionItem>
       <ActionItem>
@@ -41,7 +39,7 @@ function CardBtns({ slug, id }: Props) {
           data-testid={`edit-track-${id}`}
           onClick={openRedactModal}
         >
-          <RedactSvg />
+          <IconSVG id="redact" />
         </ActionButton>
       </ActionItem>
       <ActionItem>
@@ -49,7 +47,7 @@ function CardBtns({ slug, id }: Props) {
           data-testid={`delete-track-${id}`}
           onClick={openDeleteModal}
         >
-          <DeleteSvg />
+          <IconSVG id="delete" />
         </ActionButton>
       </ActionItem>
     </ActionButtonsList>
