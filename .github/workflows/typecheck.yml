@@ -1,0 +1,10 @@
+name: Typecheck
+
+on:
+  workflow_call:
+
+jobs:
+  typecheck:
+    uses: ./.github/workflows/setup-node.yml
+    with:
+      script: npm run type-check

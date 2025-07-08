@@ -1,0 +1,41 @@
+name: Setup Node Environment
+
+on:
+  workflow_call:
+    inputs:
+      script:
+        required: true
+        type: string
+      uploadArtifact:
+        required: false
+        type: string
+        default: ''
+      artifactName:
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  setup-node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - run: ${{ inputs.script }}
+
+      - name: Upload artifacts
+        if: ${{ inputs.uploadArtifact != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifactName }}
+          path: ${{ inputs.uploadArtifact }}

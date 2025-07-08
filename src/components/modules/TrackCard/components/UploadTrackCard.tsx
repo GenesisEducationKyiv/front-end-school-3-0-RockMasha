@@ -19,7 +19,6 @@ const UploadTrackCard: React.FC<Props> = ({
   currentPlay,
 }) => {
   const result = trackSchema.safeParse(data)
-  if (!result.success) return <NoValidCard />
 
   const [isClickedPlay, setIsClickedPlay] = useState(false)
 
@@ -29,6 +28,10 @@ const UploadTrackCard: React.FC<Props> = ({
     }
   }
 
+  if (!result.success) {
+    return <NoValidCard />
+  }
+
   if (isClickedPlay) {
     return (
       <Suspense fallback={<PlaceholderTrackCard data={data} />}>
@@ -36,12 +39,12 @@ const UploadTrackCard: React.FC<Props> = ({
           data={data}
           setCurrentPlay={setCurrentPlay}
           currentPlay={currentPlay}
-          IsPlayNow={true}
+          іsPlayNow={true}
         />
       </Suspense>
     )
   }
-
+  
   return <PlaceholderTrackCard data={data} handleClick={handlePlayClick} />
 }
 

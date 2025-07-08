@@ -12,6 +12,12 @@
     "module": "ESNext",
     "moduleResolution": "Bundler"
   },
-  "include": ["src", "vite-env.d.ts", "declarations.d.ts"],
+  "include": [
+    "src",
+    "vite-env.d.ts",
+    "declarations.d.ts",
+    "vite.config.ts",
+    "eslint.config.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

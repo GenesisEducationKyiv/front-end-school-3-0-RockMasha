@@ -4,12 +4,12 @@ import {
   type MountResult,
 } from '@playwright/experimental-ct-react'
 import { type Track } from '@/types'
-import { TrackCard } from '@/components/modules/TrackCard'
 import type { SetCurrentPlay } from '@/components/modules/TrackCard/types/SetCurrentPlay'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { modalReducer } from '@/redux/slices/modal/modalSlice'
 import { cardIdentifierReducer } from '@/redux/slices/cardIdentifier/cardIdentifierSlice'
+import TrackCard from '@/components/modules/TrackCard/components/TrackCard'
 
 const coverImgUrl =
   'https://res.cloudinary.com/dk3syrsg5/image/upload/c_scale,h_175,w_175/v1741982686/leafofhopeAdverts/dnxx7pkopjkmbqtwptrp.jpg'
@@ -37,7 +37,9 @@ function getTrackData(overrides: Partial<Track> = {}): Track {
   }
 }
 
-const mockSetCurrentPlay: SetCurrentPlay = (audio) => {}
+const mockSetCurrentPlay: SetCurrentPlay = (audio) => {
+  void audio
+}
 
 function getTestTrackCard(overrides: Partial<Track> = {}) {
   const data = getTrackData(overrides)

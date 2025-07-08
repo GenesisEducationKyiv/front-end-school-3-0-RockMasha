@@ -1,0 +1,12 @@
+name: Unit Tests
+
+on:
+  workflow_call:
+
+jobs:
+  unit_tests:
+    uses: ./.github/workflows/setup-node.yml
+    with:
+      script: |
+        npx playwright install --with-deps
+        npm run test:unit
