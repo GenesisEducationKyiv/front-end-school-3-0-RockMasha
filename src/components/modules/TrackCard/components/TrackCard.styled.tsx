@@ -33,13 +33,16 @@ export const PlayPauseButton = styled.button`
     cursor: not-allowed;
   }
 `
-
-export const TrackImg = styled.img`
+export const TrackImgWrapper = styled.div`
   width: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   height: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   margin-right: calc(10px + (25 - 10) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
   border-radius: 5px;
+`
+
+export const TrackImg = styled.img`
+  width: 100%;
+  height: 100%;
 `
 
 export const TrackInfo = styled.div`

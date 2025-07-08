@@ -31,7 +31,7 @@ function TracksList() {
           <Container
             style={list.length === 0 ? { justifyContent: 'center' } : {}}
           >
-            {/* <ActiveTrack /> */}
+            <ActiveTrack />
             {list.length > 0 ? (
               <List data-loading={listLoading ? 'true' : 'false'}>
                 {list.map((item) => (

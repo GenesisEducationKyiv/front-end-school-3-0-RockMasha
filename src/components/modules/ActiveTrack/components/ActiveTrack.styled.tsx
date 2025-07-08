@@ -39,12 +39,16 @@ export const Title = styled.p`
   }
 `
 
-export const TrackImg = styled.img`
-  width: calc(45px + (75 - 45) * (100vw - 320px) / (1440 - 320));
-  height: calc(45px + (75 - 45) * (100vw - 320px) / (1440 - 320));
-  margin-right: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+export const TrackImgWrapper = styled.div`
+  width: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
+  height: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
+  margin-right: calc(10px + (25 - 10) * (100vw - 320px) / (1440 - 320));
   border-radius: 5px;
+`
+
+export const TrackImg = styled.img`
+  width: 100%;
+  height: 100%;
 `
 
 export const TrackInfo = styled.div`
@@ -74,4 +78,5 @@ export const SvgWrapper = styled.div`
   display: flex;
   align-items: center;
   width: calc(85px + (150 - 85) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-purple-500)
 `

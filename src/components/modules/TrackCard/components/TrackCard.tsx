@@ -10,6 +10,7 @@ import {
   ProgressBar,
   SeekBar,
   TrackImg,
+  TrackImgWrapper,
 } from './TrackCard.styled'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import useTrackCard from '../hooks/useTrackCard'
@@ -18,8 +19,8 @@ import type { AudioRef } from '../types/AudioRef'
 import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
 import NoValidCard from './NoValidCard'
-import defaultTrackImg from '@/assets/images/default_track.png'
 import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import DefaultTrackPicture from '@/components/UI/DefaultTrackPicture/DefaultTrackPicture'
 
 interface Props {
   data: Track
@@ -60,7 +61,13 @@ const TrackCard: React.FC<Props> = ({
           {isPlaying ? <IconSVG id="pause" /> : <IconSVG id="play" />}
         </PlayPauseButton>
       </Controls>
-      <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />
+      <TrackImgWrapper>
+        {coverImage ? (
+          <TrackImg src={coverImage} loading="lazy" />
+        ) : (
+          <DefaultTrackPicture />
+        )}
+      </TrackImgWrapper>
       <TrackInfo>
         <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
         <TrackDetails data-testid={`track-item-${id}-artist`}>

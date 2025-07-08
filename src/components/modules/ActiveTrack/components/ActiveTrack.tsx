@@ -6,12 +6,14 @@ import {
   Title,
   TrackDetails,
   TrackImg,
+  TrackImgWrapper,
   TrackInfo,
   TrackTags,
   TrackTitle,
   TrackWrapper,
   Wrapper,
 } from './ActiveTrack.styled'
+import DefaultTrackPicture from '@/components/UI/DefaultTrackPicture/DefaultTrackPicture'
 
 function ActiveTrack() {
   const data = useActiveTrack()
@@ -23,9 +25,14 @@ function ActiveTrack() {
       <ContentWrapper>
         <Title>Active Track ~</Title>
         <TrackWrapper>
-          <TrackImg
-            src={coverImage || './src/assets/images/default_track.png'}
-          />
+          <TrackImgWrapper>
+            {coverImage ? (
+              <TrackImg src={coverImage} />
+            ) : (
+              <DefaultTrackPicture />
+            )}
+          </TrackImgWrapper>
+
           <TrackInfo>
             <TrackTitle>{title}</TrackTitle>
             <TrackDetails>Artist: {artist}</TrackDetails>

@@ -9,11 +9,12 @@ import {
   ProgressContainer,
   ProgressBar,
   TrackImg,
+  TrackImgWrapper,
 } from './TrackCard.styled'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import type { Track } from '@/types'
-import defaultTrackImg from '@/assets/images/default_track.png'
 import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import DefaultTrackPicture from '@/components/UI/DefaultTrackPicture/DefaultTrackPicture'
 
 interface Props {
   data: Track
@@ -34,7 +35,13 @@ const PlaceholderTrackCard: React.FC<Props> = ({ data, handleClick }) => {
           <IconSVG id="play" />
         </PlayPauseButton>
       </Controls>
-      <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />
+      <TrackImgWrapper>
+        {coverImage ? (
+          <TrackImg src={coverImage} loading="lazy" />
+        ) : (
+          <DefaultTrackPicture />
+        )}
+      </TrackImgWrapper>
       <TrackInfo>
         <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
         <TrackDetails data-testid={`track-item-${id}-artist`}>
