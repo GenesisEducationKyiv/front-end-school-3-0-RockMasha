@@ -6,11 +6,11 @@ import { DeleteTrackModal } from '@/features/modals/DeleteTrackModal'
 const mockDeleteItem = vi.fn()
 const mockRefuseDeleteItem = vi.fn()
 
-vi.mock('@assets/svg/LetterSvg', () => ({
+vi.mock('@/components/UI/IconSVG/IconSVG', () => ({
   default: () => <svg data-testid="letter-svg" />,
 }))
 
-vi.mock('@components/UI/Modal/Modal', () => ({
+vi.mock('@/components/UI/Modal/Modal', () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="modal">{children}</div>
   ),

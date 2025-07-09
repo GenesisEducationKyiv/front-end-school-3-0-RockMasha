@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import App from './page/App'
 import { store } from './redux/store'
+import '@/styles/index.css'
 
 const rootElement: NullableElement<HTMLDivElement> =
   document.querySelector('div#root')

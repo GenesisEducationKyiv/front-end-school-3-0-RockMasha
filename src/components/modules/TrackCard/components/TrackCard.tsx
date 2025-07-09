@@ -10,9 +10,9 @@ import {
   ProgressBar,
   SeekBar,
   TrackImg,
+  TrackImgWrapper,
+  TrackDefaultSVGWrapper,
 } from './TrackCard.styled'
-import PlaySvg from '../../../../assets/svg/PlaySvg'
-import PauseSvg from '../../../../assets/svg/PauseSvg'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import useTrackCard from '../hooks/useTrackCard'
 import { useEffect, useRef } from 'react'
@@ -20,20 +20,20 @@ import type { AudioRef } from '../types/AudioRef'
 import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
 import NoValidCard from './NoValidCard'
-import defaultTrackImg from '@/assets/images/default_track.png'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 interface Props {
   data: Track
   setCurrentPlay: SetCurrentPlay
   currentPlay: NullableAudioEl
-  іsPlayNow?: boolean
+  isPlayNow?: boolean
 }
 
 const TrackCard: React.FC<Props> = ({
   data,
   setCurrentPlay,
   currentPlay,
-  іsPlayNow,
+  isPlayNow,
 }: Props) => {
   const result = trackSchema.safeParse(data)
 
@@ -43,7 +43,7 @@ const TrackCard: React.FC<Props> = ({
     useTrackCard({ audioRef, audioFile, currentPlay, setCurrentPlay })
 
   useEffect(() => {
-    if (іsPlayNow) {
+    if (isPlayNow) {
       handleTogglePlayPause()
     }
   }, [])
@@ -58,10 +58,18 @@ const TrackCard: React.FC<Props> = ({
           onClick={audioFile ? handleTogglePlayPause : undefined}
           disabled={!audioFile}
         >
-          {isPlaying ? <PauseSvg /> : <PlaySvg />}
+          {isPlaying ? <IconSVG id="pause" /> : <IconSVG id="play" />}
         </PlayPauseButton>
       </Controls>
-      <TrackImg src={coverImage || defaultTrackImg} loading="lazy" />
+      <TrackImgWrapper>
+        {coverImage ? (
+          <TrackImg src={coverImage} loading="lazy" />
+        ) : (
+          <TrackDefaultSVGWrapper>
+            <IconSVG id="note" />
+          </TrackDefaultSVGWrapper>
+        )}
+      </TrackImgWrapper>
       <TrackInfo>
         <TrackTitle data-testid={`track-item-${id}-title`}>{title}</TrackTitle>
         <TrackDetails data-testid={`track-item-${id}-artist`}>

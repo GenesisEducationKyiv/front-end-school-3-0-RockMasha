@@ -19,11 +19,9 @@ import {
   ErrorEl,
 } from './FormTrackModal.styled'
 import useFormTrackModal from '../hooks/useFormTrackModal'
-import { genres } from '../../../../api/genres'
-import CrossSvg from '../../../../assets/svg/CrossSvg'
-import CheckSvg from '../../../../assets/svg/CheckSvg'
-import PlusSvg from '../../../../assets/svg/PlusSvg'
-import Modal from '../../../../components/UI/Modal/Modal'
+import { genres } from '@/api/genres'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import Modal from '@/components/UI/Modal/Modal'
 import { schemaZon } from '../consts/schemaZon'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -52,7 +50,7 @@ function FormTrackModal() {
           <TrackForm data-testid="track-form">
             <Title>{isRedactTrack ? 'Redact Track' : 'Create Track'}</Title>
             <CrossWrapper onClick={refuseRedact}>
-              <CrossSvg />
+              <IconSVG id="cross" />
             </CrossWrapper>
             <TrackList>
               <TrackItem>
@@ -115,7 +113,7 @@ function FormTrackModal() {
                       data-genre={text}
                       onClick={(event) => removeGenre(event)}
                     >
-                      <CrossSvg />
+                      <IconSVG id="cross" />
                     </WrapperDeleteSVG>
                   </GenresTegItem>
                 ))}
@@ -141,7 +139,7 @@ function FormTrackModal() {
                     data-testid="add-genre"
                     onClick={() => addGenre(values)}
                   >
-                    <CheckSvg />
+                    <IconSVG id="check" />
                   </WrapperSVG>
                   <ErrorEl
                     component="div"
@@ -158,7 +156,7 @@ function FormTrackModal() {
                     setFieldValue('genres', firstItem)
                   }}
                 >
-                  <PlusSvg />
+                  <IconSVG id="plus" />
                 </WrapperSVG>
               )}
             </SelectLabel>

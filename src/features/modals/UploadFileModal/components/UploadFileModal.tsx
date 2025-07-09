@@ -15,10 +15,9 @@ import { widthModal } from '../consts/widthModal'
 import { initialValues } from '../consts/initialValues'
 import useUploadFileModal from '../hooks/useUploadFileModal'
 import Modal from '../../../../components/UI/Modal/Modal'
-import CrossSvg from '../../../../assets/svg/CrossSvg'
-import ArrowSvg from '@/assets/svg/ArrowSvg'
 import { schemaZod } from '../consts/schemaZod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 function UploadFileModal() {
   const { isFile, submitForm, unloadFile, getUploadFile, closeModal } =
@@ -34,7 +33,7 @@ function UploadFileModal() {
         {({ setFieldValue }) => (
           <UploadBox>
             <WrapperCloseSvg onClick={closeModal}>
-              <CrossSvg />
+              <IconSVG id="cross" />
             </WrapperCloseSvg>
             <Title>Load File</Title>
             <UploadWrapper>
@@ -48,7 +47,7 @@ function UploadFileModal() {
                     setFieldValue('audioFile', file)
                   }}
                 />
-                <ArrowSvg />
+                <IconSVG id="arrow" />
               </WrapperUploadSvg>
               <UploadText>file u{isFile ? 'p' : 'n'}loaded</UploadText>
               <Error component="div" name="audioFile" />

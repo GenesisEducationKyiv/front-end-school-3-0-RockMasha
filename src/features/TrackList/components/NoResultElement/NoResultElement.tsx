@@ -1,14 +1,14 @@
-import DefaultSvg from '../../../../assets/svg/DefaultSvg'
-import { ImgWrapper, Text } from './NoResultElement.styled'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import { ImgWrapper, Text, Wrapper } from './NoResultElement.styled'
 
 function DefaultElement() {
   return (
-    <>
+    <Wrapper>
       <ImgWrapper>
-        <DefaultSvg />
+        <IconSVG id="nofound" />
       </ImgWrapper>
       <Text>no results</Text>
-    </>
+    </Wrapper>
   )
 }
 

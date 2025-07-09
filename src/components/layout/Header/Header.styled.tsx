@@ -8,7 +8,7 @@ export const HeaderEl = styled.header`
   width: 100%;
   padding: calc(10px + (16 - 10) * (100vw - 320px) / (1440 - 320)) 0;
   background-color: var(--color-black);
-  border-bottom: 2px solid var(--color-grey);
+  border-bottom: 2px solid var(--color-grey-100);
   z-index: 60;
 `;
 
@@ -46,19 +46,22 @@ export const CreateBtn = styled.button`
   border-radius: 5px;
 `;
 
-export const BurgerSvgWrapper = styled.div`
+export const BurgerSvgWrapper = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 5px;
   width: 42px;
   height: 30px;
+  color: var(--color-white);
+  background-color: transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
   transition: background-color 0.3s;
   @media (min-width: 768px) {
     ${getHiddenStyle()}
   }
   &:hover {
-    background-color: var(--color-grey);
+    background-color: var(--color-grey-100);
   }
 `;

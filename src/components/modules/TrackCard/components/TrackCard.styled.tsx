@@ -33,13 +33,25 @@ export const PlayPauseButton = styled.button`
     cursor: not-allowed;
   }
 `
-
-export const TrackImg = styled.img`
+export const TrackImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-grey-300);
   width: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   height: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   margin-right: calc(10px + (25 - 10) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  background-color: var(--color-grey-400);
   border-radius: 5px;
+`
+export const TrackDefaultSVGWrapper = styled.div`
+  width: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
+  height: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
+`
+
+export const TrackImg = styled.img`
+  width: 100%;
+  height: 100%;
 `
 
 export const TrackInfo = styled.div`
@@ -70,7 +82,7 @@ export const ProgressContainer = styled.div`
   bottom: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   width: 93%;
   height: calc(3px + (5 - 3) * (100vw - 320px) / (1440 - 320));
-  background: var(--color-white-grey);
+  background: var(--color-grey-200);
   border-radius: 5px;
 `
 

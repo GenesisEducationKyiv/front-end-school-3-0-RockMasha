@@ -2,12 +2,13 @@ import MainLoader from '../components/UI/Loader/MainLoader.tsx'
 import Tost from '../components/modules/Tost/Tost.tsx'
 import Header from '../components/layout/Header/Header.tsx'
 import { TracksList } from '../features/TrackList'
-import { GlobalStyles } from '../styles/GlobalStyled.tsx'
 import { openPage } from '@/shared/helpers/tosts/openPage.ts'
 import { useSelector } from 'react-redux'
 import { selectFilterPanel, selectLoading, selectModals } from '@/redux'
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense } from 'react'
 import LazyLoading from '@/components/UI/Loader/LazyLoading'
+import ActiveTrackPanel from '@/features/ActiveTrackPanel/ActiveTrackPanel.tsx'
+import TracksSection from '@/components/UI/TracksSection/TracksSection.tsx'
 
 openPage()
 
@@ -30,19 +31,19 @@ function Page() {
   const { formTrackModal, deleteTrackModal, uploadFileModal } =
     useSelector(selectModals)
 
-  useEffect(() => {
-    import('@/features/SortTracks/components/SortTracks')
-  }, [])
-
   return (
     <>
       <Header />
       {filterPanel && (
-        <Suspense fallback={null}>
+        <Suspense fallback={<LazyLoading />}>
           <SortTracks />
         </Suspense>
       )}
-      <TracksList />
+
+      <TracksSection>
+        <ActiveTrackPanel />
+        <TracksList />
+      </TracksSection>
 
       {formTrackModal && (
         <Suspense fallback={<LazyLoading />}>
@@ -61,8 +62,6 @@ function Page() {
       )}
       {loading && <MainLoader />}
       <Tost />
-
-      <GlobalStyles />
     </>
   )
 }

@@ -34,6 +34,7 @@ export const SvgWrapper = styled.div`
   width: calc(125px + (220 - 125) * (100vw - 320px) / (1440 - 320));
   height: calc(125px + (220 - 125) * (100vw - 320px) / (1440 - 320));
   margin-bottom: calc(25px + (30 - 25) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
 `
 
 export const BtnWrapper = styled.div`

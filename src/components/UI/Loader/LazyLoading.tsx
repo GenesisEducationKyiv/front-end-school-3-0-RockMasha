@@ -1,6 +1,5 @@
 import { CircleLoader } from 'react-spinners'
 import useLockPage from '../../../shared/hooks/useLockPage'
-import { colors } from '../../../styles/colors'
 import { isPhone } from '@/shared/helpers/isPhone'
 import { Wrapper } from './Loader.styled'
 
@@ -10,7 +9,7 @@ function LazyLoading() {
   return (
     <Wrapper>
       <CircleLoader
-        color={colors.white}
+        color={'#fff'}
         speedMultiplier={1.5}
         size={isPhone() ? '75px' : '150px'}
       />

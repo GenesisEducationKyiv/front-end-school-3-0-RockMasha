@@ -15,10 +15,10 @@ import { type ChangeEvent } from 'react'
 import { initialValues } from '../consts/initialValues'
 import { sortOpinion } from '../consts/sortOpinion'
 import { orderOpinion } from '../consts/orderOpinion'
-import DeleteSvg from '../../../assets/svg/DeleteSvg'
 import { genres } from '../../../api/genres'
 import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
 import useFilter from '@/shared/hooks/useFilters'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
@@ -119,7 +119,7 @@ const SortTracks: React.FC = () => {
                   type="button"
                   onClick={clearFilters}
                 >
-                  <DeleteSvg />
+                  <IconSVG id="delete" />
                 </ResetBtn>
               </SortForm>
             </Formik>
