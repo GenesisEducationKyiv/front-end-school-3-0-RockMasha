@@ -17,7 +17,7 @@ export const ActionItem = styled.li`
   justify-content: center;
   align-items: center;
   padding: calc(4px + (8 - 4) * (100vw - 320px) / (1440 - 320));
-  background-color: var(--color-white-grey);
+  background-color: var(--color-grey-200);
   border-radius: 5px;
 `;
 

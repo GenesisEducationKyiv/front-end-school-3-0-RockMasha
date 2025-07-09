@@ -1,3 +1,5 @@
+const spriteVersion = import.meta.env.VITE_SPRITE_VERSION
+
 interface SVGProps {
   id: string
 }
@@ -5,7 +7,7 @@ interface SVGProps {
 function IconSVG({ id }: SVGProps) {
   return (
     <svg height="100%" width="100%">
-      <use href={`./src/assets/svg/sprite.svg#${id}`} />
+      <use href={`/assets/sprite.svg?v=${spriteVersion}#${id}`} />
     </svg>
   )
 }

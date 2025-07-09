@@ -42,7 +42,7 @@ export const WrapperUploadSvg = styled.label`
   height: calc(50px + (125 - 50) * (100vw - 320px) / (1440 - 320));
   padding: calc(10px + (30 - 10) * (100vw - 320px) / (1440 - 320));
   color: var(--color-white);
-  background-color: var(--color-white-grey);
+  background-color: var(--color-grey-200);
   border-radius: 5px;
   transform: rotate(-90deg);
 `

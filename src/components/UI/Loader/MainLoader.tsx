@@ -2,7 +2,6 @@ import { HashLoader } from 'react-spinners'
 import { isPhone } from '../../../shared/helpers/isPhone.ts'
 import useLockPage from '../../../shared/hooks/useLockPage.ts'
 import { Wrapper } from './Loader.styled.tsx'
-import { colors } from '../../../styles/colors.js'
 
 function MainLoader() {
   useLockPage()
@@ -12,7 +11,7 @@ function MainLoader() {
       <HashLoader
         data-testid="loading-indicator"
         size={isPhone() ? '75px' : '100px'}
-        color={colors.white}
+        color={"#fff"}
         speedMultiplier={2}
       />
     </Wrapper>

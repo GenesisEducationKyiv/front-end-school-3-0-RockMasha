@@ -4,6 +4,7 @@ import {
   ContentWrapper,
   SvgWrapper,
   Title,
+  TrackDefaultSVGWrapper,
   TrackDetails,
   TrackImg,
   TrackImgWrapper,
@@ -13,7 +14,6 @@ import {
   TrackWrapper,
   Wrapper,
 } from './ActiveTrack.styled'
-import DefaultTrackPicture from '@/components/UI/DefaultTrackPicture/DefaultTrackPicture'
 
 function ActiveTrack() {
   const data = useActiveTrack()
@@ -27,9 +27,11 @@ function ActiveTrack() {
         <TrackWrapper>
           <TrackImgWrapper>
             {coverImage ? (
-              <TrackImg src={coverImage} />
+              <TrackImg src={coverImage} loading="lazy" />
             ) : (
-              <DefaultTrackPicture />
+              <TrackDefaultSVGWrapper>
+                <IconSVG id="note" />
+              </TrackDefaultSVGWrapper>
             )}
           </TrackImgWrapper>
 

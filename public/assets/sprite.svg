@@ -172,4 +172,53 @@
 </symbol>
 
 
+<!-- note svg -->
+<symbol id="note" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <g style="display:inline">
+    <path
+      d="m301.429 312.422 372.684-76v103.929l-372.684 76z"
+      fill="currentColor"
+      fill-opacity="1"
+      fill-rule="nonzero"
+      stroke="none"
+      transform="matrix(1.08717 0 0 1.08717 -155.773 -257.032)"
+    />
+    <path
+      d="M301.429 312.342h60v388.5h-60z"
+      fill="currentColor"
+      fill-opacity="1"
+      fill-rule="nonzero"
+      stroke="none"
+      transform="matrix(1.08717 0 0 1.08717 -155.773 -257.032)"
+    />
+    <path
+      d="M-40 470.362c0 43.078-55.964 78-125 78s-125-34.922-125-78 55.964-78 125-78 125 34.922 125 78"
+      fill="currentColor"
+      fill-opacity="1"
+      fill-rule="nonzero"
+      stroke="none"
+      transform="matrix(.8401 -.2251 .27056 1.00974 141.385 4.257)"
+    />
+    <path
+      d="M614.113 248.877h60v388.5h-60z"
+      fill="currentColor"
+      fill-opacity="1"
+      fill-rule="nonzero"
+      stroke="none"
+      style="display:inline"
+      transform="matrix(1.08717 0 0 1.08717 -155.773 -257.032)"
+    />
+    <path
+      d="M-40 470.362c0 43.078-55.964 78-125 78s-125-34.922-125-78 55.964-78 125-78 125 34.922 125 78"
+      fill="currentColor"
+      fill-opacity="1"
+      fill-rule="nonzero"
+      stroke="none"
+      style="display:inline"
+      transform="matrix(.8401 -.2251 .27056 1.00974 481.327 -64.74)"
+    />
+  </g>
+</symbol>
+
+
 </svg>

@@ -11,6 +11,7 @@ import {
   SeekBar,
   TrackImg,
   TrackImgWrapper,
+  TrackDefaultSVGWrapper,
 } from './TrackCard.styled'
 import CardBtns from '../../CardBtn/components/CardBtns'
 import useTrackCard from '../hooks/useTrackCard'
@@ -20,20 +21,19 @@ import { trackSchema, type NullableAudioEl, type Track } from '@/types'
 import type { SetCurrentPlay } from '../types/SetCurrentPlay'
 import NoValidCard from './NoValidCard'
 import IconSVG from '@/components/UI/IconSVG/IconSVG'
-import DefaultTrackPicture from '@/components/UI/DefaultTrackPicture/DefaultTrackPicture'
 
 interface Props {
   data: Track
   setCurrentPlay: SetCurrentPlay
   currentPlay: NullableAudioEl
-  іsPlayNow?: boolean
+  isPlayNow?: boolean
 }
 
 const TrackCard: React.FC<Props> = ({
   data,
   setCurrentPlay,
   currentPlay,
-  іsPlayNow,
+  isPlayNow,
 }: Props) => {
   const result = trackSchema.safeParse(data)
 
@@ -43,7 +43,7 @@ const TrackCard: React.FC<Props> = ({
     useTrackCard({ audioRef, audioFile, currentPlay, setCurrentPlay })
 
   useEffect(() => {
-    if (іsPlayNow) {
+    if (isPlayNow) {
       handleTogglePlayPause()
     }
   }, [])
@@ -65,7 +65,9 @@ const TrackCard: React.FC<Props> = ({
         {coverImage ? (
           <TrackImg src={coverImage} loading="lazy" />
         ) : (
-          <DefaultTrackPicture />
+          <TrackDefaultSVGWrapper>
+            <IconSVG id="note" />
+          </TrackDefaultSVGWrapper>
         )}
       </TrackImgWrapper>
       <TrackInfo>

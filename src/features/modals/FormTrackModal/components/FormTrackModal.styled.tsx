@@ -81,7 +81,7 @@ export const WrapperDeleteSVG = styled.div`
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   transition: background-color 0.3s;
   &:hover {
-    background-color: var(--color-white-grey);
+    background-color: var(--color-grey-200);
   }
 `;
 

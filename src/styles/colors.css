@@ -1,0 +1,21 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-violet: #9500ff;
+  --color-opacity: rgba(0, 0, 0, 0.5);
+
+  --color-grey-100: #333;
+  --color-grey-200: #4b5563;
+  --color-grey-300: #a09999;
+  --color-grey-400: #dedede;
+
+  --color-red-100: #cd2a51;
+  --color-red-200: #ff0000;
+
+  --color-purple-100: #19021b;
+  --color-purple-200: #2e1f37;
+  --color-purple-300: #660f67;
+  --color-purple-400: #5e3165;
+  --color-purple-500: #9332a4;
+  --color-purple-600: #ae1bc8;
+}

@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
   padding: calc(7px + (11 - 7) * (100vw - 320px) / (1440 - 320))
     calc(10px + (40 - 10) * (100vw - 320px) / (1440 - 320));
   background-color: var(--color-purple-300);
@@ -40,10 +39,19 @@ export const Title = styled.p`
 `
 
 export const TrackImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   height: calc(60px + (100 - 60) * (100vw - 320px) / (1440 - 320));
   margin-right: calc(10px + (25 - 10) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-grey-300);
+  background-color: var(--color-grey-400);
   border-radius: 5px;
+`
+export const TrackDefaultSVGWrapper = styled.div`
+  width: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
+  height: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
 `
 
 export const TrackImg = styled.img`
@@ -75,8 +83,8 @@ export const TrackTags = styled.div`
 `
 
 export const SvgWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: calc(85px + (150 - 85) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-purple-500)
+  align-self: end;
+  width: calc(70px + (120 - 70) * (100vw - 320px) / (1440 - 320));
+  height: calc(55px + (120 - 55) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-purple-500);
 `
