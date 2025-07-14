@@ -1,0 +1,16 @@
+export const ICON_LIST = [
+  'arrow',
+  'burger',
+  'check',
+  'cross',
+  'delete',
+  'letter',
+  'minus',
+  'nofound',
+  'pause',
+  'play',
+  'plus',
+  'redact',
+  'star-circle',
+  'note',
+] as const

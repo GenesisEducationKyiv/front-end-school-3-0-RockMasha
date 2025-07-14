@@ -1,0 +1,39 @@
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import Modal from '../../../../components/UI/Modal/Modal'
+import useDeleteTrackModal from '../hooks/useDeleteTrackModal'
+import {
+  Box,
+  Btn,
+  BtnWrapper,
+  SvgWrapper,
+  Message,
+} from './DeleteTrackModal.styled'
+
+function DeleteTrackModal() {
+  const { deleteItem, refuseDeleteItem } = useDeleteTrackModal()
+
+  return (
+    <Modal>
+      <Box>
+        <Message>Delete this Track?</Message>
+        <SvgWrapper>
+          <IconSVG id="letter" />
+        </SvgWrapper>
+        <BtnWrapper data-testid="confirm-dialog">
+          <Btn
+            data-testid="cancel-delete"
+            onClick={refuseDeleteItem}
+            color="no"
+          >
+            No
+          </Btn>
+          <Btn data-testid="confirm-delete" onClick={deleteItem} color="yes">
+            Yes
+          </Btn>
+        </BtnWrapper>
+      </Box>
+    </Modal>
+  )
+}
+
+export default DeleteTrackModal

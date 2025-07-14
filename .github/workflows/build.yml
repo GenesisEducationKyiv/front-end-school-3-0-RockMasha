@@ -1,0 +1,14 @@
+name: Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    uses: ./.github/workflows/setup-node.yml
+    with:
+      script: npm run build
+      uploadArtifact: |
+        dist
+        logs
+      artifactName: frontend-build
