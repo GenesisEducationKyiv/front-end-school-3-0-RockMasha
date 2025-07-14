@@ -1,7 +1,9 @@
+import type { Icon } from "@/types"
+
 const spriteVersion = import.meta.env.VITE_SPRITE_VERSION
 
 interface SVGProps {
-  id: string
+  id: Icon
 }
 
 function IconSVG({ id }: SVGProps) {
