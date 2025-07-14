@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 100%;
   position: relative;
+  width: 100%;
+  min-height: calc(32px + (47 - 32) * (100vw - 320px) / (1440 - 320));
   margin-bottom: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
+  background-color: var(--color-purple-300);
+  border-radius: 10px;
 `
 
 export const Button = styled.button`
@@ -19,6 +22,9 @@ export const Button = styled.button`
   cursor: pointer;
   @media (min-width: 768px) {
     white-space: nowrap;
+  }
+  :disabled {
+    cursor: wait;
   }
 `
 

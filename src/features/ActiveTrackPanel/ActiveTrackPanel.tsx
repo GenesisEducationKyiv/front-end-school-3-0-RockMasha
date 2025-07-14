@@ -25,7 +25,7 @@ function ActiveTrackPanel() {
             fallback={
               <>
                 <LazyLoading />
-                <Button>Show active track</Button>
+                <Button disabled={true}>Show active track</Button>
               </>
             }
           >
