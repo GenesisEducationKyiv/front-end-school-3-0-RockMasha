@@ -29,7 +29,7 @@ export const ContentBox = styled.div`
   }
   @supports (-moz-appearance: none) {
     scrollbar-width: thin;
-    scrollbar-color: $var(--color-grey) var(--color-black);
+    scrollbar-color: $var(--color-grey-100) var(--color-black);
   }
   &::-webkit-scrollbar {
     width: 9px;
@@ -44,7 +44,7 @@ export const ContentBox = styled.div`
     background-color: var(--color-black);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-grey);
+    background-color: var(--color-grey-100);
     border-radius: 20px;
     border: 2.5px solid var(--color-black);
     border-width: 2.5px, 10px, 2.5px, 2.5px;
@@ -75,7 +75,7 @@ export const SortField = styled(Field)`
   padding: 2px 7px;
   font-size: calc(14px + (19 - 14) * (100vw - 320px) / (1440 - 320));
   color: var(--color-white);
-  background-color: var(--color-grey);
+  background-color: var(--color-grey-100);
   border-radius: 5px;
   border: 1px solid transparent;
   &:-webkit-autofill {
@@ -131,7 +131,8 @@ export const ResetBtn = styled.button`
   width: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   height: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   margin-top: 5px;
-  background-color: var(--color-grey);
+  color: var(--color-white);
+  background-color: var(--color-grey-100);
   border: 1px solid transparent;
   border-radius: 5px;
   @media (min-width: 768px) {

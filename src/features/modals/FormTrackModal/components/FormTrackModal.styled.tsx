@@ -75,12 +75,13 @@ export const WrapperDeleteSVG = styled.div`
   width: calc(14px + (22 - 14) * (100vw - 320px) / (1440 - 320));
   height: calc(14px + (22 - 14) * (100vw - 320px) / (1440 - 320));
   padding: calc(1px + (3 - 1) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   transition: background-color 0.3s;
   &:hover {
-    background-color: var(--color-white-grey);
+    background-color: var(--color-grey-200);
   }
 `;
 
@@ -108,6 +109,7 @@ export const WrapperSVG = styled.div`
   width: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
   height: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
   padding: calc(3px + (7 - 3) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
   background-color: var(--color-purple-500);
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
@@ -118,11 +120,12 @@ export const CrossWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   top: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
   right: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
   width: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
   height: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
+  padding: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-white);
 `;
 
 export const SubmitBtn = styled.button`

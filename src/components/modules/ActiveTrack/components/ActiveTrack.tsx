@@ -1,11 +1,13 @@
-import StarCircle from '@/assets/svg/StarCircle'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 import useActiveTrack from '../hooks/useActiveTrack'
 import {
   ContentWrapper,
   SvgWrapper,
   Title,
+  TrackDefaultSVGWrapper,
   TrackDetails,
   TrackImg,
+  TrackImgWrapper,
   TrackInfo,
   TrackTags,
   TrackTitle,
@@ -23,9 +25,16 @@ function ActiveTrack() {
       <ContentWrapper>
         <Title>Active Track ~</Title>
         <TrackWrapper>
-          <TrackImg
-            src={coverImage || './src/assets/images/default_track.png'}
-          />
+          <TrackImgWrapper>
+            {coverImage ? (
+              <TrackImg src={coverImage} loading="lazy" />
+            ) : (
+              <TrackDefaultSVGWrapper>
+                <IconSVG id="note" />
+              </TrackDefaultSVGWrapper>
+            )}
+          </TrackImgWrapper>
+
           <TrackInfo>
             <TrackTitle>{title}</TrackTitle>
             <TrackDetails>Artist: {artist}</TrackDetails>
@@ -37,7 +46,7 @@ function ActiveTrack() {
         </TrackWrapper>
       </ContentWrapper>
       <SvgWrapper>
-        <StarCircle />
+        <IconSVG id="star-circle" />
       </SvgWrapper>
     </Wrapper>
   )

@@ -31,6 +31,7 @@ export type { SetState } from './models/SetState'
 export type { ChildrenProps } from './models/ChildrenProps'
 export type { SetCurrentPage } from './models/SetCurrentPage'
 export type { StartLoadingFn } from './models/StartLoadingFn'
+export type { Icon } from './models/Icon'
 
 // guard
 export { checkContextConnection } from './guards/checkContextConnection'

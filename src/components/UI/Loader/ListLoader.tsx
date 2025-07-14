@@ -1,7 +1,6 @@
 import { HashLoader } from 'react-spinners'
 import useLockPage from '../../../shared/hooks/useLockPage.ts'
 import { Wrapper } from './Loader.styled.tsx'
-import { colors } from '../../../styles/colors.js'
 import { isPhone } from '@/shared/helpers/isPhone.ts'
 
 function ListLoader() {
@@ -11,7 +10,7 @@ function ListLoader() {
     <Wrapper>
       <HashLoader
         data-testid="loading-tracks"
-        color={colors.white}
+        color={'#fff'}
         speedMultiplier={2}
         size={isPhone() ? '75px' : '100px'}
       />

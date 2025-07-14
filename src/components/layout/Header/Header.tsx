@@ -1,5 +1,5 @@
 import { openFormTrackModal, useToggleFilterPanel } from '@/redux'
-import BurgerSvg from '../../../assets/svg/BurgerSvg'
+import { useDispatch } from 'react-redux'
 import {
   BurgerSvgWrapper,
   Container,
@@ -8,7 +8,7 @@ import {
   HeaderEl,
   Title,
 } from './Header.styled'
-import { useDispatch } from 'react-redux'
+import IconSVG from '@/components/UI/IconSVG/IconSVG'
 
 function Header() {
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ function Header() {
       <Container>
         <FlexWrapper>
           <BurgerSvgWrapper onClick={togglePanel}>
-            <BurgerSvg />
+            <IconSVG id="burger" />
           </BurgerSvgWrapper>
           <Title data-testid="tracks-header">Player</Title>
         </FlexWrapper>
