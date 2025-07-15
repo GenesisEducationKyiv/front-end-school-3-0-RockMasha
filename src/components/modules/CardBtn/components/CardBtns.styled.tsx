@@ -17,7 +17,7 @@ export const ActionItem = styled.li`
   justify-content: center;
   align-items: center;
   padding: calc(4px + (8 - 4) * (100vw - 320px) / (1440 - 320));
-  background-color: var(--color-grey-200);
+  background-color: var(--color-secondary);
   border-radius: 5px;
 `;
 
@@ -27,7 +27,7 @@ export const ActionButton = styled.button`
   align-items: center;
   width: calc(15px + (30 - 15) * (100vw - 320px) / (1440 - 320));
   height: calc(15px + (30 - 15) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  color: var(--color-on-secondary);
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0;
@@ -41,8 +41,4 @@ export const ActionItemHidden = styled(ActionItem)`
 `;
 export const ActionButtonHidden = styled(ActionButton)`
   background-color: transparent;
-`;
-
-export const ActionButtonUpload = styled(ActionButton)`
-  transform: rotate(-90deg);
 `;

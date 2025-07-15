@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import { ErrorMessage, Field, Form } from "formik";
 
-export const TrackForm = styled(Form)``;
+export const TrackForm = styled(Form)``
 
 export const Title = styled.h2`
   margin-bottom: calc(10px + (25 - 10) * (100vw - 320px) / (1440 - 320));
   font-size: calc(20px + (32 - 20) * (100vw - 320px) / (1440 - 320));
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-on-surface);
 `;
 
 export const TrackList = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: calc(7px + (20 - 7) * (100vw - 320px) / (1440 - 320));
-  margin-bottom: calc(7px + (20 - 7) * (100vw - 320px) / (1440 - 320));
+  gap: calc(7px + (30 - 7) * (100vw - 320px) / (1440 - 320));
+  margin-bottom: calc(7px + (25 - 7) * (100vw - 320px) / (1440 - 320));
   @media (min-width: 768px) {
     max-height: 150px;
   }
@@ -24,18 +24,25 @@ export const TrackList = styled.ul`
 export const TrackItem = styled.li`
   position: relative;
   max-width: calc(200px + (350 - 200) * (100vw - 320px) / (1440 - 320));
+  color: var(--color-on-surface);
 `;
 
 export const TrackField = styled(Field)`
-  padding: 1px 7px;
+  padding: 1px 7px 1px 0;
   font-size: calc(12px + (20 - 12) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-black);
-  background-color: var(--color-white);
-  border-radius: 5px;
+  color: var(--color-on-surface-variant);
+  background-color: transparent;
   border: 1px solid transparent;
+  border-bottom: calc(1px + (2.5 - 1) * (100vw - 320px) / (1440 - 320)) solid
+    var(--color-outline-variant);
+  transition: border-bottom-color 0.3s;
   &:focus {
-    outline: calc(1px + (3 - 1) * (100vw - 320px) / (1440 - 320)) solid
-      var(--color-purple-200);
+    outline: 1px solid transparent;
+    border-bottom-color: var(--color-primary);
+  }
+  &::placeholder {
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
   }
 `;
 
@@ -47,6 +54,19 @@ export const TrackSelectBox = styled.div`
 
 export const TrackSelect = styled(TrackField)`
   padding: 1px;
+  background-color: var(--color-surface-container-high);
+  &:focus {
+    border-bottom-color: var(--color-outline-variant);
+  }
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
 `;
 
 export const GenresTegList = styled.ul`
@@ -65,7 +85,7 @@ export const GenresTegItem = styled.li`
 
 export const GenresTegText = styled.p`
   font-size: calc(13px + (18 - 13) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-purple-600);
+  color: var(--color-primary);
 `;
 
 export const WrapperDeleteSVG = styled.div`
@@ -75,22 +95,22 @@ export const WrapperDeleteSVG = styled.div`
   width: calc(14px + (22 - 14) * (100vw - 320px) / (1440 - 320));
   height: calc(14px + (22 - 14) * (100vw - 320px) / (1440 - 320));
   padding: calc(1px + (3 - 1) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  color: var(--color-on-surface-variant);
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   transition: background-color 0.3s;
   &:hover {
-    background-color: var(--color-grey-200);
+    background-color: var(--color-surface-bright);
   }
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: calc(4px + (10 - 4) * (100vw - 320px) / (1440 - 320));
+  gap: calc(4px + (4 - 4) * (100vw - 320px) / (1440 - 320));
   font-size: calc(15px + (22 - 15) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  color: var(--color-on-surface);
   @media (min-width: 1440px) {
     gap: 7px;
   }
@@ -99,7 +119,7 @@ export const Label = styled.label`
 export const SelectLabel = styled(Label)`
   display: flex;
   gap: 0;
-  color: var(--color-white);
+  color: var(--color-on-surface);
 `;
 
 export const WrapperSVG = styled.div`
@@ -109,8 +129,8 @@ export const WrapperSVG = styled.div`
   width: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
   height: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
   padding: calc(3px + (7 - 3) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
-  background-color: var(--color-purple-500);
+  color: var(--color-on-secondary);
+  background-color: var(--color-secondary);
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
 `;
@@ -125,7 +145,8 @@ export const CrossWrapper = styled.div`
   width: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
   height: calc(30px + (50 - 30) * (100vw - 320px) / (1440 - 320));
   padding: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  color: var(--color-on-surface);
+  cursor: pointer;
 `;
 
 export const SubmitBtn = styled.button`
@@ -133,10 +154,10 @@ export const SubmitBtn = styled.button`
   padding: calc(3px + (10 - 3) * (100vw - 320px) / (1440 - 320))
     calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   margin-left: auto;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1440 - 320));
   font-weight: 600;
-  background-color: var(--color-purple-600);
+  background-color: var(--color-primary);
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
 `;
@@ -145,10 +166,10 @@ export const ErrorEl = styled(ErrorMessage)`
   position: absolute;
   right: 0;
   bottom: calc(-10px + (10 - 16) * (100vw - 320px) / (1440 - 320));
-  font-size: calc(10px + (16 - 10) * (100vw - 320px) / (1440 - 320));
+  font-size: calc(10px + (14 - 10) * (100vw - 320px) / (1440 - 320));
   font-weight: 500;
   white-space: nowrap;
-  color: var(--color-red-200);
+  color: var(--color-error);
   @media (min-width: 768px) {
     left: 0;
   }

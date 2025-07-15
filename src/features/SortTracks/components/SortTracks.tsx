@@ -6,6 +6,7 @@ import {
   OpacityBox,
   OrderWrapper,
   ResetBtn,
+  SelectSVGWrapper,
   SidePanel,
   SortField,
   SortForm,
@@ -69,6 +70,9 @@ const SortTracks: React.FC = () => {
                       </option>
                     ))}
                   </SortSelect>
+                  <SelectSVGWrapper>
+                    <IconSVG id="select-arrow" />
+                  </SelectSVGWrapper>
                 </Label>
                 <Label>
                   Artist
@@ -96,6 +100,9 @@ const SortTracks: React.FC = () => {
                         </option>
                       ))}
                     </SortSelect>
+                    <SelectSVGWrapper>
+                      <IconSVG id="select-arrow" />
+                    </SelectSVGWrapper>
                   </Label>
                   <Label>
                     Order
@@ -112,6 +119,9 @@ const SortTracks: React.FC = () => {
                         </option>
                       ))}
                     </SortSelect>
+                    <SelectSVGWrapper>
+                      <IconSVG id="select-arrow" />
+                    </SelectSVGWrapper>
                   </Label>
                 </OrderWrapper>
                 <ResetBtn

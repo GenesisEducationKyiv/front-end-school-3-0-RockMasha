@@ -4,7 +4,6 @@ import {
   ActionButton,
   ActionButtonHidden,
   ActionButtonsList,
-  ActionButtonUpload,
   ActionItem,
   ActionItemHidden,
 } from './CardBtns.styled'
@@ -27,12 +26,12 @@ function CardBtns({ slug, id }: Props) {
         <ActionButtonHidden />
       </ActionItemHidden>
       <ActionItem>
-        <ActionButtonUpload
+        <ActionButton
           data-testid={`upload-track-${id}`}
           onClick={openUploadModal}
         >
-          <IconSVG id="arrow" />
-        </ActionButtonUpload>
+          <IconSVG id="upload" />
+        </ActionButton>
       </ActionItem>
       <ActionItem>
         <ActionButton

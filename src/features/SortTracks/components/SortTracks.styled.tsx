@@ -18,18 +18,18 @@ export const SidePanel = styled.section`
 `;
 
 export const ContentBox = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   height: 100%;
   max-width: 420px;
   padding-top: calc(60px + (110 - 60) * (100vw - 320px) / (1440 - 320));
-  background-color: var(--color-black);
+  background-color: var(--color-surface-container-low);
   @media (min-width: 768px) {
     max-width: none;
   }
   @supports (-moz-appearance: none) {
     scrollbar-width: thin;
-    scrollbar-color: $var(--color-grey-100) var(--color-black);
+    scrollbar-color: $var(--color-secondary) var(--color-on-secondary);
   }
   &::-webkit-scrollbar {
     width: 9px;
@@ -41,15 +41,14 @@ export const ContentBox = styled.div`
     }
   }
   &::-webkit-scrollbar-track {
-    background-color: var(--color-black);
+    background-color: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-grey-100);
+    background-color: var(--color-secondary);
     border-radius: 20px;
-    border: 2.5px solid var(--color-black);
-    border-width: 2.5px, 10px, 2.5px, 2.5px;
+    border: 2px solid var(--color-secondary);
     @media (min-width: 1440px) {
-      border-width: 2.5px 20px 2.5px 2.5px;
+      border-width: 2px 20px 2px 2px;
     }
   }
 `;
@@ -62,35 +61,57 @@ export const ContentWrapper = styled.div`
 export const SortForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  @media (min-width: 768px) {
-    gap: 7px;
-  }
-  @media (min-width: 1440px) {
-    gap: 13px;
-  }
+  gap: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
 `;
 
 export const SortField = styled(Field)`
-  padding: 2px 7px;
+  padding: 2px 7px 2px 0;
   font-size: calc(14px + (19 - 14) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
-  background-color: var(--color-grey-100);
-  border-radius: 5px;
+  color: var(--color-on-surface-variant);
+  background-color: transparent;
   border: 1px solid transparent;
-  &:-webkit-autofill {
-    background-color: transparent !important;
-    color: inherit !important;
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    transition: background-color 5000s ease-in-out 0s;
-    border-color: var(--color-white) !important;
-    -webkit-text-fill-color: var(--color-white) !important;
-    transition: background-color 5000s ease-in-out 0s;
+  border-bottom: calc(2px + (3 - 2) * (100vw - 320px) / (1440 - 320)) solid
+    var(--color-on-secondary);
+  background-color: var(--color-surface-container-low);
+  transition:
+    background-color 5000s ease-in-out 0s,
+    border-bottom-color 0.3s;
+  &:focus {
+    border-bottom-color: var(--color-primary);
+  }
+  &::placeholder {
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
   }
 `;
 
 export const SortSelect = styled(SortField)`
   padding: 1px 3px;
+  color: var(--color-on-surface-variant);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  &:focus {
+    outline: 1px solid transparent;
+    border-bottom-color: var(--color-on-secondary);
+  }
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+`;
+
+export const SelectSVGWrapper = styled.div`
+  position: absolute;
+  right: 2%;
+  bottom: 20%;
+  width: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
+  height: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
 `;
 
 export const Label = styled.label`
@@ -99,7 +120,7 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 5px;
   font-size: calc(16px + (22 - 16) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-white);
+  color: var(--color-on-surface);
   @media (min-width: 768px) {
     font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1440 - 320));
   }
@@ -112,13 +133,9 @@ export const Label = styled.label`
 export const OrderWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: calc(7px + (12 - 7) * (100vw - 320px) / (1440 - 320));
   margin-top: 10px;
-  @media (min-width: 768px) {
-    gap: 3px;
-  }
   @media (min-width: 1440px) {
-    gap: 7px;
     margin-top: 20px;
   }
 `;
@@ -131,8 +148,8 @@ export const ResetBtn = styled.button`
   width: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   height: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
   margin-top: 5px;
-  color: var(--color-white);
-  background-color: var(--color-grey-100);
+  color: var(--color-on-secondary);
+  background-color: var(--color-secondary);
   border: 1px solid transparent;
   border-radius: 5px;
   @media (min-width: 768px) {

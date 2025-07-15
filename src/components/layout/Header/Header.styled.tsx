@@ -7,8 +7,8 @@ export const HeaderEl = styled.header`
   left: 0;
   width: 100%;
   padding: calc(10px + (16 - 10) * (100vw - 320px) / (1440 - 320)) 0;
-  background-color: var(--color-black);
-  border-bottom: 2px solid var(--color-grey-100);
+  background-color: var(--color-surface-container);
+  border-bottom: 2px solid var(--color-outline);
   z-index: 60;
 `;
 
@@ -32,7 +32,7 @@ export const Title = styled.h1`
   justify-content: center;
   font-size: calc(24px + (48 - 24) * (100vw - 320px) / (1440 - 320));
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--color-on-surface);
 `;
 
 export const CreateBtn = styled.button`
@@ -40,8 +40,8 @@ export const CreateBtn = styled.button`
     calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   font-size: calc(18px + (32 - 18) * (100vw - 320px) / (1440 - 320));
   font-weight: 500;
-  color: var(--color-white);
-  background-color: var(--color-purple-300);
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
   border: 1px solid transparent;
   border-radius: 5px;
 `;
@@ -53,7 +53,7 @@ export const BurgerSvgWrapper = styled.button`
   padding: 0 5px;
   width: 42px;
   height: 30px;
-  color: var(--color-white);
+  color: var(--color-on-surface);
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -62,6 +62,6 @@ export const BurgerSvgWrapper = styled.button`
     ${getHiddenStyle()}
   }
   &:hover {
-    background-color: var(--color-grey-100);
+    background-color: var(--color-surface-container-highest);
   }
 `;

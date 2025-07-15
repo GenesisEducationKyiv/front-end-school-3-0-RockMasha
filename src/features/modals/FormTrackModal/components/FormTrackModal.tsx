@@ -56,7 +56,7 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Title
-                  <TrackField data-testid="input-title" name="title" />
+                  <TrackField data-testid="input-title" name="title" placeholder="As It Was..." />
                 </Label>
                 <ErrorEl
                   component="div"
@@ -67,7 +67,7 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Artist
-                  <TrackField data-testid="input-artist" name="artist" />
+                  <TrackField data-testid="input-artist" name="artist" placeholder="Kendrick..."/>
                 </Label>
                 <ErrorEl
                   component="div"
@@ -78,7 +78,7 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Album
-                  <TrackField data-testid="input-album" name="album" />
+                  <TrackField data-testid="input-album" name="album" placeholder="One Day..." />
                 </Label>
                 <ErrorEl
                   component="div"
@@ -92,6 +92,7 @@ function FormTrackModal() {
                   <TrackField
                     data-testid="input-cover-image"
                     name="coverImage"
+                    placeholder="https://excamp..."
                   />
                 </Label>
                 <ErrorEl

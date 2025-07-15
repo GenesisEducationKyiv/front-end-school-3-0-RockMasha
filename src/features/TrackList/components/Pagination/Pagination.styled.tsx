@@ -12,19 +12,21 @@ export const PaginationContainer = styled.div`
     padding: calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320))
       calc(10px + (20 - 10) * (100vw - 320px) / (1440 - 320));
     font-size: calc(14px + (24 - 14) * (100vw - 320px) / (1440 - 320));
-    color: var(--color-white);
+    color: var(--color-secondary);
     border-radius: 0.25rem;
-    background-color: var(--color-purple-300);
+    background-color: var(--color-on-secondary);
     transition: background-color 0.2s;
     cursor: pointer;
     &:hover {
-      background-color: var(--color-purple-200);
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
     }
   }
 
   .active {
-    background: var(--color-purple-600);
-    border-color: var(--color-purple-600);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    border-color: var(--color-outline);
   }
   .disabled {
     cursor: not-allowed;
