@@ -52,11 +52,11 @@ export const Button = styled.div<ButtonProps>`
   color: ${({ theme }) => getIconColor(theme)};
   background-color: ${({ theme }) => getBgColor(theme)};
   border: 1px solid transparent;
-  border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));;
+  border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   cursor: pointer;
 `
 
-export const WrapperSVG = styled.div`
+export const WrapperIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,5 @@
 import type { Icon, Theme } from '@/types'
-import { Button, WrapperSVG } from './ActionBtn.styled'
+import { Button, WrapperIcon } from './ActionBtn.styled'
 import IconSVG from '../IconSVG/IconSVG'
 
 interface ActionBtnProps {
@@ -7,22 +7,22 @@ interface ActionBtnProps {
   minSize: number
   maxSize: number
   theme: Theme
-  rounded?: number
   handelClick?: () => void
+  'data-testid': string
 }
 
-function ActionBtn({
-  icon,
-  minSize,
-  maxSize,
-  theme,
-  handelClick,
-}: ActionBtnProps) {
+function ActionBtn(props: ActionBtnProps) {
+  const { icon, minSize, maxSize, theme, handelClick } = props
   return (
-    <Button onClick={handelClick} size={[minSize, maxSize]} theme={theme}>
-      <WrapperSVG>
+    <Button
+      onClick={handelClick}
+      size={[minSize, maxSize]}
+      theme={theme}
+      data-testid={props['data-testid']}
+    >
+      <WrapperIcon>
         <IconSVG id={icon} />
-      </WrapperSVG>
+      </WrapperIcon>
     </Button>
   )
 }

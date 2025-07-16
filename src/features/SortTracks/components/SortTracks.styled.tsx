@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Field, Form } from 'formik'
+import { Form } from 'formik'
 
 export const SidePanel = styled.section`
   position: fixed;
@@ -63,72 +63,6 @@ export const SortForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
-`
-
-export const SortField = styled(Field)`
-  padding: 2px 7px 2px 0;
-  font-size: calc(14px + (19 - 14) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-on-surface-variant);
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-bottom: calc(2px + (3 - 2) * (100vw - 320px) / (1440 - 320)) solid
-    var(--color-on-secondary);
-  background-color: var(--color-surface-container-low);
-  transition:
-    background-color 5000s ease-in-out 0s,
-    border-bottom-color 0.3s;
-  &:focus {
-    border-bottom-color: var(--color-primary);
-  }
-  &::placeholder {
-    color: var(--color-on-surface-variant);
-    opacity: 0.5;
-  }
-`
-
-export const SortSelect = styled(SortField)`
-  padding: 1px 3px;
-  color: var(--color-on-surface-variant);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  &:focus {
-    outline: 1px solid transparent;
-    border-bottom-color: var(--color-on-secondary);
-  }
-  &::-webkit-scrollbar {
-    width: 1px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-`
-
-export const SelectSVGWrapper = styled.div`
-  position: absolute;
-  right: 2%;
-  bottom: 20%;
-  width: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
-  height: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
-`
-
-export const Label = styled.label`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: calc(16px + (22 - 16) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-on-surface);
-  @media (min-width: 768px) {
-    font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1440 - 320));
-  }
-  @media (min-width: 1440px) {
-    font-size: calc(16px + (22 - 16) * (100vw - 320px) / (1440 - 320));
-    gap: 7px;
-  }
 `
 
 export const OrderWrapper = styled.div`

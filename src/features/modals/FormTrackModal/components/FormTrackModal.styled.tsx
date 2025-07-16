@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ErrorMessage, Field, Form } from 'formik'
+import { ErrorMessage, Form } from 'formik'
 
 export const TrackForm = styled(Form)``
 
@@ -15,7 +15,7 @@ export const TrackList = styled.ul`
   flex-direction: column;
   flex-wrap: wrap;
   gap: calc(7px + (30 - 7) * (100vw - 320px) / (1440 - 320));
-  margin-bottom: calc(7px + (25 - 7) * (100vw - 320px) / (1440 - 320));
+  margin-bottom: calc(10px + (35 - 10) * (100vw - 320px) / (1440 - 320));
   @media (min-width: 768px) {
     max-height: 150px;
   }
@@ -33,46 +33,11 @@ export const TrackItem = styled.li`
   color: var(--color-on-surface);
 `
 
-export const TrackField = styled(Field)`
-  padding: 1px 7px 1px 0;
-  font-size: calc(12px + (20 - 12) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-on-surface-variant);
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-bottom: calc(1px + (2.5 - 1) * (100vw - 320px) / (1440 - 320)) solid
-    var(--color-outline-variant);
-  transition: border-bottom-color 0.3s;
-  &:focus {
-    outline: 1px solid transparent;
-    border-bottom-color: var(--color-primary);
-  }
-  &::placeholder {
-    color: var(--color-on-surface-variant);
-    opacity: 0.5;
-  }
-`
-
 export const TrackSelectBox = styled.div`
   display: flex;
+  align-items: center;
   gap: calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   margin-bottom: calc(3px + (10 - 3) * (100vw - 320px) / (1440 - 320));
-`
-
-export const TrackSelect = styled(TrackField)`
-  padding: 1px;
-  background-color: var(--color-surface-container-high);
-  &:focus {
-    border-bottom-color: var(--color-outline-variant);
-  }
-  &::-webkit-scrollbar {
-    width: 1px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
 `
 
 export const GenresTegList = styled.ul`
@@ -111,20 +76,11 @@ export const WrapperDeleteSVG = styled.div`
   }
 `
 
-export const Label = styled.label`
+export const GenresBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: calc(4px + (4 - 4) * (100vw - 320px) / (1440 - 320));
-  font-size: calc(15px + (22 - 15) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-on-surface);
-  @media (min-width: 1440px) {
-    gap: 7px;
-  }
-`
-
-export const SelectLabel = styled(Label)`
-  display: flex;
   gap: 0;
+  font-size: calc(15px + (20 - 15) * (100vw - 320px) / (1440 - 320));
   color: var(--color-on-surface);
 `
 
