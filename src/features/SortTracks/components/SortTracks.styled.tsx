@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Field, Form } from "formik";
+import styled from 'styled-components'
+import { Field, Form } from 'formik'
 
 export const SidePanel = styled.section`
   position: fixed;
@@ -15,7 +15,7 @@ export const SidePanel = styled.section`
   @media (min-width: 1440px) {
     width: 25%;
   }
-`;
+`
 
 export const ContentBox = styled.div`
   overflow-y: auto;
@@ -51,18 +51,19 @@ export const ContentBox = styled.div`
       border-width: 2px 20px 2px 2px;
     }
   }
-`;
+`
 
 export const ContentWrapper = styled.div`
+  position: relative;
   height: 100%;
   padding: 0 25px;
-`;
+`
 
 export const SortForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: calc(10px + (15 - 10) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const SortField = styled(Field)`
   padding: 2px 7px 2px 0;
@@ -83,7 +84,7 @@ export const SortField = styled(Field)`
     color: var(--color-on-surface-variant);
     opacity: 0.5;
   }
-`;
+`
 
 export const SortSelect = styled(SortField)`
   padding: 1px 3px;
@@ -104,7 +105,7 @@ export const SortSelect = styled(SortField)`
   &::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
-`;
+`
 
 export const SelectSVGWrapper = styled.div`
   position: absolute;
@@ -112,7 +113,7 @@ export const SelectSVGWrapper = styled.div`
   bottom: 20%;
   width: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
   height: calc(8px + (14 - 8) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const Label = styled.label`
   position: relative;
@@ -128,7 +129,7 @@ export const Label = styled.label`
     font-size: calc(16px + (22 - 16) * (100vw - 320px) / (1440 - 320));
     gap: 7px;
   }
-`;
+`
 
 export const OrderWrapper = styled.div`
   display: flex;
@@ -138,32 +139,10 @@ export const OrderWrapper = styled.div`
   @media (min-width: 1440px) {
     margin-top: 20px;
   }
-`;
-
-export const ResetBtn = styled.button`
-  display: flex;
-  align-self: flex-end;
-  justify-content: center;
-  align-items: center;
-  width: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
-  height: calc(35px + (45 - 35) * (100vw - 320px) / (1440 - 320));
-  margin-top: 5px;
-  color: var(--color-on-secondary);
-  background-color: var(--color-secondary);
-  border: 1px solid transparent;
-  border-radius: 5px;
-  @media (min-width: 768px) {
-    align-self: flex-start;
-    margin-top: 8px;
-    padding: 7px;
-  }
-  @media (min-width: 1440px) {
-    margin-top: 10px;
-  }
-`;
+`
 
 export const OpacityBox = styled.div`
   height: 100%;
   flex-grow: 1;
   background-color: var(--color-opacity);
-`;
+`

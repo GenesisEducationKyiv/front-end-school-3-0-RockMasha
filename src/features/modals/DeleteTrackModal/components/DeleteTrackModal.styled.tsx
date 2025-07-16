@@ -9,22 +9,22 @@ type DeleteModalProps = {
 function getBgColor(color: DeleteModalBtnType) {
   switch (color) {
     case 'yes':
-      return 'var(--color-error)'
+      return 'var(--color-error-container)'
     case 'no':
-      return 'var(--color-primary)'
+      return 'var(--color-primary-container)'
     default:
-      return 'var(--color-secondary)'
+      return 'var(--color-secondary-container)'
   }
 }
 
 function getTextColor(color: DeleteModalBtnType) {
   switch (color) {
     case 'yes':
-      return 'var(--color-on-error)'
+      return 'var(--color-on-error-container)'
     case 'no':
-      return 'var(--color-on-primary)'
+      return 'var(--color-on-primary-container)'
     default:
-      return 'var(--color-on-secondary)'
+      return 'var(--color-on-secondary-container)'
   }
 }
 

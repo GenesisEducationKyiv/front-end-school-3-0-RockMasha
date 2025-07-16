@@ -9,7 +9,6 @@ import {
   TrackSelect,
   GenresTegText,
   WrapperDeleteSVG,
-  WrapperSVG,
   GenresTegList,
   GenresTegItem,
   TrackSelectBox,
@@ -24,6 +23,7 @@ import IconSVG from '@/components/UI/IconSVG/IconSVG'
 import Modal from '@/components/UI/Modal/Modal'
 import { schemaZon } from '../consts/schemaZon'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+import ActionBtn from '@/components/UI/ActionBtn/ActionBtn'
 
 function FormTrackModal() {
   const {
@@ -56,7 +56,11 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Title
-                  <TrackField data-testid="input-title" name="title" placeholder="As It Was..." />
+                  <TrackField
+                    data-testid="input-title"
+                    name="title"
+                    placeholder="As It Was..."
+                  />
                 </Label>
                 <ErrorEl
                   component="div"
@@ -67,7 +71,11 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Artist
-                  <TrackField data-testid="input-artist" name="artist" placeholder="Kendrick..."/>
+                  <TrackField
+                    data-testid="input-artist"
+                    name="artist"
+                    placeholder="Kendrick..."
+                  />
                 </Label>
                 <ErrorEl
                   component="div"
@@ -78,7 +86,11 @@ function FormTrackModal() {
               <TrackItem>
                 <Label>
                   Album
-                  <TrackField data-testid="input-album" name="album" placeholder="One Day..." />
+                  <TrackField
+                    data-testid="input-album"
+                    name="album"
+                    placeholder="One Day..."
+                  />
                 </Label>
                 <ErrorEl
                   component="div"
@@ -136,12 +148,14 @@ function FormTrackModal() {
                       )
                     })}
                   </TrackSelect>
-                  <WrapperSVG
-                    data-testid="add-genre"
-                    onClick={() => addGenre(values)}
-                  >
-                    <IconSVG id="check" />
-                  </WrapperSVG>
+                  <ActionBtn
+                    icon="check"
+                    theme="Secondary"
+                    minSize={20}
+                    maxSize={35}
+                    handelClick={() => addGenre(values)}
+                    data-testid="open-genre-select"
+                  />
                   <ErrorEl
                     component="div"
                     name="genres"
@@ -150,15 +164,17 @@ function FormTrackModal() {
                 </TrackSelectBox>
               )}
               {!(currentGenres.length >= 4) && (
-                <WrapperSVG
-                  data-testid="open-genre-select"
-                  onClick={() => {
+                <ActionBtn
+                  icon="plus"
+                  theme="Secondary"
+                  minSize={20}
+                  maxSize={35}
+                  handelClick={() => {
                     const firstItem = getFirstValueOfGenresSelect()
                     setFieldValue('genres', firstItem)
                   }}
-                >
-                  <IconSVG id="plus" />
-                </WrapperSVG>
+                  data-testid="open-genre-select"
+                />
               )}
             </SelectLabel>
             <SubmitBtn type="submit" data-testid="submit-button">

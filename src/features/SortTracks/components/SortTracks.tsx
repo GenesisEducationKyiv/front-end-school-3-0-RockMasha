@@ -5,7 +5,6 @@ import {
   Label,
   OpacityBox,
   OrderWrapper,
-  ResetBtn,
   SelectSVGWrapper,
   SidePanel,
   SortField,
@@ -20,6 +19,7 @@ import { genres } from '../../../api/genres'
 import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
 import useFilter from '@/shared/hooks/useFilters'
 import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import ActionBtn from '@/components/UI/ActionBtn/ActionBtn'
 
 type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
@@ -124,13 +124,14 @@ const SortTracks: React.FC = () => {
                     </SelectSVGWrapper>
                   </Label>
                 </OrderWrapper>
-                <ResetBtn
+                <ActionBtn
+                  icon="delete"
+                  theme="Secondary-sub"
+                  minSize={30}
+                  maxSize={46}
+                  handelClick={clearFilters}
                   data-testid="reset-btn"
-                  type="button"
-                  onClick={clearFilters}
-                >
-                  <IconSVG id="delete" />
-                </ResetBtn>
+                />
               </SortForm>
             </Formik>
           </ContentWrapper>

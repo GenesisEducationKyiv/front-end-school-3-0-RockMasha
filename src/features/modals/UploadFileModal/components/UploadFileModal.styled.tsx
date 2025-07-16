@@ -84,8 +84,8 @@ export const SubmitBtn = styled.button`
     calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   font-size: calc(16px + (32 - 16) * (100vw - 320px) / (1440 - 320));
   font-weight: 500;
-  color: var(--color-on-primary);
-  background-color: var(--color-primary);
+  color: var(--color-on-primary-container);
+  background-color: var(--color-primary-container);
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
 `

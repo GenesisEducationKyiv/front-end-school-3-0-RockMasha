@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ErrorMessage, Field, Form } from "formik";
+import styled from 'styled-components'
+import { ErrorMessage, Field, Form } from 'formik'
 
 export const TrackForm = styled(Form)``
 
@@ -8,7 +8,7 @@ export const Title = styled.h2`
   font-size: calc(20px + (32 - 20) * (100vw - 320px) / (1440 - 320));
   font-weight: 700;
   color: var(--color-on-surface);
-`;
+`
 
 export const TrackList = styled.ul`
   display: flex;
@@ -19,13 +19,19 @@ export const TrackList = styled.ul`
   @media (min-width: 768px) {
     max-height: 150px;
   }
-`;
+  @media (min-width: 1440px) {
+    max-height: 200px;
+  }
+  @media (min-width: 2500px) {
+    max-height: none;
+  }
+`
 
 export const TrackItem = styled.li`
   position: relative;
   max-width: calc(200px + (350 - 200) * (100vw - 320px) / (1440 - 320));
   color: var(--color-on-surface);
-`;
+`
 
 export const TrackField = styled(Field)`
   padding: 1px 7px 1px 0;
@@ -44,13 +50,13 @@ export const TrackField = styled(Field)`
     color: var(--color-on-surface-variant);
     opacity: 0.5;
   }
-`;
+`
 
 export const TrackSelectBox = styled.div`
   display: flex;
   gap: calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   margin-bottom: calc(3px + (10 - 3) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const TrackSelect = styled(TrackField)`
   padding: 1px;
@@ -67,7 +73,7 @@ export const TrackSelect = styled(TrackField)`
   &::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
-`;
+`
 
 export const GenresTegList = styled.ul`
   display: flex;
@@ -75,18 +81,18 @@ export const GenresTegList = styled.ul`
   flex-wrap: wrap;
   margin-top: calc(3px + (7 - 3) * (100vw - 320px) / (1440 - 320));
   margin-bottom: 3px;
-`;
+`
 
 export const GenresTegItem = styled.li`
   display: flex;
   align-items: center;
   gap: calc(3px + (5 - 3) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const GenresTegText = styled.p`
-  font-size: calc(13px + (18 - 13) * (100vw - 320px) / (1440 - 320));
+  font-size: calc(12px + (18 - 12) * (100vw - 320px) / (1440 - 320));
   color: var(--color-primary);
-`;
+`
 
 export const WrapperDeleteSVG = styled.div`
   display: flex;
@@ -103,7 +109,7 @@ export const WrapperDeleteSVG = styled.div`
   &:hover {
     background-color: var(--color-surface-bright);
   }
-`;
+`
 
 export const Label = styled.label`
   display: flex;
@@ -114,26 +120,13 @@ export const Label = styled.label`
   @media (min-width: 1440px) {
     gap: 7px;
   }
-`;
+`
 
 export const SelectLabel = styled(Label)`
   display: flex;
   gap: 0;
   color: var(--color-on-surface);
-`;
-
-export const WrapperSVG = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
-  height: calc(20px + (33 - 20) * (100vw - 320px) / (1440 - 320));
-  padding: calc(3px + (7 - 3) * (100vw - 320px) / (1440 - 320));
-  color: var(--color-on-secondary);
-  background-color: var(--color-secondary);
-  border: 1px solid transparent;
-  border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const CrossWrapper = styled.div`
   position: absolute;
@@ -147,20 +140,20 @@ export const CrossWrapper = styled.div`
   padding: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
   color: var(--color-on-surface);
   cursor: pointer;
-`;
+`
 
 export const SubmitBtn = styled.button`
   display: block;
   padding: calc(3px + (10 - 3) * (100vw - 320px) / (1440 - 320))
     calc(7px + (15 - 7) * (100vw - 320px) / (1440 - 320));
   margin-left: auto;
-  color: var(--color-on-primary);
+  color: var(--color-on-primary-container);
   font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1440 - 320));
   font-weight: 600;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-container);
   border: 1px solid transparent;
   border-radius: calc(5px + (10 - 5) * (100vw - 320px) / (1440 - 320));
-`;
+`
 
 export const ErrorEl = styled(ErrorMessage)`
   position: absolute;
@@ -173,4 +166,4 @@ export const ErrorEl = styled(ErrorMessage)`
   @media (min-width: 768px) {
     left: 0;
   }
-`;
+`

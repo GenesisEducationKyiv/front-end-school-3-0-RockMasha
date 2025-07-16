@@ -8,8 +8,8 @@
 
 
 <!-- burger svg -->
-<symbol id="burger" viewBox="0 0 41 25">
-  <path id="burger-menu" d="M2 2H25.3333M2 12.6667H39.3333M16 23.3333H39.3333" stroke="currentColor" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="burger" viewBox="0 0 18 12">
+  <path d="M0 12V10H18V12H0ZM0 7V5H18V7H0ZM0 2V0H18V2H0Z" fill="currentColor"/>
 </symbol>
 
 
