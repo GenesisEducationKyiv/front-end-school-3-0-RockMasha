@@ -25,7 +25,13 @@ export default defineConfig({
       instances: [{ browser: 'chromium' }],
     },
     setupFiles: '.storybook/vitest.setup.ts',
-    include: ['src/**/*.stories.{ts,tsx}'],
+  },
+  optimizeDeps: {
+    include: [
+      'markdown-to-jsx',
+      'react/jsx-dev-runtime',
+      'styled-components',
+    ],
   },
 })
 
