@@ -30,8 +30,8 @@ Updating the icons will give the player a more modern look.
 
 - Additional time will be needed to implement the new design
 
-## Status `Proposed`
+## Status `Accepted`
 
 ## Consequences After Execution
 
-The decision on implementation has not yet been made.
+Modernized and Improved design (In subjective opinion)

@@ -34,9 +34,3 @@ function Header() {
 }
 
 export default Header
-
-// <CreateBtn
-//   onClick={() => dispatch(openFormTrackModal())}
-// >
-//   Create Track
-// </CreateBtn>
