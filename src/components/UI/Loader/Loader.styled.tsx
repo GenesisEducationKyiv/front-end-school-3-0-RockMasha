@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -11,4 +11,4 @@ export const Wrapper = styled.div`
   height: 100%;
   background-color: var(--color-opacity);
   z-index: 100;
-`;
+`

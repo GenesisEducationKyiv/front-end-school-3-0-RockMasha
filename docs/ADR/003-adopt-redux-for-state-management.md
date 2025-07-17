@@ -21,8 +21,8 @@ This centralizes logic, allows the use of Redux DevTools, and enables interactio
 - Global state might not be necessary since the player is small.
 - This could unnecessarily increase the amount of logic.
 
-## Status `Proposed`
+## Status `Accepted`
 
 ## Consequences After Execution
 
-The decision to implement Redux has not yet been made.
+Logic working global state was easier to be traced

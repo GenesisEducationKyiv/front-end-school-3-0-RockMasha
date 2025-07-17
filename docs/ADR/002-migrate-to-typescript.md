@@ -27,4 +27,4 @@ it improves autocomplete and refactoring, makes the code more understandable and
 
 ## Consequences After Execution
 
-Not yet implemented.
+Detecting errors has become easier thanks to types, writing code has become easier thanks to TypeScript hints.

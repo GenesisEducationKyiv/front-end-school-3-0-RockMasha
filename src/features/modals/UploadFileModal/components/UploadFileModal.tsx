@@ -47,7 +47,7 @@ function UploadFileModal() {
                     setFieldValue('audioFile', file)
                   }}
                 />
-                <IconSVG id="arrow" />
+                <IconSVG id="upload" />
               </WrapperUploadSvg>
               <UploadText>file u{isFile ? 'p' : 'n'}loaded</UploadText>
               <Error component="div" name="audioFile" />

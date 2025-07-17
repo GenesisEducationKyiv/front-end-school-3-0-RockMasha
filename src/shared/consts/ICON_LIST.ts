@@ -1,5 +1,5 @@
 export const ICON_LIST = [
-  'arrow',
+  'upload',
   'burger',
   'check',
   'cross',
@@ -13,4 +13,5 @@ export const ICON_LIST = [
   'redact',
   'star-circle',
   'note',
+  'select-arrow'
 ] as const
