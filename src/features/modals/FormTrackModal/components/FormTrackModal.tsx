@@ -129,7 +129,7 @@ function FormTrackModal() {
                     data-testid="genre-selector"
                     type="select"
                     name="genres"
-                    bgColor="var(--color-surface-container-high)"
+                    bgcolor="var(--color-surface-container-high)"
                   >
                     {genres.map((item) => {
                       return (

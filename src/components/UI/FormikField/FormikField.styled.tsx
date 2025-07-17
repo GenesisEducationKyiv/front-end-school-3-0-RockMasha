@@ -2,7 +2,7 @@ import { Field } from 'formik'
 import styled from 'styled-components'
 
 type bgColorProps = {
-  bgColor: string
+  bgcolor: string
 }
 
 export const Label = styled.label`
@@ -47,7 +47,7 @@ export const FieldSelect = styled(FieldInput)<bgColorProps>`
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 1px;
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ bgcolor }) => bgcolor};
   border-bottom: 1px solid transparent;
   &:focus {
     border-bottom-color: transparent;

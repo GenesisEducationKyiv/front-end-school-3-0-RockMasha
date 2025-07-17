@@ -53,7 +53,7 @@ const SortTracks: React.FC = () => {
                   name="genre"
                   onChange={handleChange}
                   value={genre}
-                  bgColor="var(--color-surface-container-low)"
+                  bgcolor="var(--color-surface-container-low)"
                 >
                   <option key="none" value={''}>
                     none
@@ -80,7 +80,7 @@ const SortTracks: React.FC = () => {
                     name="sort"
                     onChange={handleChange}
                     value={sort}
-                    bgColor="var(--color-surface-container-low)"
+                    bgcolor="var(--color-surface-container-low)"
                   >
                     {sortOpinion.map((item) => (
                       <option key={item} value={item}>
@@ -95,7 +95,7 @@ const SortTracks: React.FC = () => {
                     name="order"
                     onChange={handleChange}
                     value={order}
-                    bgColor="var(--color-surface-container-low)"
+                    bgcolor="var(--color-surface-container-low)"
                   >
                     {orderOpinion.map((item) => (
                       <option key={item} value={item}>

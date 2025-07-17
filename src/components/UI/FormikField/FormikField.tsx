@@ -14,7 +14,7 @@ interface BaseProps extends ChildrenProps {
   signature?: string
   placeholder?: string
   type?: 'input' | 'select'
-  bgColor?: string
+  bgcolor?: string
 }
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>
 type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>
@@ -26,7 +26,7 @@ function FormikField({
   type = 'input',
   placeholder = '',
   children,
-  bgColor = 'transparent',
+  bgcolor = 'transparent',
   ...props
 }: InputProps) {
   return (
@@ -44,7 +44,7 @@ function FormikField({
             component="select"
             name={name}
             placeholder={placeholder}
-            bgColor={bgColor}
+            bgcolor={bgcolor}
             {...props}
           >
             {children}

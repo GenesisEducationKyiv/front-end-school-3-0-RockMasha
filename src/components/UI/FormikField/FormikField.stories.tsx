@@ -30,7 +30,7 @@ export const Select: Store = {
     name: 'name',
     signature: 'Name',
     type: 'select',
-    bgColor: "var(--color-surface)",
+    bgcolor: "var(--color-surface)",
     children: (
       <>
         <option value="">anonymous</option>
