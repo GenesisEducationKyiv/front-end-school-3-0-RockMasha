@@ -25,7 +25,7 @@ function Header() {
           theme="Primary-sub"
           minSize={30}
           maxSize={55}
-          handelClick={() => dispatch(openFormTrackModal())}
+          handleClick={() => dispatch(openFormTrackModal())}
           data-testid="create-track-button"
         />
       </Container>

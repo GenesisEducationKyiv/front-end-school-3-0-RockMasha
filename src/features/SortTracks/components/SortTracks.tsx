@@ -109,7 +109,7 @@ const SortTracks: React.FC = () => {
                   theme="Secondary-sub"
                   minSize={30}
                   maxSize={46}
-                  handelClick={clearFilters}
+                  handleClick={clearFilters}
                   data-testid="reset-btn"
                 />
               </SortForm>

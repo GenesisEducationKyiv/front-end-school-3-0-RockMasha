@@ -7,15 +7,15 @@ interface ActionBtnProps {
   minSize: number
   maxSize: number
   theme: Theme
-  handelClick?: () => void
+  handleClick?: () => void
   'data-testid': string
 }
 
 function ActionBtn(props: ActionBtnProps) {
-  const { icon, minSize, maxSize, theme, handelClick } = props
+  const { icon, minSize, maxSize, theme, handleClick } = props
   return (
     <Button
-      onClick={handelClick}
+      onClick={handleClick}
       size={[minSize, maxSize]}
       theme={theme}
       data-testid={props['data-testid']}

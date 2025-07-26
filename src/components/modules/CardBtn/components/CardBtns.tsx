@@ -27,7 +27,7 @@ function CardBtns({ slug, id }: Props) {
           theme="Secondary-sub"
           minSize={23}
           maxSize={46}
-          handelClick={openUploadModal}
+          handleClick={openUploadModal}
           data-testid={`upload-track-${id}`}
         />
       </ActionItem>
@@ -37,7 +37,7 @@ function CardBtns({ slug, id }: Props) {
           theme="Secondary-sub"
           minSize={23}
           maxSize={46}
-          handelClick={openRedactModal}
+          handleClick={openRedactModal}
           data-testid={`edit-track-${id}`}
         />
       </ActionItem>
@@ -47,7 +47,7 @@ function CardBtns({ slug, id }: Props) {
           theme="Secondary-sub"
           minSize={23}
           maxSize={46}
-          handelClick={openDeleteModal}
+          handleClick={openDeleteModal}
           data-testid={`delete-track-${id}`}
         />
       </ActionItem>

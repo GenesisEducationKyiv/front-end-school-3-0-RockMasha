@@ -146,7 +146,7 @@ function FormTrackModal() {
                     theme="Secondary"
                     minSize={20}
                     maxSize={35}
-                    handelClick={() => addGenre(values)}
+                    handleClick={() => addGenre(values)}
                     data-testid="open-genre-select"
                   />
                   <ErrorEl
@@ -162,7 +162,7 @@ function FormTrackModal() {
                   theme="Secondary"
                   minSize={20}
                   maxSize={35}
-                  handelClick={() => {
+                  handleClick={() => {
                     const firstItem = getFirstValueOfGenresSelect()
                     setFieldValue('genres', firstItem)
                   }}
