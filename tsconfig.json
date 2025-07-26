@@ -1,0 +1,29 @@
+{
+  "extends": "@tsconfig/vite-react/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "erasableSyntaxOnly": false,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": [
+    "src",
+    "vite-env.d.ts",
+    "declarations.d.ts",
+    "vite.config.ts",
+    "eslint.config.ts",
+    "playwright-ct.config.ts",
+    "playwright.config.ts",
+    ".storybook/*",
+    "vitest.setup.ts",
+    "vitest.storybook.config.ts",
+    "vitest.unit.config.ts",
+  ],
+  "exclude": ["node_modules", "dist"]
+}

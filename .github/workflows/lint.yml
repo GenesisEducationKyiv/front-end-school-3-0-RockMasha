@@ -1,0 +1,10 @@
+name: Lint
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    uses: ./.github/workflows/setup-node.yml
+    with:
+      script: npm run lint

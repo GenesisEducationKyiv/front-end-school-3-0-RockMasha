@@ -1,0 +1,42 @@
+@import 'reset-css';
+@import 'modern-normalize';
+@import './fonts.css';
+@import './colors.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-surface);
+}
+
+@supports (-moz-appearance: none) {
+  body {
+    scrollbar-width: none;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 1px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  color: inherit !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  border-color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+button,
+a,
+select {
+  cursor: pointer;
+}
