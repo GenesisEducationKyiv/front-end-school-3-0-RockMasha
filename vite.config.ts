@@ -1,14 +1,14 @@
-import { fileURLToPath } from 'url'
-import path from 'path'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig({
-  base: './',
+  base: '/',
   server: {
     port: 3000,
   },
@@ -28,18 +28,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-    },
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
-    css: true,
-    include: ['src/tests/**/*.test.ts', 'src/tests/**/*.test.tsx'],
-    coverage: {
-      reporter: ['text', 'html'],
-      include: ['src/**/*'],
-      exclude: ['node_modules', 'dist'],
     },
   },
 })

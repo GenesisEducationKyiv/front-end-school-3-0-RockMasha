@@ -13,6 +13,8 @@ dist
 dist-ssr
 bundle-report.html
 *.local
+act.exe
+build-storybook.log
 
 # Editor directories and files
 .vscode/*
@@ -30,3 +32,6 @@ bundle-report.html
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+*storybook.log
+storybook-static

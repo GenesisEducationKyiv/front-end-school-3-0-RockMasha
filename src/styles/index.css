@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--color-purple-100);
+  background-color: var(--color-surface);
 }
 
 @supports (-moz-appearance: none) {
@@ -26,21 +26,17 @@ body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-input:focus {
-  outline: calc(1px + (2 - 1) * (100vw - 320px) / (1440 - 320)) solid
-    var(--color-purple-500);
-}
-
 input:-webkit-autofill {
   background-color: transparent !important;
   color: inherit !important;
   -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
   transition: background-color 5000s ease-in-out 0s;
-  border-color: var(--color-black) !important;
-  -webkit-text-fill-color: var(--color-black) !important;
+  border-color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 button,
-a {
+a,
+select {
   cursor: pointer;
 }

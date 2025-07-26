@@ -1,22 +1,18 @@
 import { Formik } from 'formik'
 import {
   CrossWrapper,
-  Label,
   SubmitBtn,
-  TrackField,
   TrackItem,
   TrackList,
-  TrackSelect,
   GenresTegText,
   WrapperDeleteSVG,
-  WrapperSVG,
   GenresTegList,
   GenresTegItem,
   TrackSelectBox,
-  SelectLabel,
   TrackForm,
   Title,
   ErrorEl,
+  GenresBox,
 } from './FormTrackModal.styled'
 import useFormTrackModal from '../hooks/useFormTrackModal'
 import { genres } from '@/api/genres'
@@ -24,6 +20,8 @@ import IconSVG from '@/components/UI/IconSVG/IconSVG'
 import Modal from '@/components/UI/Modal/Modal'
 import { schemaZon } from '../consts/schemaZon'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+import ActionBtn from '@/components/UI/ActionBtn/ActionBtn'
+import FormikField from '@/components/UI/FormikField/FormikField'
 
 function FormTrackModal() {
   const {
@@ -54,10 +52,12 @@ function FormTrackModal() {
             </CrossWrapper>
             <TrackList>
               <TrackItem>
-                <Label>
-                  Title
-                  <TrackField data-testid="input-title" name="title" />
-                </Label>
+                <FormikField
+                  name="input-title"
+                  signature="Title"
+                  placeholder="As It Was..."
+                  data-testid="input-title"
+                />
                 <ErrorEl
                   component="div"
                   name="title"
@@ -65,10 +65,12 @@ function FormTrackModal() {
                 />
               </TrackItem>
               <TrackItem>
-                <Label>
-                  Artist
-                  <TrackField data-testid="input-artist" name="artist" />
-                </Label>
+                <FormikField
+                  name="artist"
+                  signature="Artist"
+                  placeholder="Kendrick..."
+                  data-testid="input-artist"
+                />
                 <ErrorEl
                   component="div"
                   name="artist"
@@ -76,10 +78,12 @@ function FormTrackModal() {
                 />
               </TrackItem>
               <TrackItem>
-                <Label>
-                  Album
-                  <TrackField data-testid="input-album" name="album" />
-                </Label>
+                <FormikField
+                  name="album"
+                  signature="Album"
+                  placeholder="One Day..."
+                  data-testid="input-album"
+                />
                 <ErrorEl
                   component="div"
                   name="album"
@@ -87,13 +91,12 @@ function FormTrackModal() {
                 />
               </TrackItem>
               <TrackItem>
-                <Label>
-                  Img
-                  <TrackField
-                    data-testid="input-cover-image"
-                    name="coverImage"
-                  />
-                </Label>
+                <FormikField
+                  name="coverImage"
+                  signature="Img"
+                  placeholder="https://excamp..."
+                  data-testid="input-cover-image"
+                />
                 <ErrorEl
                   component="div"
                   name="coverImage"
@@ -101,29 +104,32 @@ function FormTrackModal() {
                 />
               </TrackItem>
             </TrackList>
-            <SelectLabel>
+            <GenresBox>
               Genres
-              <GenresTegList data-testid="form-genres-list">
-                {currentGenres.map((text) => (
-                  <GenresTegItem key={text}>
-                    <GenresTegText>{'#' + text + ' '}</GenresTegText>
-                    <WrapperDeleteSVG
-                      data-testid="remove-genre"
-                      className="delete-wrap"
-                      data-genre={text}
-                      onClick={(event) => removeGenre(event)}
-                    >
-                      <IconSVG id="cross" />
-                    </WrapperDeleteSVG>
-                  </GenresTegItem>
-                ))}
-              </GenresTegList>
+              {currentGenres.length > 0 && (
+                <GenresTegList data-testid="form-genres-list">
+                  {currentGenres.map((text) => (
+                    <GenresTegItem key={text}>
+                      <GenresTegText>{'#' + text + ' '}</GenresTegText>
+                      <WrapperDeleteSVG
+                        data-testid="remove-genre"
+                        className="delete-wrap"
+                        data-genre={text}
+                        onClick={(event) => removeGenre(event)}
+                      >
+                        <IconSVG id="cross" />
+                      </WrapperDeleteSVG>
+                    </GenresTegItem>
+                  ))}
+                </GenresTegList>
+              )}
               {isNotHiddenGenresSelect && (
                 <TrackSelectBox>
-                  <TrackSelect
+                  <FormikField
                     data-testid="genre-selector"
-                    component="select"
+                    type="select"
                     name="genres"
+                    bgcolor="var(--color-surface-container-high)"
                   >
                     {genres.map((item) => {
                       return (
@@ -134,13 +140,15 @@ function FormTrackModal() {
                         )
                       )
                     })}
-                  </TrackSelect>
-                  <WrapperSVG
-                    data-testid="add-genre"
-                    onClick={() => addGenre(values)}
-                  >
-                    <IconSVG id="check" />
-                  </WrapperSVG>
+                  </FormikField>
+                  <ActionBtn
+                    icon="check"
+                    theme="Secondary"
+                    minSize={20}
+                    maxSize={35}
+                    handleClick={() => addGenre(values)}
+                    data-testid="open-genre-select"
+                  />
                   <ErrorEl
                     component="div"
                     name="genres"
@@ -149,17 +157,19 @@ function FormTrackModal() {
                 </TrackSelectBox>
               )}
               {!(currentGenres.length >= 4) && (
-                <WrapperSVG
-                  data-testid="open-genre-select"
-                  onClick={() => {
+                <ActionBtn
+                  icon="plus"
+                  theme="Secondary"
+                  minSize={20}
+                  maxSize={35}
+                  handleClick={() => {
                     const firstItem = getFirstValueOfGenresSelect()
                     setFieldValue('genres', firstItem)
                   }}
-                >
-                  <IconSVG id="plus" />
-                </WrapperSVG>
+                  data-testid="open-genre-select"
+                />
               )}
-            </SelectLabel>
+            </GenresBox>
             <SubmitBtn type="submit" data-testid="submit-button">
               {isRedactTrack ? 'Redact' : 'Create'}
             </SubmitBtn>

@@ -1,14 +1,11 @@
 import type { Id, Slug } from '@/types'
 import useCardBtn from '../hooks/useCardBtn'
 import {
-  ActionButton,
-  ActionButtonHidden,
   ActionButtonsList,
-  ActionButtonUpload,
   ActionItem,
   ActionItemHidden,
 } from './CardBtns.styled'
-import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import ActionBtn from '@/components/UI/ActionBtn/ActionBtn'
 
 interface Props {
   slug: Slug
@@ -23,32 +20,36 @@ function CardBtns({ slug, id }: Props) {
 
   return (
     <ActionButtonsList>
-      <ActionItemHidden>
-        <ActionButtonHidden />
-      </ActionItemHidden>
+      <ActionItemHidden />
       <ActionItem>
-        <ActionButtonUpload
+        <ActionBtn
+          icon="upload"
+          theme="Secondary-sub"
+          minSize={23}
+          maxSize={46}
+          handleClick={openUploadModal}
           data-testid={`upload-track-${id}`}
-          onClick={openUploadModal}
-        >
-          <IconSVG id="arrow" />
-        </ActionButtonUpload>
+        />
       </ActionItem>
-      <ActionItem>
-        <ActionButton
+      <ActionItem onClick={openRedactModal}>
+        <ActionBtn
+          icon="redact"
+          theme="Secondary-sub"
+          minSize={23}
+          maxSize={46}
+          handleClick={openRedactModal}
           data-testid={`edit-track-${id}`}
-          onClick={openRedactModal}
-        >
-          <IconSVG id="redact" />
-        </ActionButton>
+        />
       </ActionItem>
       <ActionItem>
-        <ActionButton
+        <ActionBtn
+          icon="delete"
+          theme="Secondary-sub"
+          minSize={23}
+          maxSize={46}
+          handleClick={openDeleteModal}
           data-testid={`delete-track-${id}`}
-          onClick={openDeleteModal}
-        >
-          <IconSVG id="delete" />
-        </ActionButton>
+        />
       </ActionItem>
     </ActionButtonsList>
   )

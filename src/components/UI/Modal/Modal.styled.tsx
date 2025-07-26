@@ -38,7 +38,7 @@ export const ModalStyled = styled.div<ModalProps>`
   max-width: 480px;
   padding: calc(27px + (60 - 27) * (100vw - 320px) / (1440 - 320));
   padding-top: calc(35px + (70 - 35) * (100vw - 320px) / (1440 - 320));
-  background-color: var(--color-purple-300);
+  background-color: var(--color-surface-container-high);
   border-radius: 15px;
   @media (min-width: 768px) {
     max-width: ${(props) => props.width?.tablet || '600px'};

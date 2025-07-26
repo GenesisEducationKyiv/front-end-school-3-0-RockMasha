@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Section = styled.section`
   flex-grow: 1;
-  padding-top: calc(60px + (120 - 60) * (100vw - 320px) / (1440 - 320));
+  padding-top: calc(50px + (100 - 50) * (100vw - 320px) / (1440 - 320));
   padding-bottom: calc(15px + (30 - 15) * (100vw - 320px) / (1440 - 320));
   @media (min-width: 768px) {
     padding-left: 28%;

@@ -2,23 +2,20 @@ import { Formik } from 'formik'
 import {
   ContentBox,
   ContentWrapper,
-  Label,
   OpacityBox,
   OrderWrapper,
-  ResetBtn,
   SidePanel,
-  SortField,
   SortForm,
-  SortSelect,
 } from './SortTracks.styled'
 import { type ChangeEvent } from 'react'
-import { initialValues } from '../consts/initialValues'
-import { sortOpinion } from '../consts/sortOpinion'
 import { orderOpinion } from '../consts/orderOpinion'
 import { genres } from '../../../api/genres'
 import { isValidFilterPayload } from '../helpers/isValidFilterPayload'
 import useFilter from '@/shared/hooks/useFilters'
-import IconSVG from '@/components/UI/IconSVG/IconSVG'
+import ActionBtn from '@/components/UI/ActionBtn/ActionBtn'
+import { initialValues } from '../consts/initialValues'
+import FormikField from '@/components/UI/FormikField/FormikField'
+import { sortOpinion } from '../consts/sortOpinion'
 
 type FilterEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement>
 
@@ -41,86 +38,80 @@ const SortTracks: React.FC = () => {
           <ContentWrapper>
             <Formik initialValues={initialValues} onSubmit={() => {}}>
               <SortForm>
-                <Label>
-                  Search
-                  <SortField
-                    data-testid="search-input"
-                    onChange={handleChange}
-                    name="search"
-                    value={search}
-                    placeholder="As It Was..."
-                  />
-                </Label>
-                <Label>
-                  Genre
-                  <SortSelect
-                    data-testid="filter-genre"
-                    component="select"
-                    name="genre"
-                    onChange={handleChange}
-                    value={genre}
-                  >
-                    <option key="none" value={''}>
-                      none
+                <FormikField
+                  signature="Search"
+                  data-testid="search-input"
+                  name="search"
+                  value={search}
+                  placeholder="As It Was..."
+                  onChange={handleChange}
+                />
+                <FormikField
+                  signature="Genre"
+                  type="select"
+                  data-testid="filter-genre"
+                  name="genre"
+                  onChange={handleChange}
+                  value={genre}
+                  bgcolor="var(--color-surface-container-low)"
+                >
+                  <option key="none" value={''}>
+                    none
+                  </option>
+                  {genres.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
                     </option>
-                    {genres.map((item) => (
+                  ))}
+                </FormikField>
+                <FormikField
+                  signature="Artist"
+                  data-testid="filter-artist"
+                  name="artist"
+                  onChange={handleChange}
+                  value={artist}
+                  placeholder="Harry Styles..."
+                />
+                <OrderWrapper>
+                  <FormikField
+                    type="select"
+                    signature="Sort by"
+                    data-testid="sort-select"
+                    name="sort"
+                    onChange={handleChange}
+                    value={sort}
+                    bgcolor="var(--color-surface-container-low)"
+                  >
+                    {sortOpinion.map((item) => (
                       <option key={item} value={item}>
                         {item}
                       </option>
                     ))}
-                  </SortSelect>
-                </Label>
-                <Label>
-                  Artist
-                  <SortField
-                    data-testid="filter-artist"
-                    name="artist"
+                  </FormikField>
+                  <FormikField
+                    type="select"
+                    signature="Order"
+                    data-testid="sort-select"
+                    name="order"
                     onChange={handleChange}
-                    value={artist}
-                    placeholder="Harry Styles..."
-                  />
-                </Label>
-                <OrderWrapper>
-                  <Label>
-                    Sort by
-                    <SortSelect
-                      data-testid="sort-select"
-                      name="sort"
-                      component="select"
-                      onChange={handleChange}
-                      value={sort}
-                    >
-                      {sortOpinion.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </SortSelect>
-                  </Label>
-                  <Label>
-                    Order
-                    <SortSelect
-                      data-testid="sort-select"
-                      name="order"
-                      component="select"
-                      onChange={handleChange}
-                      value={order}
-                    >
-                      {orderOpinion.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </SortSelect>
-                  </Label>
+                    value={order}
+                    bgcolor="var(--color-surface-container-low)"
+                  >
+                    {orderOpinion.map((item) => (
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </FormikField>
                 </OrderWrapper>
-                <ResetBtn
+                <ActionBtn
+                  icon="delete"
+                  theme="Secondary-sub"
+                  minSize={30}
+                  maxSize={46}
+                  handleClick={clearFilters}
                   data-testid="reset-btn"
-                  type="button"
-                  onClick={clearFilters}
-                >
-                  <IconSVG id="delete" />
-                </ResetBtn>
+                />
               </SortForm>
             </Formik>
           </ContentWrapper>

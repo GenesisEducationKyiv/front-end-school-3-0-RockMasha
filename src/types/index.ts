@@ -32,6 +32,7 @@ export type { ChildrenProps } from './models/ChildrenProps'
 export type { SetCurrentPage } from './models/SetCurrentPage'
 export type { StartLoadingFn } from './models/StartLoadingFn'
 export type { Icon } from './models/Icon'
+export type { Theme } from './models/Theme'
 
 // guard
 export { checkContextConnection } from './guards/checkContextConnection'
